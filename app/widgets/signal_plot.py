@@ -1,0 +1,3 @@
+"""
+Signal Plot module.
+"""

@@ -1,0 +1,3 @@
+"""
+Detrending module.
+"""

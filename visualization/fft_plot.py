@@ -1,0 +1,3 @@
+"""
+Fft Plot module.
+"""

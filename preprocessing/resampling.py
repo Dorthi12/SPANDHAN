@@ -1,0 +1,3 @@
+"""
+Resampling module.
+"""
