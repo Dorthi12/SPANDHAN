@@ -5,8 +5,67 @@ Test Preprocessing module.
 import numpy as np
 
 from preprocessing.dc_removal import remove_dc
+from preprocessing.detrending import detrend_signal
+from preprocessing.normalization import normalize_signal
+
+def test_peak_normalization():
+
+    signal = np.array([
+        -2.0,
+        1.0,
+        4.0,
+        -3.0,
+    ])
+
+    processed = normalize_signal(
+        signal,
+        method="peak",
+    )
+
+    assert np.isclose(
+        np.max(np.abs(processed)),
+        1.0,
+    )
+
+    assert processed.shape == signal.shape
+    assert np.isfinite(processed).all()
 
 
+def test_zscore_normalization():
+
+    signal = np.arange(
+        1.0,
+        101.0,
+    )
+
+    processed = normalize_signal(
+        signal,
+        method="zscore",
+    )
+
+    assert np.isclose(
+        np.mean(processed),
+        0.0,
+        atol=1e-10,
+    )
+
+    assert np.isclose(
+        np.std(processed),
+        1.0,
+        atol=1e-10,
+    )
+
+
+def test_normalization_rejects_empty():
+
+    signal = np.array([])
+
+    try:
+        normalize_signal(signal)
+        assert False
+    except ValueError:
+        assert True
+        
 def test_remove_dc():
 
     signal = np.array([
@@ -44,6 +103,45 @@ def test_remove_dc_rejects_empty_signal():
 
     try:
         remove_dc(signal)
+        assert False
+    except ValueError:
+        assert True
+
+def test_detrend_signal():
+
+    x = np.linspace(0.0, 1.0, 1000)
+
+    trend = 5.0 * x
+    oscillation = np.sin(2 * np.pi * 10 * x)
+
+    signal = trend + oscillation
+
+    processed = detrend_signal(signal)
+
+    assert processed.shape == signal.shape
+    assert np.isfinite(processed).all()
+
+    # The linear trend should be substantially reduced.
+    fitted_slope = np.polyfit(x, processed, 1)[0]
+
+    assert abs(fitted_slope) < 0.1
+
+
+def test_detrend_signal_preserves_samples():
+
+    signal = np.arange(500, dtype=np.float64)
+
+    processed = detrend_signal(signal)
+
+    assert len(processed) == len(signal)
+
+
+def test_detrend_signal_rejects_empty():
+
+    signal = np.array([])
+
+    try:
+        detrend_signal(signal)
         assert False
     except ValueError:
         assert True
