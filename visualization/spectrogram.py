@@ -1,0 +1,3 @@
+"""
+Spectrogram module.
+"""

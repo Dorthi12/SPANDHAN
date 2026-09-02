@@ -1,0 +1,3 @@
+"""
+Wavelet module.
+"""

@@ -1,0 +1,3 @@
+"""
+Severity module.
+"""
