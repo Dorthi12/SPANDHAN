@@ -8,7 +8,74 @@ from preprocessing.dc_removal import remove_dc
 from preprocessing.detrending import detrend_signal
 from preprocessing.normalization import normalize_signal
 from preprocessing.resampling import resample_signal
+from preprocessing.denoising import lowpass_denoise
 
+
+
+def test_lowpass_denoise():
+
+    sampling_rate = 1000
+
+    t = np.arange(1000) / sampling_rate
+
+    low_frequency = np.sin(
+        2 * np.pi * 20 * t
+    )
+
+    high_frequency = 0.5 * np.sin(
+        2 * np.pi * 300 * t
+    )
+
+    signal = low_frequency + high_frequency
+
+    processed = lowpass_denoise(
+        signal,
+        sampling_rate=sampling_rate,
+        cutoff_frequency=100,
+    )
+
+    assert processed.shape == signal.shape
+    assert np.isfinite(processed).all()
+
+    # The filtered signal should remain reasonably
+    # correlated with the low-frequency component.
+    correlation = np.corrcoef(
+        processed,
+        low_frequency,
+    )[0, 1]
+
+    assert correlation > 0.9
+
+
+def test_lowpass_rejects_invalid_cutoff():
+
+    signal = np.ones(1000)
+
+    try:
+        lowpass_denoise(
+            signal,
+            sampling_rate=1000,
+            cutoff_frequency=500,
+        )
+        assert False
+    except ValueError:
+        assert True
+
+
+def test_lowpass_rejects_invalid_sampling_rate():
+
+    signal = np.ones(1000)
+
+    try:
+        lowpass_denoise(
+            signal,
+            sampling_rate=0,
+            cutoff_frequency=100,
+        )
+        assert False
+    except ValueError:
+        assert True
+        
 def test_resample_signal_downsampling():
 
     signal = np.sin(
@@ -55,7 +122,7 @@ def test_resample_same_rate():
     )
 
     assert np.array_equal(processed, signal)
-    
+
 def test_peak_normalization():
 
     signal = np.array([
