@@ -1,0 +1,16 @@
+numpy
+scipy
+pandas
+scikit-learn
+PyWavelets
+matplotlib
+soundfile
+librosa
+PySide6
+opencv-python
+scikit-image
+joblib
+reportlab
+pytest
+PyYAML
+h5py
