@@ -7,7 +7,55 @@ import numpy as np
 from preprocessing.dc_removal import remove_dc
 from preprocessing.detrending import detrend_signal
 from preprocessing.normalization import normalize_signal
+from preprocessing.resampling import resample_signal
 
+def test_resample_signal_downsampling():
+
+    signal = np.sin(
+        2 * np.pi * 100 * np.arange(1000) / 1000
+    )
+
+    processed = resample_signal(
+        signal,
+        original_rate=1000,
+        target_rate=500,
+    )
+
+    assert len(processed) == 500
+    assert np.isfinite(processed).all()
+
+
+def test_resample_signal_upsampling():
+
+    signal = np.sin(
+        2 * np.pi * 100 * np.arange(500) / 500
+    )
+
+    processed = resample_signal(
+        signal,
+        original_rate=500,
+        target_rate=1000,
+    )
+
+    assert len(processed) == 1000
+    assert np.isfinite(processed).all()
+
+
+def test_resample_same_rate():
+
+    signal = np.arange(
+        100,
+        dtype=np.float64,
+    )
+
+    processed = resample_signal(
+        signal,
+        original_rate=1000,
+        target_rate=1000,
+    )
+
+    assert np.array_equal(processed, signal)
+    
 def test_peak_normalization():
 
     signal = np.array([
@@ -65,7 +113,7 @@ def test_normalization_rejects_empty():
         assert False
     except ValueError:
         assert True
-        
+
 def test_remove_dc():
 
     signal = np.array([
