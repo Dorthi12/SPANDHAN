@@ -41,8 +41,9 @@ def test_create_svm_pipeline():
     # The important invariant is that probability=True was NOT explicitly set
     # on the raw SVC; CalibratedClassifierCV owns the probability output.
     assert classifier.estimator.probability != True  # noqa: E712
-    assert classifier.ensemble is False
-    assert classifier.method == "sigmoid"
+    # cv=5 isotonic: ensemble='auto' (default), method='isotonic'
+    assert classifier.cv == 5
+    assert classifier.method == "isotonic"
 
 
 def test_scaler_is_inside_training_pipeline(dataset_split):
@@ -69,7 +70,7 @@ def test_training_produces_valid_result(dataset_split):
     assert 0.0 <= result.training_accuracy <= 1.0
     assert 0.0 <= result.validation_accuracy <= 1.0
 
-    assert len(result.feature_names) == 14
+    assert len(result.feature_names) == 20
 
 
 def test_model_can_predict(dataset_split):

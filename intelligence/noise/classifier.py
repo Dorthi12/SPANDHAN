@@ -1,87 +1,65 @@
-"""
-Classifier module.
-"""
 from pathlib import Path
+from typing import Any
 
-import numpy as np
 import joblib
+import numpy as np
 
 from core.config import (
     DEFAULT_CONFIDENCE_THRESHOLD,
     ML_CLASSES,
     ML_FEATURE_NAMES,
 )
+from intelligence.noise.features import extract_noise_features
+from intelligence.noise.model_io import load_noise_model
 
 
 class NoiseClassifier:
-    """
-    Inference interface for the trained Spandhan noise classifier.
-
-    The classifier expects the project's fixed 14-feature vector and
-    a persisted scikit-learn pipeline/model.
-    """
+    """Prediction interface for the trained noise-classification model."""
 
     def __init__(
         self,
-        model=None,
-        confidence_threshold=DEFAULT_CONFIDENCE_THRESHOLD,
-    ):
-        if not 0.0 <= float(confidence_threshold) <= 1.0:
+        model: Any | None = None,
+        confidence_threshold: float = DEFAULT_CONFIDENCE_THRESHOLD,
+    ) -> None:
+        if not 0.0 <= confidence_threshold <= 1.0:
             raise ValueError(
-                "Confidence threshold must be between 0 and 1."
+                "confidence_threshold must be between 0 and 1."
             )
 
         self.model = model
         self.confidence_threshold = float(confidence_threshold)
 
-    @property
-    def is_loaded(self):
-        return self.model is not None
+    @classmethod
+    def load(
+        cls,
+        model_path: str | Path,
+        confidence_threshold: float = DEFAULT_CONFIDENCE_THRESHOLD,
+    ) -> "NoiseClassifier":
+        """Load a persisted noise model."""
 
-    def load(self, model_path):
-        """
-        Load a persisted classifier from disk.
-        """
-        model_path = Path(model_path)
+        training_result = load_noise_model(model_path)
 
-        if not model_path.exists():
-            raise FileNotFoundError(
-                f"Model file not found: {model_path}"
+        if list(training_result.feature_names) != list(ML_FEATURE_NAMES):
+            raise ValueError(
+                "Saved model feature names do not match the ML specification."
             )
 
-        self.model = joblib.load(model_path)
+        return cls(
+            model=training_result.model,
+            confidence_threshold=confidence_threshold,
+        )
 
-        return self
-
-    def _validate_features(self, features):
-        """
-        Convert and validate the fixed 14-feature vector.
-
-        A dictionary must contain exactly the project's feature names.
-        An array-like input must contain exactly 14 values.
-        """
+    def _validate_features(
+        self,
+        features: dict[str, float] | np.ndarray,
+    ) -> np.ndarray:
+        """Validate and normalize the 14-feature input."""
 
         if isinstance(features, dict):
-            missing = [
-                name
-                for name in ML_FEATURE_NAMES
-                if name not in features
-            ]
-
-            if missing:
+            if set(features.keys()) != set(ML_FEATURE_NAMES):
                 raise ValueError(
-                    f"Missing features: {missing}"
-                )
-
-            extra = [
-                name
-                for name in features
-                if name not in ML_FEATURE_NAMES
-            ]
-
-            if extra:
-                raise ValueError(
-                    f"Unexpected features: {extra}"
+                    "Feature dictionary must contain exactly the required "
+                    "14 feature names."
                 )
 
             vector = np.asarray(
@@ -95,149 +73,197 @@ class NoiseClassifier:
                 dtype=np.float64,
             )
 
-            if vector.ndim == 2:
-                if vector.shape[0] != 1:
-                    raise ValueError(
-                        "Feature array must contain one sample."
-                    )
-
+            if vector.ndim == 2 and vector.shape[0] == 1:
                 vector = vector[0]
 
             if vector.ndim != 1:
                 raise ValueError(
-                    "Features must be one-dimensional."
+                    "Feature vector must be one-dimensional."
                 )
 
             if len(vector) != len(ML_FEATURE_NAMES):
                 raise ValueError(
-                    f"Expected {len(ML_FEATURE_NAMES)} features, "
-                    f"got {len(vector)}."
+                    "Feature vector must contain exactly 14 values."
                 )
 
         if not np.all(np.isfinite(vector)):
             raise ValueError(
-                "Features must contain only finite values."
+                "Feature vector must contain only finite values."
             )
 
         return vector
 
-    def _validate_prediction(self, prediction):
-        prediction = str(prediction)
-
+    def _validate_prediction(
+        self,
+        prediction: str,
+    ) -> None:
         if prediction not in ML_CLASSES:
             raise ValueError(
                 f"Model returned unsupported class: {prediction}"
             )
 
-        return prediction
+    def _get_confidence(
+        self,
+        feature_vector: np.ndarray,
+    ) -> tuple[str, float, np.ndarray, list[str]]:
+        """Return predicted class, confidence, probabilities and classes."""
 
-    def _get_confidence(self, feature_vector, prediction):
-        """
-        Obtain a model confidence when supported.
-
-        Preference:
-        1. predict_proba()
-        2. calibrated/explicit confidence attribute
-        3. None
-
-        We deliberately do not convert SVM decision scores into
-        probabilities using softmax.
-        """
-
-        if hasattr(self.model, "predict_proba"):
-            probabilities = self.model.predict_proba(
-                feature_vector.reshape(1, -1)
-            )
-
-            probabilities = np.asarray(
-                probabilities,
-                dtype=np.float64,
-            )
-
-            if probabilities.ndim != 2 or probabilities.shape[0] != 1:
-                raise ValueError(
-                    "Model returned invalid probability shape."
-                )
-
-            classes = getattr(
-                self.model,
-                "classes_",
-                None,
-            )
-
-            if classes is None:
-                raise ValueError(
-                    "Model probabilities require classes_."
-                )
-
-            classes = np.asarray(classes)
-
-            matching = np.where(
-                classes.astype(str) == prediction
-            )[0]
-
-            if len(matching) == 0:
-                raise ValueError(
-                    f"Predicted class '{prediction}' "
-                    "not found in model classes."
-                )
-
-            return float(probabilities[0, matching[0]])
-
-        return None
-
-    def predict(self, features):
-        """
-        Predict the noise class.
-
-        Returns
-        -------
-        dict
-            Prediction, confidence, known/unknown status.
-        """
-
-        if not self.is_loaded:
+        if self.model is None:
             raise RuntimeError(
-                "No classifier model is loaded."
+                "No model is loaded."
             )
+
+        if not hasattr(self.model, "predict"):
+            raise TypeError(
+                "Loaded model does not support prediction."
+            )
+
+        if not hasattr(self.model, "predict_proba"):
+            raise TypeError(
+                "Loaded model does not provide calibrated probabilities."
+            )
+
+        X = feature_vector.reshape(1, -1)
+
+        prediction = str(self.model.predict(X)[0])
+
+        probabilities = np.asarray(
+            self.model.predict_proba(X)[0],
+            dtype=np.float64,
+        )
+
+        if not np.all(np.isfinite(probabilities)):
+            raise ValueError(
+                "Model returned non-finite probabilities."
+            )
+
+        if not np.all(probabilities >= 0.0):
+            raise ValueError(
+                "Model returned negative probabilities."
+            )
+
+        if not np.isclose(probabilities.sum(), 1.0):
+            raise ValueError(
+                "Model probabilities must sum to 1."
+            )
+
+        classifier = self.model.named_steps.get("classifier")
+
+        if classifier is None or not hasattr(classifier, "classes_"):
+            raise TypeError(
+                "Loaded model does not expose class names."
+            )
+
+        classes = [
+            str(value)
+            for value in classifier.classes_
+        ]
+
+        if len(classes) != len(probabilities):
+            raise ValueError(
+                "Probability output and class list have different lengths."
+            )
+
+        self._validate_prediction(prediction)
+
+        predicted_index = int(
+            np.argmax(probabilities)
+        )
+
+        # Ensure predict() agrees with the highest probability.
+        probability_prediction = classes[predicted_index]
+
+        if probability_prediction != prediction:
+            raise ValueError(
+                "Model prediction disagrees with its probability output."
+            )
+
+        confidence = float(
+            probabilities[predicted_index]
+        )
+
+        return (
+            prediction,
+            confidence,
+            probabilities,
+            classes,
+        )
+
+    def predict(
+        self,
+        features: dict[str, float] | np.ndarray,
+    ) -> dict[str, Any]:
+        """Predict the noise class from an extracted feature vector."""
 
         feature_vector = self._validate_features(features)
 
-        raw_prediction = self.model.predict(
-            feature_vector.reshape(1, -1)
-        )[0]
-
-        prediction = self._validate_prediction(
-            raw_prediction
+        prediction, confidence, probabilities, classes = (
+            self._get_confidence(feature_vector)
         )
 
-        confidence = self._get_confidence(
-            feature_vector,
-            prediction,
+        is_unknown = confidence < self.confidence_threshold
+
+        status = (
+            "Unknown"
+            if is_unknown
+            else prediction
         )
-
-        if confidence is None:
-            confidence_status = "unavailable"
-            final_prediction = prediction
-            is_unknown = False
-
-        elif confidence < self.confidence_threshold:
-            confidence_status = "low"
-            final_prediction = "Unknown"
-            is_unknown = True
-
-        else:
-            confidence_status = "high"
-            final_prediction = prediction
-            is_unknown = False
 
         return {
-            "prediction": final_prediction,
+            "prediction": status,
             "raw_prediction": prediction,
             "confidence": confidence,
-            "confidence_threshold": self.confidence_threshold,
-            "confidence_status": confidence_status,
+            "threshold": self.confidence_threshold,
+            "status": status,
             "is_unknown": is_unknown,
+            "probabilities": probabilities,
+            "classes": classes,
             "feature_names": list(ML_FEATURE_NAMES),
             "feature_vector": feature_vector,
         }
+
+    def predict_signal(
+        self,
+        signal: np.ndarray,
+        sampling_rate: float,
+        snr_db: float | None = None,
+    ) -> dict[str, Any]:
+        """Extract the 14 required features and classify a signal."""
+
+        signal = np.asarray(
+            signal,
+            dtype=np.float64,
+        )
+
+        if signal.ndim != 1:
+            raise ValueError(
+                "signal must be one-dimensional."
+            )
+
+        if signal.size == 0:
+            raise ValueError(
+                "signal cannot be empty."
+            )
+
+        if not np.all(np.isfinite(signal)):
+            raise ValueError(
+                "signal must contain only finite values."
+            )
+
+        if not np.isfinite(sampling_rate) or sampling_rate <= 0:
+            raise ValueError(
+                "sampling_rate must be finite and greater than zero."
+            )
+
+        features = extract_noise_features(
+            signal,
+            sampling_rate,
+            snr_db=snr_db,
+        )
+
+        result = self.predict(features)
+
+        result["sampling_rate"] = float(sampling_rate)
+        result["num_samples"] = int(signal.size)
+
+        return result

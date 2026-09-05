@@ -1,13 +1,13 @@
 import numpy as np
 from scipy import signal
 from scipy.stats import kurtosis, skew
-from scipy.signal import welch
+from scipy.signal import welch, find_peaks
 
 
-# Canonical ordered list of the 14 features produced by
-# extract_noise_features(). This is the single source of truth;
-# dataset.py and core/config.py both re-export from here.
+# Canonical ordered list of ALL features produced by extract_noise_features().
+# This is the single source of truth; dataset.py and core/config.py re-export.
 NOISE_FEATURE_NAMES = [
+    # --- Time-domain statistics (original 7) ---
     "rms",
     "variance",
     "std",
@@ -15,13 +15,25 @@ NOISE_FEATURE_NAMES = [
     "skewness",
     "crest_factor",
     "zero_crossing_rate",
+    # --- Spectral features (original 6) ---
     "spectral_centroid",
     "spectral_flatness",
     "spectral_entropy",
     "spectral_rolloff",
     "mains_band_energy",
     "high_band_energy",
+    # --- SNR (original 1) ---
     "snr_db",
+    # --- New discriminative features (6) ---
+    # Impulse-specific: sparse large-amplitude spikes
+    "impulse_count",          # samples > 3σ  → Impulse vs Mixed/Gaussian
+    "peak_count_rate",        # peaks > 2σ per sample → Impulse (few tall) vs Mixed
+    # Temporal asymmetry: impulses cluster in time
+    "energy_ratio_first_half",  # E[0:N/2]/E[N/2:] → Impulse asymmetric vs Mixed
+    # Fine-grained spectral shape
+    "spectral_variance",      # var(PSD) → flat(Gaussian) vs peaked(Periodic)
+    "low_band_energy",        # PSD < 10% Nyquist → Colored/Periodic vs Gaussian
+    "mid_band_energy",        # PSD 10–50% Nyquist → further spectral shape separation
 ]
 
 
@@ -146,6 +158,29 @@ def _spectral_features(signal, sampling_rate):
         frequencies[high_band_mask],
     ) if np.any(high_band_mask) else 0.0
 
+    # Spectral variance — distinguishes flat (Gaussian, Colored) from
+    # peaked (Periodic) spectra.
+    spectral_variance = float(np.var(psd))
+
+    # Low-band energy: below 10% Nyquist.
+    # Colored / Periodic noise concentrates energy here; Gaussian is flat.
+    nyquist = sampling_rate / 2.0
+    low_band_mask = frequencies < 0.10 * nyquist
+    low_band_energy = np.trapezoid(
+        psd[low_band_mask],
+        frequencies[low_band_mask],
+    ) if np.any(low_band_mask) else 0.0
+
+    # Mid-band energy: 10–50% Nyquist.
+    mid_band_mask = (
+        (frequencies >= 0.10 * nyquist)
+        & (frequencies <= 0.50 * nyquist)
+    )
+    mid_band_energy = np.trapezoid(
+        psd[mid_band_mask],
+        frequencies[mid_band_mask],
+    ) if np.any(mid_band_mask) else 0.0
+
     return {
         "spectral_centroid": float(spectral_centroid),
         "spectral_flatness": float(spectral_flatness),
@@ -153,6 +188,48 @@ def _spectral_features(signal, sampling_rate):
         "spectral_rolloff": float(spectral_rolloff),
         "mains_band_energy": float(mains_band_energy),
         "high_band_energy": float(high_band_energy),
+        "spectral_variance": spectral_variance,
+        "low_band_energy": float(low_band_energy),
+        "mid_band_energy": float(mid_band_energy),
+    }
+
+
+def _impulse_and_shape_features(signal):
+    """
+    Compute three features that specifically separate Impulse from Mixed
+    and give temporal structure information.
+    """
+    n = len(signal)
+    std = np.std(signal)
+
+    if std > 0:
+        # Number of samples exceeding 3 standard deviations (absolute).
+        impulse_count = int(np.sum(np.abs(signal - np.mean(signal)) > 3.0 * std))
+
+        # Number of local peaks (scipy find_peaks) exceeding 2σ above mean,
+        # normalised by signal length.
+        threshold = np.mean(signal) + 2.0 * std
+        peaks_pos, _ = find_peaks(signal, height=threshold)
+        peaks_neg, _ = find_peaks(-signal, height=-np.mean(signal) + 2.0 * std)
+        peak_count_rate = float((len(peaks_pos) + len(peaks_neg)) / n)
+    else:
+        impulse_count = 0
+        peak_count_rate = 0.0
+
+    # Temporal energy ratio: first half vs second half.
+    # Impulse noise often has asymmetric temporal distribution.
+    half = n // 2
+    e_first = float(np.mean(signal[:half] ** 2))
+    e_second = float(np.mean(signal[half:] ** 2))
+    total_e = e_first + e_second
+    energy_ratio_first_half = (
+        e_first / total_e if total_e > 0 else 0.5
+    )
+
+    return {
+        "impulse_count": float(impulse_count),
+        "peak_count_rate": peak_count_rate,
+        "energy_ratio_first_half": energy_ratio_first_half,
     }
 
 
@@ -162,7 +239,7 @@ def extract_noise_features(
     snr_db=None,
 ):
     """
-    Extract the project's fixed 14-feature vector.
+    Extract the project's fixed 20-feature vector.
 
     Parameters
     ----------
@@ -232,6 +309,8 @@ def extract_noise_features(
         sampling_rate,
     )
 
+    impulse_shape = _impulse_and_shape_features(signal)
+
     if snr_db is None:
         snr_value = np.nan
     else:
@@ -269,4 +348,11 @@ def extract_noise_features(
             "high_band_energy"
         ],
         "snr_db": snr_value,
+        # --- 6 new discriminative features ---
+        "impulse_count": impulse_shape["impulse_count"],
+        "peak_count_rate": impulse_shape["peak_count_rate"],
+        "energy_ratio_first_half": impulse_shape["energy_ratio_first_half"],
+        "spectral_variance": spectral["spectral_variance"],
+        "low_band_energy": spectral["low_band_energy"],
+        "mid_band_energy": spectral["mid_band_energy"],
     }
