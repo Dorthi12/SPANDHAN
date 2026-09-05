@@ -4,6 +4,27 @@ from scipy.stats import kurtosis, skew
 from scipy.signal import welch
 
 
+# Canonical ordered list of the 14 features produced by
+# extract_noise_features(). This is the single source of truth;
+# dataset.py and core/config.py both re-export from here.
+NOISE_FEATURE_NAMES = [
+    "rms",
+    "variance",
+    "std",
+    "kurtosis",
+    "skewness",
+    "crest_factor",
+    "zero_crossing_rate",
+    "spectral_centroid",
+    "spectral_flatness",
+    "spectral_entropy",
+    "spectral_rolloff",
+    "mains_band_energy",
+    "high_band_energy",
+    "snr_db",
+]
+
+
 def _validate_signal(signal):
     signal = np.asarray(signal, dtype=np.float64)
 
