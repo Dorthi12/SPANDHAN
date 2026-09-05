@@ -25,7 +25,7 @@ def test_validate_dataset(dataset):
 
     validate_noise_dataset(prepared)
 
-    assert prepared.X.shape[1] == 14
+    assert prepared.X.shape[1] == 20
     assert np.all(np.isfinite(prepared.X))
 
 

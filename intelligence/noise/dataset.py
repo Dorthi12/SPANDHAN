@@ -183,12 +183,18 @@ def split_noise_dataset(
 
     relative_val_size = val_size / (test_size + val_size)
 
+    # Stratified split of the temp pool requires ≥2 samples per class.
+    # With small datasets (e.g. tests using samples_per_class=5) the temp
+    # pool may have only 1 sample per class, so fall back to non-stratified.
+    _, temp_counts = np.unique(y_temp, return_counts=True)
+    temp_stratify = y_temp if np.min(temp_counts) >= 2 else None
+
     X_val, X_test, y_val, y_test, meta_val, meta_test = train_test_split(
         X_temp,
         y_temp,
         meta_temp,
         test_size=1.0 - relative_val_size,
-        stratify=y_temp,
+        stratify=temp_stratify,
         random_state=random_state,
     )
 
