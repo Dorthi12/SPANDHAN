@@ -165,4 +165,4 @@ def test_invalid_training_result_is_rejected(tmp_path):
 
 def test_model_format_version_is_defined():
     assert isinstance(MODEL_FORMAT_VERSION, str)
-    assert MODEL_FORMAT_VERSION == "1.0"
+    assert MODEL_FORMAT_VERSION == "2.0"

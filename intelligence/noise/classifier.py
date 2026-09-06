@@ -53,13 +53,13 @@ class NoiseClassifier:
         self,
         features: dict[str, float] | np.ndarray,
     ) -> np.ndarray:
-        """Validate and normalize the 14-feature input."""
+        """Validate and normalize the feature input."""
 
         if isinstance(features, dict):
             if set(features.keys()) != set(ML_FEATURE_NAMES):
                 raise ValueError(
                     "Feature dictionary must contain exactly the required "
-                    "14 feature names."
+                    f"{len(ML_FEATURE_NAMES)} feature names."
                 )
 
             vector = np.asarray(
@@ -83,7 +83,7 @@ class NoiseClassifier:
 
             if len(vector) != len(ML_FEATURE_NAMES):
                 raise ValueError(
-                    "Feature vector must contain exactly 14 values."
+                    f"Feature vector must contain exactly {len(ML_FEATURE_NAMES)} values."
                 )
 
         if not np.all(np.isfinite(vector)):

@@ -5,6 +5,7 @@ from intelligence.noise.features import extract_noise_features
 
 
 EXPECTED_FEATURES = {
+    # Time-domain statistics
     "rms",
     "variance",
     "std",
@@ -12,17 +13,26 @@ EXPECTED_FEATURES = {
     "skewness",
     "crest_factor",
     "zero_crossing_rate",
+    # Spectral features
     "spectral_centroid",
     "spectral_flatness",
     "spectral_entropy",
     "spectral_rolloff",
     "mains_band_energy",
     "high_band_energy",
+    # SNR
     "snr_db",
+    # New discriminative features
+    "impulse_count",
+    "peak_count_rate",
+    "energy_ratio_first_half",
+    "spectral_variance",
+    "low_band_energy",
+    "mid_band_energy",
 }
 
 
-def test_all_14_features_are_returned():
+def test_all_20_features_are_returned():
     rng = np.random.default_rng(42)
 
     signal = rng.normal(0, 1, 2000)
@@ -126,3 +136,45 @@ def test_invalid_snr():
             1000,
             snr_db=np.inf,
         )
+
+
+def test_impulse_count_groups_nearby_threshold_crossings():
+    """One multi-sample spike should count as one impulse event."""
+
+    from intelligence.noise.features import extract_noise_features
+
+    signal = np.zeros(1000, dtype=float)
+
+    # Three samples belonging to one impulse.
+    signal[100:103] = 10.0
+
+    # Another separated impulse.
+    signal[500:503] = -10.0
+
+    features = extract_noise_features(
+        signal,
+        sampling_rate=1000.0,
+    )
+
+    assert features["impulse_count"] == 2.0
+
+
+def test_impulse_count_zero_for_no_threshold_crossings():
+    """A normal low-amplitude signal should have no impulse events."""
+
+    from intelligence.noise.features import extract_noise_features
+
+    signal = np.sin(
+        np.linspace(
+            0,
+            4 * np.pi,
+            1000,
+        )
+    )
+
+    features = extract_noise_features(
+        signal,
+        sampling_rate=1000.0,
+    )
+
+    assert features["impulse_count"] == 0.0

@@ -44,13 +44,13 @@ def test_classifier_requires_model():
     classifier = NoiseClassifier()
 
     with pytest.raises(RuntimeError):
-        classifier.predict(np.zeros(14))
+        classifier.predict(np.zeros(20))
 
 
 def test_classifier_accepts_feature_array(
     classifier,
 ):
-    features = np.zeros(14)
+    features = np.zeros(20)
 
     result = classifier.predict(features)
 
@@ -66,7 +66,7 @@ def test_classifier_accepts_feature_dictionary(
     features = {
         name: 0.0
         for name in classifier.predict(
-            np.zeros(14)
+            np.zeros(20)
         )["feature_names"]
     }
 
@@ -79,7 +79,7 @@ def test_probability_output_is_valid(
     classifier,
 ):
     result = classifier.predict(
-        np.zeros(14)
+        np.zeros(20)
     )
 
     probabilities = result["probabilities"]
@@ -95,7 +95,7 @@ def test_confidence_matches_highest_probability(
     classifier,
 ):
     result = classifier.predict(
-        np.zeros(14)
+        np.zeros(20)
     )
 
     assert np.isclose(
@@ -108,7 +108,7 @@ def test_unknown_threshold_is_applied(
     classifier,
 ):
     result = classifier.predict(
-        np.zeros(14)
+        np.zeros(20)
     )
 
     if result["confidence"] < 0.60:
@@ -124,7 +124,7 @@ def test_feature_order_is_fixed(
     classifier,
 ):
     result = classifier.predict(
-        np.zeros(14)
+        np.zeros(20)
     )
 
     expected = [
@@ -142,6 +142,12 @@ def test_feature_order_is_fixed(
         "mains_band_energy",
         "high_band_energy",
         "snr_db",
+        "impulse_count",
+        "peak_count_rate",
+        "energy_ratio_first_half",
+        "spectral_variance",
+        "low_band_energy",
+        "mid_band_energy",
     ]
 
     assert result["feature_names"] == expected
@@ -151,16 +157,16 @@ def test_invalid_feature_length_is_rejected(
     classifier,
 ):
     with pytest.raises(ValueError):
-        classifier.predict(np.zeros(13))
+        classifier.predict(np.zeros(19))
 
     with pytest.raises(ValueError):
-        classifier.predict(np.zeros(15))
+        classifier.predict(np.zeros(21))
 
 
 def test_non_finite_features_are_rejected(
     classifier,
 ):
-    features = np.zeros(14)
+    features = np.zeros(20)
     features[0] = np.nan
 
     with pytest.raises(ValueError):
@@ -187,8 +193,8 @@ def test_predict_signal_extracts_features(
 
     assert result["num_samples"] == len(signal)
     assert result["sampling_rate"] == sampling_rate
-    assert len(result["feature_vector"]) == 14
-    assert len(result["feature_names"]) == 14
+    assert len(result["feature_vector"]) == 20
+    assert len(result["feature_names"]) == 20
 
 
 def test_predict_signal_rejects_invalid_input(

@@ -21,7 +21,7 @@ def test_dataset_shape():
 
     assert dataset.X.shape == (
         18,
-        14,
+        20,
     )
 
     assert dataset.y.shape == (18,)
@@ -128,12 +128,15 @@ def test_features_are_finite_except_clean_snr():
         seed=42,
     )
 
-    # The current dataset builder uses +inf for Clean SNR.
+    # The dataset builder stores +inf for Clean SNR (feature index 13).
     # All other generated feature values must be finite.
+    SNR_IDX = 13  # position of snr_db in the 20-feature vector
     for row, label in zip(dataset.X, dataset.y):
         if label == "Clean":
+            mask = np.ones(len(row), dtype=bool)
+            mask[SNR_IDX] = False
             assert np.all(
-                np.isfinite(row[:-1])
+                np.isfinite(row[mask])
             )
         else:
             assert np.all(

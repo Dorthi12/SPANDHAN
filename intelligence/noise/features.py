@@ -26,7 +26,7 @@ NOISE_FEATURE_NAMES = [
     "snr_db",
     # --- New discriminative features (6) ---
     # Impulse-specific: sparse large-amplitude spikes
-    "impulse_count",          # samples > 3σ  → Impulse vs Mixed/Gaussian
+    "impulse_count",          # grouped events > 3σ → Impulse vs Mixed/Gaussian
     "peak_count_rate",        # peaks > 2σ per sample → Impulse (few tall) vs Mixed
     # Temporal asymmetry: impulses cluster in time
     "energy_ratio_first_half",  # E[0:N/2]/E[N/2:] → Impulse asymmetric vs Mixed
@@ -80,6 +80,9 @@ def _spectral_features(signal, sampling_rate):
             "spectral_rolloff": 0.0,
             "mains_band_energy": 0.0,
             "high_band_energy": 0.0,
+            "spectral_variance": 0.0,
+            "low_band_energy": 0.0,
+            "mid_band_energy": 0.0,
         }
 
     # Spectral centroid
@@ -203,15 +206,48 @@ def _impulse_and_shape_features(signal):
     std = np.std(signal)
 
     if std > 0:
-        # Number of samples exceeding 3 standard deviations (absolute).
-        impulse_count = int(np.sum(np.abs(signal - np.mean(signal)) > 3.0 * std))
+        # Detect samples exceeding 3 standard deviations from the mean.
+        #
+        # Individual threshold crossings are not counted as separate
+        # impulses because one real impulse can span several samples.
+        threshold = 3.0 * std
+        exceedances = np.abs(signal - np.mean(signal)) > threshold
 
-        # Number of local peaks (scipy find_peaks) exceeding 2σ above mean,
+        # Group nearby threshold crossings into a single impulse event.
+        #
+        # At 16 kHz, min_gap=10 corresponds to 0.625 ms.
+        # This prevents a single transient from being counted many times.
+        impulse_indices = np.flatnonzero(exceedances)
+
+        if len(impulse_indices) == 0:
+            impulse_count = 0
+        else:
+            min_gap = 10
+
+            gaps = np.diff(impulse_indices)
+
+            impulse_count = int(
+                1 + np.sum(gaps > min_gap)
+            )
+
+        # Number of local peaks exceeding 2σ above/below the mean,
         # normalised by signal length.
-        threshold = np.mean(signal) + 2.0 * std
-        peaks_pos, _ = find_peaks(signal, height=threshold)
-        peaks_neg, _ = find_peaks(-signal, height=-np.mean(signal) + 2.0 * std)
-        peak_count_rate = float((len(peaks_pos) + len(peaks_neg)) / n)
+        peak_threshold = np.mean(signal) + 2.0 * std
+
+        peaks_pos, _ = find_peaks(
+            signal,
+            height=peak_threshold,
+        )
+
+        peaks_neg, _ = find_peaks(
+            -signal,
+            height=-np.mean(signal) + 2.0 * std,
+        )
+
+        peak_count_rate = float(
+            (len(peaks_pos) + len(peaks_neg)) / n
+        )
+
     else:
         impulse_count = 0
         peak_count_rate = 0.0
