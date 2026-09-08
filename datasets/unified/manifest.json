@@ -1,0 +1,8502 @@
+[
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.583176596280785,
+    "seed": 191664964
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.719211569720834,
+    "seed": 1662057958
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.74052265537491,
+    "seed": 600106624
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.431768511111912,
+    "seed": 894880639
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.863295275121498,
+    "seed": 1175605644
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.244516118399424,
+    "seed": 789352536
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.2597538156899235,
+    "seed": 983295104
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.19302467552994,
+    "seed": 291738002
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.599951990732317,
+    "seed": 950683678
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.68659247601964,
+    "seed": 953302407
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.818086364452354,
+    "seed": 1961473814
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.934844809812871,
+    "seed": 1952112818
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.682564936672106,
+    "seed": 1015425758
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.55551497286639,
+    "seed": 387364242
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.435859579954165,
+    "seed": 1369272074
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.611154699971902,
+    "seed": 1856039684
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.841648557086946,
+    "seed": 1852707058
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.268474904430732,
+    "seed": 1741027772
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.49103992938089,
+    "seed": 1551134729
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.609104022200388,
+    "seed": 1088770280
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.180776489220698,
+    "seed": 109036705
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.838725079474052,
+    "seed": 1247090799
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.251896737864712,
+    "seed": 931342768
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.401367013439231,
+    "seed": 297497936
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.458054649370563,
+    "seed": 1757385694
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.114449766679945,
+    "seed": 2102290254
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.629874579243953,
+    "seed": 1676327989
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.703698578638292,
+    "seed": 1829398385
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.606295230427533,
+    "seed": 1577673182
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.401577717339801,
+    "seed": 1781742123
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.392475661821296,
+    "seed": 1160831470
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.740928699714368,
+    "seed": 1363397162
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.729401659860054,
+    "seed": 439251487
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.593855899147425,
+    "seed": 1226244230
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.900560047015198,
+    "seed": 1885060661
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.250307374544313,
+    "seed": 855732975
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.244106769335143,
+    "seed": 31661319
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.22361167472125,
+    "seed": 692990550
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.593671161343475,
+    "seed": 1557287806
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.743951528654491,
+    "seed": 110238321
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.592488987360837,
+    "seed": 980247373
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.950755410805243,
+    "seed": 1396862813
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.042085976623284,
+    "seed": 1217193882
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.404881190453274,
+    "seed": 18295971
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.863423185128308,
+    "seed": 1193885194
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.280561323104369,
+    "seed": 30534564
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.240088571835333,
+    "seed": 1287195387
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.484703483116796,
+    "seed": 663267805
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.003250530596423,
+    "seed": 2075624744
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.0827062943817,
+    "seed": 322408677
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.760863988107348,
+    "seed": 2068504006
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.578616953662353,
+    "seed": 93075548
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.019721670106296,
+    "seed": 1257778169
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.965842142002323,
+    "seed": 1301564804
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.40315212641324,
+    "seed": 700178015
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.60383447787691,
+    "seed": 1088259714
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.784171084723603,
+    "seed": 568663120
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.4824203526597,
+    "seed": 825834036
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.860452557900686,
+    "seed": 1115197326
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.702982415316365,
+    "seed": 1837478819
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.493113189394702,
+    "seed": 1881026391
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.99877140349939,
+    "seed": 1837458486
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.056019284582007,
+    "seed": 446346069
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.127784836333785,
+    "seed": 1428018326
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.620423411950517,
+    "seed": 610299870
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.272835347646893,
+    "seed": 703000300
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.75300301771572,
+    "seed": 556726407
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.056207842878287,
+    "seed": 606387018
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.48397508615912,
+    "seed": 2135186022
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.68717300479935,
+    "seed": 215378450
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 817258646
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 308129505
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 2143768737
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 619525931
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 310494145
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1294953437
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1752056823
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1679221745
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1537119875
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 411266415
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1366713003
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 2085211096
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1556780561
+  },
+  {
+    "domain": "audio",
+    "signal_type": "clean_sine",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 202807649
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.301941444333723,
+    "seed": 1253980799
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.679531931467174,
+    "seed": 969955206
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.832214371278083,
+    "seed": 890524
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.364761083903398,
+    "seed": 1460456169
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.07046645328804,
+    "seed": 935005398
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.07568767329106,
+    "seed": 546959621
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.703462539078611,
+    "seed": 1399672384
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.64111490095662,
+    "seed": 686055778
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.148931973472752,
+    "seed": 1219158347
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.508956487271618,
+    "seed": 681235105
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.643003908251061,
+    "seed": 1029507994
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.984837053956152,
+    "seed": 1334941039
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.37092482806009,
+    "seed": 1884675362
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.679941489687863,
+    "seed": 1849402568
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.003617143051123,
+    "seed": 1280944114
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.724929967410816,
+    "seed": 1179180849
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.232130609089138,
+    "seed": 1471298335
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.533577353904807,
+    "seed": 654949055
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.084522039538253,
+    "seed": 761379845
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.827740234842645,
+    "seed": 240343853
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.279278328856255,
+    "seed": 1337887515
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.03202693997072,
+    "seed": 134022163
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.966683305166946,
+    "seed": 1958208136
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.75652769675487,
+    "seed": 390642710
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.835519525243537,
+    "seed": 994045784
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.036173185860948,
+    "seed": 231727985
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.04479982281445,
+    "seed": 446651314
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.141265372652565,
+    "seed": 263520785
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.304753188936973,
+    "seed": 2006983292
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.60687773041056,
+    "seed": 548982618
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.383045464194835,
+    "seed": 436362979
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.291015802727816,
+    "seed": 1588530113
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.993459016626623,
+    "seed": 43819382
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.511112885643842,
+    "seed": 1990190859
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.6679960469647686,
+    "seed": 626409149
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.222606926660312,
+    "seed": 1482988717
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.699467405095247,
+    "seed": 133973281
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.778472564722,
+    "seed": 1296044370
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.823682085511795,
+    "seed": 2101996802
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.285731926262654,
+    "seed": 220144522
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.996408944505554,
+    "seed": 1384889632
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.523715736473601,
+    "seed": 1352488801
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.035170439114523,
+    "seed": 147061681
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.802136500291237,
+    "seed": 372563205
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.699275089036699,
+    "seed": 936087930
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.049660887297904,
+    "seed": 475741099
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.093221806119217,
+    "seed": 215182706
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.774122578605232,
+    "seed": 1167828335
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.207848996219628,
+    "seed": 63512165
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.888220934596502,
+    "seed": 240204411
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.862898921944833,
+    "seed": 1252054437
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.788068233834487,
+    "seed": 1434481441
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.088333666032451,
+    "seed": 854415738
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.088737080344231,
+    "seed": 2015344892
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.225455550988677,
+    "seed": 1951763954
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.313350323688624,
+    "seed": 1913990861
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.603338005043323,
+    "seed": 888489011
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.56919751909145,
+    "seed": 1088192493
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.229351081267827,
+    "seed": 1817251308
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.849638783200806,
+    "seed": 1670278091
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.048687748271135,
+    "seed": 1277976732
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.545974420903903,
+    "seed": 553709062
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.612073556820132,
+    "seed": 403464187
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.997318395311636,
+    "seed": 2066088403
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.433317827241012,
+    "seed": 1934150297
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.3853424464114426,
+    "seed": 645993083
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.980263826274214,
+    "seed": 1595853416
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.956123954187964,
+    "seed": 312140646
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.038350565770024,
+    "seed": 1227392847
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.655095707406051,
+    "seed": 1997327671
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 949472405
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 16752140
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 690423659
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 727733820
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 99218767
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1921502301
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1916808658
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 606618863
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1045708902
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1068222510
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 2016696890
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1947420442
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 988411420
+  },
+  {
+    "domain": "audio",
+    "signal_type": "multi_tone",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 944783775
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.553730795006873,
+    "seed": 1560095095
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.825279628338723,
+    "seed": 845649332
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.7962621611640675,
+    "seed": 614206126
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.689887192997568,
+    "seed": 1268457329
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.2653959940351305,
+    "seed": 629056387
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.931961309129932,
+    "seed": 1218886342
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.062546690574557,
+    "seed": 984980163
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.752709260004037,
+    "seed": 880374072
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.033435103301535,
+    "seed": 1563074236
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.650416027602323,
+    "seed": 672683169
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.863482679936263,
+    "seed": 86363872
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.443274533266413,
+    "seed": 112192268
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.72440985447001,
+    "seed": 528591129
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.743154997386904,
+    "seed": 1348325290
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.17410081613449,
+    "seed": 1882921418
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.248379951169593,
+    "seed": 617723087
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.405277126928782,
+    "seed": 1565812456
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.028054605505785,
+    "seed": 1135816613
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.432617994614166,
+    "seed": 1770332302
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.852122377191504,
+    "seed": 1775754353
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.837158068621918,
+    "seed": 1179720556
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.230145364049784,
+    "seed": 245909152
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.250265201501824,
+    "seed": 2059822428
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.773197089464347,
+    "seed": 2027181263
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.246562703846738,
+    "seed": 2124262049
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.099098132237886,
+    "seed": 590702845
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.723794091428859,
+    "seed": 15547664
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.602036722569967,
+    "seed": 1728158843
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.941987737013586,
+    "seed": 1611262430
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.380267149041371,
+    "seed": 1517587407
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.902444308167112,
+    "seed": 94730152
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.369339967730808,
+    "seed": 388601646
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.275004596022168,
+    "seed": 390742246
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.17829809451541,
+    "seed": 1122771917
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.439976834991787,
+    "seed": 1408913612
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.881833796443233,
+    "seed": 1955629907
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.207971691985783,
+    "seed": 956952248
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.002433899250828,
+    "seed": 1890294091
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.54168008835882,
+    "seed": 2124236265
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.699301213402137,
+    "seed": 1788383697
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.666997315782382,
+    "seed": 1705994803
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.646418899024555,
+    "seed": 1139809133
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.897793920345112,
+    "seed": 893537133
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.13303801566723,
+    "seed": 181259583
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.72837993282473,
+    "seed": 1583650977
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.7325760011895,
+    "seed": 391993131
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.19637017403494,
+    "seed": 835736226
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.925478498654357,
+    "seed": 236221610
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.30560296450976,
+    "seed": 819364759
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.67037318336111,
+    "seed": 614781043
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.21420575939133,
+    "seed": 1042215812
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.0338431909050305,
+    "seed": 529920237
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.217151522992951,
+    "seed": 1426132411
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.305918972608595,
+    "seed": 988988888
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.95567127225617,
+    "seed": 1492663399
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.91625890378947,
+    "seed": 1150660447
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.085902715999794,
+    "seed": 1781899625
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.416093478441006,
+    "seed": 1636533592
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.915786921063969,
+    "seed": 919241737
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.99206954611636,
+    "seed": 905474596
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.758122481867503,
+    "seed": 1620305862
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.9966693960797635,
+    "seed": 2114794148
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.351924248388835,
+    "seed": 1589492496
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.26504806974718,
+    "seed": 1679789761
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.545701790922326,
+    "seed": 127416484
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.29980252692247,
+    "seed": 772760096
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.447903971617905,
+    "seed": 1597602745
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.108029059751736,
+    "seed": 572041480
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.477558249284854,
+    "seed": 763957089
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.031786035762579,
+    "seed": 21580476
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 400613679
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 254323924
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1540914365
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 876415494
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1307679264
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1993231696
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 46161387
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1692577400
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1701496543
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 423515653
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 510913960
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1033931873
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 45804920
+  },
+  {
+    "domain": "audio",
+    "signal_type": "harmonic",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1037558535
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.352921765711972,
+    "seed": 1763411206
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.618399341680027,
+    "seed": 1567566964
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.363565054436577,
+    "seed": 1963041008
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.872969673502309,
+    "seed": 733860555
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.038878658065718,
+    "seed": 1646090651
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.641690015128644,
+    "seed": 356647835
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.156720982657578,
+    "seed": 1775968205
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.48791564301975,
+    "seed": 301822188
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.34936247214764,
+    "seed": 451799690
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.422414287899397,
+    "seed": 2092808025
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.612437147517493,
+    "seed": 118446897
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.361659785216573,
+    "seed": 666157473
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.234753276085865,
+    "seed": 893367204
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.935386374073843,
+    "seed": 1488658944
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.416023795254,
+    "seed": 1193737315
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.80237786626377,
+    "seed": 1153631595
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.196133881354527,
+    "seed": 463686365
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.870928698588319,
+    "seed": 1432536839
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.517815264668542,
+    "seed": 513314338
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.927069116518837,
+    "seed": 500323932
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.617859141027198,
+    "seed": 399811584
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.445529907115858,
+    "seed": 977046682
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.780272333170885,
+    "seed": 1506860900
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.09144452401053,
+    "seed": 704343472
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.17293896380359,
+    "seed": 2034982193
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.507729090322998,
+    "seed": 46769147
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.041038696768911,
+    "seed": 531210824
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.046100122976918,
+    "seed": 1386236603
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.360904984362907,
+    "seed": 1633275916
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.942295383248267,
+    "seed": 109079573
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.692077634225527,
+    "seed": 791749717
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.62996674359341,
+    "seed": 565039004
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.578054117972775,
+    "seed": 1589600587
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.21741104348898,
+    "seed": 461927990
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.034163099085298,
+    "seed": 70009642
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.733167643017149,
+    "seed": 1185737463
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.522614622250934,
+    "seed": 2025303989
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.797239967269437,
+    "seed": 849480245
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.099286361621077,
+    "seed": 2035146315
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.413259315880993,
+    "seed": 129478388
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.729468762890043,
+    "seed": 110288180
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.199816180774647,
+    "seed": 1235839809
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.55115376568098,
+    "seed": 741065596
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.51503408203096,
+    "seed": 1189805510
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.52333054215509,
+    "seed": 1966469853
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.967532466569896,
+    "seed": 215066020
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.04314338680378,
+    "seed": 1654170879
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.874512512364975,
+    "seed": 587013447
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.301097836241633,
+    "seed": 2056262059
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.917735707451442,
+    "seed": 1783668300
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.327262967597582,
+    "seed": 2122708066
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.166098198077819,
+    "seed": 1393857218
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.496139497066004,
+    "seed": 764484395
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.066220130168809,
+    "seed": 417319845
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.475499079857272,
+    "seed": 938577638
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.565518973391303,
+    "seed": 1131765704
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.927445011926407,
+    "seed": 9385727
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.352171672402824,
+    "seed": 405074740
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.329982620528213,
+    "seed": 1050362055
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.823821202336816,
+    "seed": 715401535
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.729232268437869,
+    "seed": 349960876
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.813449017678147,
+    "seed": 1570282809
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.969213865830707,
+    "seed": 1740113553
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.65531330634194,
+    "seed": 1430591838
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.142709595725549,
+    "seed": 474553450
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.058969728975091,
+    "seed": 183910108
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.23885651352834,
+    "seed": 1740347035
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.004278394641563,
+    "seed": 197338397
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.073104955449459,
+    "seed": 271181713
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.107577973402583,
+    "seed": 729794322
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1572907462
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 585715960
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 598508085
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1295337487
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1799192150
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 592791772
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1020427472
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 612390908
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1018764664
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1114581719
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 278540976
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 832824896
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 69428081
+  },
+  {
+    "domain": "audio",
+    "signal_type": "chirp",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 672409878
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.733814326020706,
+    "seed": 779573787
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.609062346916376,
+    "seed": 2121813801
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.881299534885821,
+    "seed": 642903197
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.003310673224725,
+    "seed": 1131880076
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.711270334353108,
+    "seed": 1729725920
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.527573198308538,
+    "seed": 1517098852
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.271614632616086,
+    "seed": 718054312
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.96810100550734,
+    "seed": 1092362062
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.493321625665283,
+    "seed": 612786892
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.190190201953335,
+    "seed": 105809775
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.36459948445375,
+    "seed": 714473648
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.94081526889746,
+    "seed": 1741787235
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.20244556167578,
+    "seed": 14797870
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.09631303442434,
+    "seed": 567538994
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.142510324744375,
+    "seed": 1042606078
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.04955181525783,
+    "seed": 361637976
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.716229878330843,
+    "seed": 714504856
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.163495310118432,
+    "seed": 254951693
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.576647405925765,
+    "seed": 665648187
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.142474541195213,
+    "seed": 583542096
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.58773480121961,
+    "seed": 521219486
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.447697122508753,
+    "seed": 935828059
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.713235064734935,
+    "seed": 2033310739
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.550658468027015,
+    "seed": 448931542
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.880778844971813,
+    "seed": 1689820042
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.969441054625543,
+    "seed": 697809367
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.42197506545736,
+    "seed": 756836779
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.941102051918346,
+    "seed": 934327660
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.133139047276886,
+    "seed": 113027030
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.009333395285964,
+    "seed": 1134481305
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.0149105769974005,
+    "seed": 573835995
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.30893148365315,
+    "seed": 1979395335
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.429232797977994,
+    "seed": 158325841
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.259762944573595,
+    "seed": 1458612257
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.80740320474121,
+    "seed": 1444924838
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.426242001136554,
+    "seed": 297786597
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.48105963063741,
+    "seed": 1951997790
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.03641453321823,
+    "seed": 2076735001
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.645227795152142,
+    "seed": 755117359
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.6428215795944805,
+    "seed": 768519868
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.355171240848698,
+    "seed": 1017752504
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.783893781487896,
+    "seed": 1630019414
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.083203107388975,
+    "seed": 339713157
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.05420313372177,
+    "seed": 1874963724
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.88233481928592,
+    "seed": 1991180142
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.191873585322199,
+    "seed": 236946557
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.851588023581936,
+    "seed": 545047341
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.788372830079405,
+    "seed": 561590383
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.502171981498375,
+    "seed": 1620458771
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.97901266749669,
+    "seed": 395859838
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.445181975066879,
+    "seed": 21579818
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.029172153611974,
+    "seed": 190256775
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.9538218397939495,
+    "seed": 447231090
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.979534186822024,
+    "seed": 1599029958
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.843073808210661,
+    "seed": 1278390978
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.671534746469065,
+    "seed": 1818788243
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.82547403811853,
+    "seed": 79675824
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.235399372926832,
+    "seed": 1719668348
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.73699226974945,
+    "seed": 61481102
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.37444065662673,
+    "seed": 69131408
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.110344979896528,
+    "seed": 786301359
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.269591171559167,
+    "seed": 1763561598
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.565004712918885,
+    "seed": 1074509047
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.573092160436957,
+    "seed": 1342378843
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.514164162920192,
+    "seed": 618614804
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.79917406119522,
+    "seed": 626034941
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.159506461682776,
+    "seed": 2062495145
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.022390406349302,
+    "seed": 1525892991
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.755704542423818,
+    "seed": 1116375656
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.404282158789382,
+    "seed": 1707733743
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1103070192
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 204719856
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 297947920
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 2069190601
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1530063973
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 286259545
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1479501979
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1761907772
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 45399121
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1682071848
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 2129982383
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1093209831
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1769158282
+  },
+  {
+    "domain": "audio",
+    "signal_type": "amplitude_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 571543628
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.10248781765246,
+    "seed": 1518002719
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.645066626568546,
+    "seed": 1003193946
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.595723117783727,
+    "seed": 1435388996
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.579819248801305,
+    "seed": 45037305
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.21061910578485,
+    "seed": 451408395
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.601707794380502,
+    "seed": 1394958092
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.201836182218042,
+    "seed": 1027719153
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.0114701889461895,
+    "seed": 1667786454
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.443040611927992,
+    "seed": 1442317475
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.930282888881965,
+    "seed": 1704627558
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.789558180559418,
+    "seed": 408646430
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.163029507077905,
+    "seed": 84525078
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.439163472097137,
+    "seed": 2033099053
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "gaussian",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.582240240273389,
+    "seed": 1974388572
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.152225201483258,
+    "seed": 1850523709
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.00694042294474,
+    "seed": 131894824
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.905643240931587,
+    "seed": 20097052
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.640438852724685,
+    "seed": 61234820
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.989921725695996,
+    "seed": 466082454
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.511053699187357,
+    "seed": 1260426582
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.41063550233619,
+    "seed": 1246935517
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.294694832523952,
+    "seed": 1258189127
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.79817081183981,
+    "seed": 810158198
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.232069784605326,
+    "seed": 353792314
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.9908793542194445,
+    "seed": 1200988786
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.089726895896401,
+    "seed": 613619177
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.721492648766608,
+    "seed": 1826305733
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "impulse",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.18242845183815,
+    "seed": 1213332617
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.790253681847002,
+    "seed": 1362964119
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.02542367511138,
+    "seed": 1348776910
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.920256681533267,
+    "seed": 2128835629
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.96460220977451,
+    "seed": 111336739
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.012787925964187,
+    "seed": 1290525360
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.80700893421556,
+    "seed": 1112682905
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.027589319121141,
+    "seed": 1511940527
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.356142244157585,
+    "seed": 1276149901
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 7.126854471352908,
+    "seed": 1514732583
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.49794323949962,
+    "seed": 1706391892
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.224784278748096,
+    "seed": 725783172
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.65784829387553,
+    "seed": 2003719184
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "colored",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.843617281074764,
+    "seed": 1591851959
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 17.146013087969447,
+    "seed": 1440509680
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.794876506510237,
+    "seed": 1700925010
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.091830165644403,
+    "seed": 192669812
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.642554732173659,
+    "seed": 737936542
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.463704832295248,
+    "seed": 564112557
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.532298657017048,
+    "seed": 1285481712
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.066830238887853,
+    "seed": 529060425
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 16.61229661703014,
+    "seed": 1063197187
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.11546970888032,
+    "seed": 929085084
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 15.39563306439362,
+    "seed": 1088266862
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.774365942043733,
+    "seed": 1261590277
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.310572868398153,
+    "seed": 190869229
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "periodic",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 6.03974381511215,
+    "seed": 183547334
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 14.436450894169433,
+    "seed": 846503895
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.878605669381418,
+    "seed": 175361049
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 8.69481640290047,
+    "seed": 2024924507
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 13.455825229239098,
+    "seed": 1452831582
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 11.14765000427964,
+    "seed": 30550944
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 19.96944839735427,
+    "seed": 1107221787
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.917313733620666,
+    "seed": 513195399
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.873974941169557,
+    "seed": 1413289090
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 10.448271871024986,
+    "seed": 1274027030
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 18.53537043900128,
+    "seed": 570743198
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 9.349928868798473,
+    "seed": 1350117707
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 5.585526007913115,
+    "seed": 115044466
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "mixed",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": 12.405936374419142,
+    "seed": 821952214
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1741643315
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1781694259
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 524503901
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1464708788
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 50123987
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1964232183
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 413276157
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1641422265
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1698705357
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1516222257
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1896560957
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 293941900
+  },
+  {
+    "domain": "audio",
+    "signal_type": "frequency_modulated",
+    "noise_type": "clean",
+    "sampling_rate": 8000.0,
+    "n_samples": 8000,
+    "snr_db": Infinity,
+    "seed": 1788807815
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1085174817
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1400802000
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 981192975
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 8756847
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1814610229
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 644286518
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1731095652
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 177965225
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 273074487
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1850989310
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 985641385
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1414989301
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 622473752
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1990577188
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 789663052
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 433577819
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1185745086
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1303577298
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1849524098
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 653661271
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1879592882
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1333345460
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 469497004
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1852773551
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 41617716
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1438959613
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1820342281
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 2101455775
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 150324890
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1071175119
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 18920446
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 180614770
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1023750945
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1148668330
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 430705763
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1830463561
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 629174583
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 2120828229
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 199820133
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 711017350
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 496745379
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 182490935
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1436413437
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1370465546
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 27787060
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1348266675
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1742933380
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 539168331
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1523502923
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 741958197
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 608141288
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 36922405
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1317808225
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1640726556
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 2041293830
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 421320171
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 2021367227
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1882558908
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 651408648
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1805647467
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 38575255
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 30223587
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1716421761
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 838384702
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 635369478
+  },
+  {
+    "domain": "image",
+    "image_type": "checkerboard",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 88335245
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 127884727
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 752888781
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1114821576
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1553386387
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 239765929
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1176799325
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 780542567
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1400973049
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 55878370
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 140677848
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 903276595
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 896487319
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1711675995
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 2127931387
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1568439657
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 402388904
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 27663618
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1005466516
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 675532347
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1484032839
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1942476741
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1771775778
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 970621674
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 589841475
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 477606558
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 371170479
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 753990887
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 88076476
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 2051346676
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 298704269
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 714502281
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1306941129
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1967516536
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 127958938
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 13246308
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 257944396
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1073214516
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1211188930
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1511985818
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 579357964
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1070556425
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1446744133
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1358985779
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 2122892652
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1980928925
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 615203987
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1413463998
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1954333543
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 946817407
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 781845880
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 769701959
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 38256828
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1193494370
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1987918765
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1947498241
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1427635398
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 476982186
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1162447841
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 2138059022
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 951961361
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 47051486
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 684390980
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 445777534
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 95914845
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 234289126
+  },
+  {
+    "domain": "image",
+    "image_type": "gradient",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 761220543
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1996829897
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 296761926
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 213297954
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 743025732
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 676644652
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 645453694
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1213512317
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1904713383
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 613022570
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 281678273
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1105247464
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 704199079
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 943192640
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1419898068
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 243978085
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 922923036
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 2124808224
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 558960075
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1789426060
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1397983100
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1130025998
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1634745808
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 899846494
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1569980860
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1971642167
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1906218367
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 69527244
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 12097350
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1844711817
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 823711139
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1507440942
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 173426369
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 164489691
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1639269902
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 548735433
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 158871540
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 790460590
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1592489859
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 82459613
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 2046444344
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1917931395
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 365052238
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1296676164
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 987006187
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1928793719
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1966001531
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1759801893
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 894781197
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1472979396
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1512606313
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 838099830
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1409158084
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1135982606
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 558102725
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1994137558
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1278159724
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 766710200
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1422564141
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1821799903
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 2083811223
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 599704897
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 210520544
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1607532237
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1241527936
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1143813840
+  },
+  {
+    "domain": "image",
+    "image_type": "circles",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1528788127
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1514813446
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1488121256
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 958237505
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1798788782
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 152644772
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 2024173829
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 320479390
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 824619940
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 347192486
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1768268171
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1075730186
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 2113808191
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1945386264
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1407870269
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 636822265
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1268421856
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 258674690
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 906185990
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 350315551
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1759767416
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 903724296
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1877359803
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 400477307
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 439246265
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 615756921
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1131284877
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1448191147
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 835510858
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1449878850
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 824495221
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1696064580
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1308210559
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 175781520
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1727817700
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1556036172
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 197259931
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1310344851
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 747046296
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 255865153
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1345098483
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1858480365
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1999473555
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1684555834
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 375504401
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1529184899
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 140857515
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1476546776
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 30255791
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1430397348
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1735434651
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1975079815
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1599800826
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1379927740
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1240006658
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1334203348
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 159477719
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 152412730
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1844056353
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1961268667
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 749731312
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 2063439362
+  },
+  {
+    "domain": "image",
+    "image_type": "stripes",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 2044713194
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1869509499
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1331863157
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1511163056
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 2077404815
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 2135847626
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 13716910
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 421979510
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 2064495246
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1809436583
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 79896871
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1593727316
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 254843800
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 753632032
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1756416664
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 570296415
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 2061637379
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1308067873
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 25121789
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1518407195
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 386756244
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 2118038580
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 81793906
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 128120598
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1523023245
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 360347556
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1949557530
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 827607157
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 483599254
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1397570161
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1820491539
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 99201761
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 2053428970
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1148770653
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1791370877
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1089645459
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 472124080
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 23072042
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1285665464
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 822522129
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1784260722
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1123992007
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 956667416
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1124626900
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 550272457
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1905928898
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1607111327
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1554085980
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1607707136
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 2108692340
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 455683187
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1436759037
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1067164182
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1629295391
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1398363974
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1586857645
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 499203441
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 2074844522
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1387948202
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1755171754
+  },
+  {
+    "domain": "image",
+    "image_type": "sinusoidal",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1236787069
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 507295088
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1553382541
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1343110412
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 2004259854
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 583386285
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1610691091
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 957106669
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1836665174
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 49843241
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 916970409
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 310605241
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 769040216
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1902277197
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 770192076
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 34362934
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1867998900
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 856931097
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1685936396
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 411874943
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1142141082
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1815902727
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 929484056
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1763260010
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1167209949
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 334855512
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 847548310
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 454519970
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 803590396
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1625399270
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 786756651
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 561796892
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1184597866
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 648371550
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 317194893
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 927684003
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 27594010
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1234512873
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 970713035
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 136650835
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 232290684
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 716569010
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 250330557
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 220232646
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 572179236
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1148153023
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1942895088
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 84434556
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1821449823
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 741992297
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 744515897
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1117431850
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 417988971
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 917641703
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 45049339
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 818531859
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1985460249
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1298873235
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1775196467
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 687465580
+  },
+  {
+    "domain": "image",
+    "image_type": "gaussian_blob",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1345972599
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 979336492
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1892707577
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 908096908
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 357968726
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 250155189
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1239750497
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 2118135052
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 375707706
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 2095922492
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 457930464
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1321117504
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1332092203
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1263660077
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1549650220
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1062308854
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 61010928
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 2093254807
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 34627493
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1120677600
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 989712915
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 773274591
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 22804195
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1912828586
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1737105662
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1877625648
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1332063928
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1444498514
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1589059662
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 607369957
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1298305503
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1832412592
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 785417537
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1557422660
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 260381944
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1212830873
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1824016810
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 112974949
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 974456575
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 818196187
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 287427807
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 434715103
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1436891729
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 2057890251
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1844601802
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 501692308
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1576526281
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1521157079
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 383884238
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 800963882
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1324713679
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 827796592
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 100110910
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1864319600
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 679979167
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 616798828
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1754370556
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1626529166
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1534858575
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1169752684
+  },
+  {
+    "domain": "image",
+    "image_type": "natural_texture",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 187695135
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 2043434671
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 294361820
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 776247533
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 866600543
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 610207902
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 384986304
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1767131547
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 1980823961
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 359414924
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "gaussian",
+    "height": 64,
+    "width": 64,
+    "seed": 647143672
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1391095704
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 653457057
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 246616118
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1433022415
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 2097240198
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 438124607
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 828995565
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 294542748
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1299873336
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "salt_and_pepper",
+    "height": 64,
+    "width": 64,
+    "seed": 1729966864
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 277640723
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 25698245
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1268248575
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1190550752
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 906715783
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 734986717
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 905821472
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 734631148
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 1221699159
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "speckle",
+    "height": 64,
+    "width": 64,
+    "seed": 103731000
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1890932987
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 442694453
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 2080645282
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 171123064
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 2116948443
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 635304495
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1605903551
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1847322515
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1662913567
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "periodic",
+    "height": 64,
+    "width": 64,
+    "seed": 1870845820
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 272682172
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 391389242
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1385351826
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1964296844
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1719928103
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 1132345437
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 2061559634
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 601356380
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 724347869
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "uniform",
+    "height": 64,
+    "width": 64,
+    "seed": 217172993
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 716204815
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 844705697
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 548310192
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 240486941
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1592034166
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1113599471
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 244339929
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1785587822
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 1828754970
+  },
+  {
+    "domain": "image",
+    "image_type": "noise_pattern",
+    "noise_type": "clean",
+    "height": 64,
+    "width": 64,
+    "seed": 488307736
+  }
+]

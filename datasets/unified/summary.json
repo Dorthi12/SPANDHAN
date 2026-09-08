@@ -1,0 +1,19 @@
+{
+  "n_audio": 500,
+  "n_image": 500,
+  "n_total": 1000,
+  "class_counts": {
+    "gaussian": 168,
+    "impulse": 84,
+    "colored": 83,
+    "periodic": 166,
+    "mixed": 83,
+    "clean": 166,
+    "salt_and_pepper": 84,
+    "speckle": 83,
+    "uniform": 83
+  },
+  "build_time_s": 4.001187300309539,
+  "errors": 0,
+  "feature_dim": 31
+}

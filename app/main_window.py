@@ -21,6 +21,7 @@ from app.pages.domain_page import DomainPage
 from app.pages.visualization_page import VisualizationPage
 from app.pages.report_page import ReportPage
 from app.pages.settings_page import SettingsPage
+from app.pages.ml_page import MLPage
 
 from core.session import session_manager
 from core.worker import Worker
@@ -38,6 +39,7 @@ class MainWindow(QMainWindow):
         "High-Resolution": ("High-Resolution Spectral Analysis", "Sub-resolution frequency estimation using MUSIC and ESPRIT"),
         "Noise Analysis": ("Noise Assessment & Diagnostics", "Evaluate SNR, noise statistics, and ML-based classification"),
         "Features": ("Feature Extraction Vector", "Structured 20-feature diagnostic vector"),
+        "ML Studio": ("ML Studio", "Generate dataset · Train noise classifier · Upload signal · Get all-class predictions"),
         "Domain Analysis": ("Domain Analysis Workspace", "Specialized analysis for Audio, ECG R-peaks, and MCSA motor sidebands"),
         "Visualization": ("Visualization Workspace", "High-resolution interactive plotting workspace"),
         "Reports": ("Analysis Report Generator", "Generate, preview, and export comprehensive DSP & diagnostic reports"),
@@ -90,6 +92,7 @@ class MainWindow(QMainWindow):
             "High-Resolution": HighResPage(),
             "Noise Analysis": NoisePage(),
             "Features": FeaturesPage(),
+            "ML Studio": MLPage(),
             "Domain Analysis": DomainPage(),
             "Visualization": VisualizationPage(),
             "Reports": ReportPage(),

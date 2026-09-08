@@ -1,0 +1,29 @@
+{
+  "signal_info": {
+    "filename": "Synthetic_Triangle_50Hz.wav",
+    "sampling_rate": 1000.0
+  },
+  "features": {
+    "rms": 0.3016741083341423,
+    "variance": 0.09100726759614898,
+    "std": 0.30167410826278906,
+    "kurtosis": 2.5104771002209496,
+    "skewness": 0.0006339376160732003,
+    "crest_factor": 2.7654622517208627,
+    "zero_crossing_rate": 0.20210105052526264,
+    "spectral_centroid": 225.12799337524174,
+    "spectral_flatness": 0.017615332083220407,
+    "spectral_entropy": 0.6304598018145747,
+    "spectral_rolloff": 351.5625,
+    "mains_band_energy": 5.356037393571215e-10,
+    "high_band_energy": 0.012398933133538625,
+    "snr_db": NaN,
+    "impulse_count": 0.0,
+    "peak_count_rate": 0.099,
+    "energy_ratio_first_half": 0.5000980767085265,
+    "spectral_variance": 2.6513698901277547e-07,
+    "low_band_energy": 7.663721732814972e-06,
+    "mid_band_energy": 0.05982326133353568
+  },
+  "noise": {}
+}

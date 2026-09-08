@@ -272,7 +272,7 @@ def _apply_wavelet(
     if max_level < 1:
         raise ValueError("Signal is too short for wavelet decomposition.")
 
-    level = min(level or 4, max_level)
+    level = min(level if level is not None else 2, max_level)
 
     # Decompose
     coeffs = _pywt.wavedec(signal, wavelet, level=level)
@@ -280,18 +280,21 @@ def _apply_wavelet(
     # Estimate noise sigma from finest detail band (MAD estimator)
     detail1 = coeffs[-1]
     if len(detail1) > 0:
-        sigma = float(np.median(np.abs(detail1)) / 0.6745)
+        sigma = float(np.median(np.abs(detail1 - np.median(detail1))) / 0.6745)
     else:
         sigma = float(np.std(signal))
 
-    # Universal threshold
-    threshold = sigma * np.sqrt(2.0 * np.log(max(n, 2)))
-
-    # Apply threshold to all detail sub-bands (not the approximation)
-    thresholded = [coeffs[0]] + [
-        _pywt.threshold(c, threshold, mode=threshold_mode)
-        for c in coeffs[1:]
-    ]
+    # Soft-threshold high-frequency detail bands
+    thresholded = [coeffs[0]]
+    thresholds = []
+    for i, c in enumerate(coeffs[1:], 1):
+        # Level noise estimate
+        c_mad = float(np.median(np.abs(c - np.median(c))) / 0.6745)
+        c_mad = c_mad if c_mad > 1e-12 else sigma
+        # VisuShrink threshold with soft multiplier to preserve signal energy
+        th = float(c_mad * np.sqrt(2.0 * np.log(max(len(c), 2))) * 0.4)
+        thresholds.append(th)
+        thresholded.append(_pywt.threshold(c, th, mode=threshold_mode))
 
     cleaned = _pywt.waverec(thresholded, wavelet)
 
@@ -301,7 +304,7 @@ def _apply_wavelet(
     params = {
         "wavelet": wavelet,
         "level": level,
-        "threshold": float(threshold),
+        "threshold": float(thresholds[0]) if thresholds else 0.0,
         "threshold_mode": threshold_mode,
         "sigma_estimate": float(sigma),
     }

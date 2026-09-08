@@ -23,6 +23,7 @@ class Sidebar(QWidget):
         ("High-Resolution", "🎯"),
         ("Noise Analysis", "🔍"),
         ("Features", "🧮"),
+        ("ML Studio", "🧠"),
         ("Domain Analysis", "⚙️"),
         ("Visualization", "👁️"),
         ("Reports", "📄"),

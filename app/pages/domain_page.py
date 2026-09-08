@@ -17,6 +17,7 @@ from core.session import session_manager
 from dsp.fft import compute_fft
 from dsp.music import estimate_music_frequencies
 from app.pages.audio_experiment_page import AudioExperimentPage
+from app.pages.image_experiment_page import ImageExperimentPage
 
 
 class DomainPage(QWidget):
@@ -49,7 +50,11 @@ class DomainPage(QWidget):
         self.audio_tab = AudioExperimentPage()
         self.tabs.addTab(self.audio_tab, "AUDIO")
 
-        # 3. ECG
+        # 3. IMAGE — full image experiment pipeline
+        self.image_tab = ImageExperimentPage()
+        self.tabs.addTab(self.image_tab, "IMAGE")
+
+        # 4. ECG
         self.ecg_tab = QWidget()
         self._setup_ecg_tab()
         self.tabs.addTab(self.ecg_tab, "ECG")
