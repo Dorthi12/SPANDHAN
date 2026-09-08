@@ -3,14 +3,23 @@ intelligence/unified/feature_extractor.py
 ==========================================
 Unified feature extractor for audio signals and 2-D images.
 
-Audio features  (DOMAIN_AUDIO = 0.0) — 22 features
-Image features  (DOMAIN_IMAGE = 1.0) — 29 features
+Audio features  (DOMAIN_AUDIO = 0.0) — 37 features
+  • 7  time-domain stats
+  • 5  wavelet energy levels      (db4, level-4 → 5 subbands)
+  • 5  wavelet std levels
+  • 5  wavelet kurtosis levels
+  • 5  wavelet energy ratios
+  • 3  spectral shape (slope, flatness, centroid)
+  • 2  non-stationarity (ZCR-std, energy-std across 8 segments)
+  • 5  legacy spectral / SNR features (entropy, rolloff, SNR, peak_rate, energy_ratio)
+
+Image features  (DOMAIN_IMAGE = 1.0) — 30 features
 
 Both produce a fixed-length float64 vector padded with zeros to
-UNIFIED_FEATURE_DIM = 30 features + 1 domain tag = 31 total.
+UNIFIED_FEATURE_DIM = 45 signal features + 1 domain tag = 46 total.
 
-The domain tag lets the model distinguish modalities without
-needing a separate feature set per domain.
+The domain tag lets the model distinguish modalities without needing a
+separate feature set per domain.
 """
 
 from __future__ import annotations
@@ -18,6 +27,7 @@ from __future__ import annotations
 from typing import Optional
 
 import numpy as np
+import pywt
 from scipy.stats import kurtosis as sp_kurtosis, skew as sp_skew
 from scipy.signal import welch
 
@@ -27,18 +37,24 @@ DOMAIN_AUDIO = 0.0
 DOMAIN_IMAGE = 1.0
 
 # Shared feature dimension (audio and image vectors are both padded to this)
-UNIFIED_FEATURE_DIM = 31  # 30 signal features + 1 domain tag
+UNIFIED_FEATURE_DIM = 46  # 45 signal features + 1 domain tag
 
 AUDIO_FEATURE_NAMES = [
-    "rms", "variance", "std", "kurtosis", "skewness", "crest_factor",
-    "zero_crossing_rate", "spectral_centroid", "spectral_flatness",
-    "spectral_entropy", "spectral_rolloff", "mains_band_energy",
-    "high_band_energy", "snr_db", "impulse_count", "peak_count_rate",
-    "energy_ratio_first_half", "spectral_variance", "low_band_energy",
-    "mid_band_energy",
-    "zcr_std",          # zero-crossing std across segments (impulsive vs periodic)
-    "peak_to_rms",      # peak / rms — alternative crest measure
-]  # len = 22
+    # ── 7 time-domain ─────────────────────────────────────────────
+    "std", "kurtosis", "skewness", "peak", "rms", "crest_factor", "zcr",
+    # ── 20 wavelet (db4, 4-level → 5 subbands) ───────────────────
+    "w_energy_0", "w_energy_1", "w_energy_2", "w_energy_3", "w_energy_4",
+    "w_std_0",    "w_std_1",    "w_std_2",    "w_std_3",    "w_std_4",
+    "w_kurt_0",   "w_kurt_1",   "w_kurt_2",   "w_kurt_3",   "w_kurt_4",
+    "w_ratio_0",  "w_ratio_1",  "w_ratio_2",  "w_ratio_3",  "w_ratio_4",
+    # ── 3 spectral shape ──────────────────────────────────────────
+    "spectral_slope", "spectral_flatness", "spectral_centroid",
+    # ── 2 non-stationarity ────────────────────────────────────────
+    "zcr_segment_std", "energy_segment_std",
+    # ── 5 legacy spectral / SNR ───────────────────────────────────
+    "spectral_entropy", "spectral_rolloff", "snr_db",
+    "peak_count_rate", "energy_ratio_first_half",
+]  # len = 37
 
 IMAGE_FEATURE_NAMES = [
     "mean", "std", "skewness", "kurtosis", "min_val", "max_val",
@@ -52,12 +68,12 @@ IMAGE_FEATURE_NAMES = [
     "hist_08", "hist_09", "hist_10", "hist_11",
     "hist_12", "hist_13", "hist_14", "hist_15",
     "periodic_score",              # dominant frequency power in DFT
-]  # len = 29
+]  # len = 30
 
 UNIFIED_FEATURE_NAMES = [f"f{i:02d}" for i in range(UNIFIED_FEATURE_DIM - 1)] + ["domain"]
 
 
-# ─── audio features ──────────────────────────────────────────────────────────
+# ─── helpers ─────────────────────────────────────────────────────────────────
 
 
 def _safe(v: float) -> float:
@@ -65,12 +81,16 @@ def _safe(v: float) -> float:
     return float(v) if np.isfinite(v) else 0.0
 
 
+# ─── audio features ──────────────────────────────────────────────────────────
+
+
 def extract_audio_features(
     signal: np.ndarray,
     sampling_rate: float = 8000.0,
 ) -> np.ndarray:
     """
-    Extract 22 features from a 1-D float64 audio signal.
+    Extract 37 features from a 1-D float64 audio signal using wavelet-domain
+    analysis for highly accurate noise-type discrimination.
 
     Parameters
     ----------
@@ -88,79 +108,75 @@ def extract_audio_features(
     n = len(sig)
     sr = float(sampling_rate)
 
-    # ── time-domain ────────────────────────────────────────────────
-    rms = _safe(np.sqrt(np.mean(sig ** 2)))
-    var = _safe(np.var(sig))
-    std = _safe(np.std(sig))
-    kurt = _safe(float(sp_kurtosis(sig, fisher=True)))
-    skewness = _safe(float(sp_skew(sig)))
-    peak = float(np.max(np.abs(sig)))
-    crest = _safe(peak / rms) if rms > 1e-12 else 0.0
-    zcr = _safe(np.sum(np.abs(np.diff(np.sign(sig)))) / (2 * n))
+    # ── 1. Time-domain stats ───────────────────────────────────────
+    std   = _safe(float(np.std(sig))) + 1e-12
+    kurt  = _safe(float(sp_kurtosis(sig, fisher=True)))
+    skew  = _safe(float(sp_skew(sig)))
+    peak  = float(np.max(np.abs(sig)))
+    rms   = _safe(float(np.sqrt(np.mean(sig ** 2)))) + 1e-12
+    crest = _safe(peak / rms)
+    zcr   = _safe(float(np.sum(np.abs(np.diff(np.sign(sig)))) / (2 * n)))
 
-    # ZCR std across 8 segments
-    segs = np.array_split(sig, 8)
-    zcr_per_seg = [np.sum(np.abs(np.diff(np.sign(s)))) / max(2 * len(s), 1) for s in segs]
-    zcr_std = _safe(float(np.std(zcr_per_seg)))
+    # ── 2. Wavelet 4-level decomposition (db4) ────────────────────
+    coeffs = pywt.wavedec(sig, "db4", level=4)       # 5 subbands: [cA4, cD4, cD3, cD2, cD1]
+    w_energies = [_safe(float(np.mean(c ** 2))) for c in coeffs]
+    w_stds     = [_safe(float(np.std(c)))        for c in coeffs]
+    w_kurts    = [_safe(float(sp_kurtosis(c, fisher=True))) for c in coeffs]
+    total_we   = sum(w_energies) + 1e-30
+    w_ratios   = [_safe(e / total_we) for e in w_energies]
 
-    peak_to_rms = _safe(peak / rms) if rms > 1e-12 else 0.0
-
-    # ── spectral ───────────────────────────────────────────────────
-    nperseg = min(256, n)
+    # ── 3. Welch spectral features ────────────────────────────────
+    nperseg = min(512, n)
     freqs, psd = welch(sig, fs=sr, nperseg=nperseg)
-
     psd_sum = psd.sum() + 1e-30
     norm_psd = psd / psd_sum
 
-    spec_centroid = _safe(np.sum(freqs * norm_psd))
-    spec_flatness = _safe(
-        float(np.exp(np.mean(np.log(psd + 1e-30))) / (np.mean(psd) + 1e-30))
-    )
-    spec_entropy = _safe(float(-np.sum(norm_psd * np.log(norm_psd + 1e-30))))
+    # Spectral slope (log-log linear regression)
+    valid = (freqs > 0) & (psd > 1e-12)
+    if valid.sum() > 5:
+        slope = _safe(float(np.polyfit(np.log10(freqs[valid]), np.log10(psd[valid]), 1)[0]))
+    else:
+        slope = 0.0
+
+    spec_flatness  = _safe(float(np.exp(np.mean(np.log(psd + 1e-30))) / (np.mean(psd) + 1e-30)))
+    spec_centroid  = _safe(float(np.sum(freqs * norm_psd)))
+    spec_entropy   = _safe(float(-np.sum(norm_psd * np.log(norm_psd + 1e-30))))
     cumsum = np.cumsum(psd)
-    rolloff_idx = np.searchsorted(cumsum, 0.85 * cumsum[-1])
-    spec_rolloff = _safe(float(freqs[min(rolloff_idx, len(freqs) - 1)]))
+    rolloff_idx    = np.searchsorted(cumsum, 0.85 * cumsum[-1])
+    spec_rolloff   = _safe(float(freqs[min(rolloff_idx, len(freqs) - 1)]))
 
-    nyq = sr / 2.0
-    mains_mask = (freqs >= 45) & (freqs <= 65)
-    high_mask = freqs >= 0.8 * nyq
-    low_mask = freqs <= 0.1 * nyq
-    mid_mask = (freqs > 0.1 * nyq) & (freqs <= 0.5 * nyq)
-    mains_energy = _safe(psd[mains_mask].sum() / psd_sum)
-    high_energy = _safe(psd[high_mask].sum() / psd_sum)
-    low_energy = _safe(psd[low_mask].sum() / psd_sum)
-    mid_energy = _safe(psd[mid_mask].sum() / psd_sum)
-    spec_var = _safe(float(np.var(psd)))
-
-    # ── SNR ────────────────────────────────────────────────────────
+    # SNR estimate
     signal_power = float(np.mean(sig ** 2))
-    noise_floor = float(np.percentile(psd, 10))
+    noise_floor  = float(np.percentile(psd, 10))
     snr_db = _safe(10.0 * np.log10(signal_power / (noise_floor + 1e-30) + 1e-30))
 
-    # ── impulse features ───────────────────────────────────────────
-    threshold3 = 3.0 * std if std > 0 else 1e-6
-    above = np.abs(sig) > threshold3
-    # Count impulse groups (transitions)
-    groups = np.diff(above.astype(int))
-    impulse_count = _safe(float(np.sum(groups == 1)))
-    threshold2 = 2.0 * std if std > 0 else 1e-6
-    peaks_above2 = np.sum(np.abs(sig) > threshold2)
+    # ── 4. Non-stationarity over 8 segments ───────────────────────
+    segs       = np.array_split(sig, 8)
+    seg_zcr    = [float(np.sum(np.abs(np.diff(np.sign(s)))) / max(2 * len(s), 1)) for s in segs]
+    seg_energy = [float(np.mean(s ** 2)) for s in segs]
+    zcr_std    = _safe(float(np.std(seg_zcr)))
+    energy_std = _safe(float(np.std(seg_energy)))
+
+    # ── 5. Legacy features ────────────────────────────────────────
+    threshold2      = 2.0 * std if std > 1e-6 else 1e-6
+    peaks_above2    = np.sum(np.abs(sig) > threshold2)
     peak_count_rate = _safe(float(peaks_above2) / n)
+    e_first         = float(np.mean(sig[: n // 2] ** 2))
+    e_second        = float(np.mean(sig[n // 2 :] ** 2))
+    energy_ratio    = _safe(e_first / (e_first + e_second + 1e-30))
 
-    e_first = float(np.mean(sig[: n // 2] ** 2))
-    e_second = float(np.mean(sig[n // 2 :] ** 2))
-    total_e = e_first + e_second + 1e-30
-    energy_ratio = _safe(e_first / total_e)
-
-    # ── assemble ───────────────────────────────────────────────────
+    # ── assemble (37 features) ────────────────────────────────────
     raw = np.array([
-        rms, var, std, kurt, skewness, crest, zcr,
-        spec_centroid, spec_flatness, spec_entropy, spec_rolloff,
-        mains_energy, high_energy, snr_db,
-        impulse_count, peak_count_rate, energy_ratio,
-        spec_var, low_energy, mid_energy,
-        zcr_std, peak_to_rms,
-    ], dtype=np.float64)  # length 22
+        std, kurt, skew, peak, rms, crest, zcr,      # 7
+        *w_energies,                                   # 5
+        *w_stds,                                       # 5
+        *w_kurts,                                      # 5
+        *w_ratios,                                     # 5
+        slope, spec_flatness, spec_centroid,           # 3
+        zcr_std, energy_std,                           # 2
+        spec_entropy, spec_rolloff, snr_db,            # 3
+        peak_count_rate, energy_ratio,                 # 2
+    ], dtype=np.float64)  # total: 37
 
     # Pad to UNIFIED_FEATURE_DIM-1 and append domain tag
     padded = np.zeros(UNIFIED_FEATURE_DIM - 1, dtype=np.float64)
@@ -194,14 +210,14 @@ def _glcm_features(img: np.ndarray, levels: int = 16) -> tuple[float, float]:
         glcm /= glcm_sum
     i_idx, j_idx = np.meshgrid(np.arange(levels), np.arange(levels), indexing="ij")
     diff = (i_idx - j_idx).astype(np.float64)
-    contrast = _safe(float(np.sum(diff ** 2 * glcm)))
+    contrast    = _safe(float(np.sum(diff ** 2 * glcm)))
     homogeneity = _safe(float(np.sum(glcm / (1.0 + diff ** 2))))
     return contrast, homogeneity
 
 
 def extract_image_features(image: np.ndarray) -> np.ndarray:
     """
-    Extract 29 features from a 2-D float64 image in [0, 1].
+    Extract 30 features from a 2-D float64 image in [0, 1].
 
     Parameters
     ----------
@@ -220,39 +236,38 @@ def extract_image_features(image: np.ndarray) -> np.ndarray:
     flat = img.ravel()
 
     # ── intensity statistics ───────────────────────────────────────
-    mean = _safe(float(np.mean(flat)))
-    std = _safe(float(np.std(flat)))
-    skewness = _safe(float(sp_skew(flat)))
-    kurt = _safe(float(sp_kurtosis(flat, fisher=True)))
-    min_val = _safe(float(np.min(flat)))
-    max_val = _safe(float(np.max(flat)))
+    mean      = _safe(float(np.mean(flat)))
+    std       = _safe(float(np.std(flat)))
+    skewness  = _safe(float(sp_skew(flat)))
+    kurt      = _safe(float(sp_kurtosis(flat, fisher=True)))
+    min_val   = _safe(float(np.min(flat)))
+    max_val   = _safe(float(np.max(flat)))
     range_val = _safe(max_val - min_val)
-    energy = _safe(float(np.mean(flat ** 2)))
+    energy    = _safe(float(np.mean(flat ** 2)))
 
     # ── edge density ───────────────────────────────────────────────
-    edges = _sobel(img)
+    edges       = _sobel(img)
     edge_density = _safe(float(edges.mean()))
 
     # ── spectral features (2-D DFT) ────────────────────────────────
-    f2d = np.abs(np.fft.fft2(img))
+    f2d       = np.abs(np.fft.fft2(img))
     f2d_shift = np.fft.fftshift(f2d)
-    H, W = img.shape
-    cy, cx = H // 2, W // 2
-    # Low-freq mask: inner 25% of freq domain
-    Y, X = np.ogrid[:H, :W]
-    dist = np.sqrt((Y - cy) ** 2 + (X - cx) ** 2)
-    max_dist = np.sqrt(cy ** 2 + cx ** 2)
-    low_mask = dist <= 0.25 * max_dist
+    H, W      = img.shape
+    cy, cx    = H // 2, W // 2
+    Y, X      = np.ogrid[:H, :W]
+    dist      = np.sqrt((Y - cy) ** 2 + (X - cx) ** 2)
+    max_dist  = np.sqrt(cy ** 2 + cx ** 2)
+    low_mask  = dist <= 0.25 * max_dist
     high_mask = ~low_mask
-    f_total = f2d_shift.sum() + 1e-30
-    hf_ratio = _safe(float(f2d_shift[high_mask].sum() / f_total))
+    f_total   = f2d_shift.sum() + 1e-30
+    hf_ratio  = _safe(float(f2d_shift[high_mask].sum() / f_total))
 
     # Periodic score: dominant non-DC freq power ratio
-    f2d_shift[cy, cx] = 0  # remove DC
+    f2d_shift[cy, cx] = 0
     periodic_score = _safe(float(f2d_shift.max() / (f_total + 1e-30)))
 
     # ── impulse fraction ──────────────────────────────────────────
-    threshold = mean + 3 * std if std > 1e-12 else 1.0
+    threshold        = mean + 3 * std if std > 1e-12 else 1.0
     impulse_fraction = _safe(float(np.mean(flat > threshold)))
 
     # ── GLCM texture ──────────────────────────────────────────────
@@ -260,18 +275,17 @@ def extract_image_features(image: np.ndarray) -> np.ndarray:
 
     # ── histogram (16 bins) ───────────────────────────────────────
     hist, _ = np.histogram(flat, bins=16, range=(0.0, 1.0))
-    hist = hist.astype(np.float64) / (hist.sum() + 1e-12)  # normalised
+    hist     = hist.astype(np.float64) / (hist.sum() + 1e-12)
 
-    # ── assemble ──────────────────────────────────────────────────
+    # ── assemble (30 features) ────────────────────────────────────
     raw = np.concatenate([
         [mean, std, skewness, kurt, min_val, max_val, range_val, energy,
          edge_density, hf_ratio, impulse_fraction,
          glcm_contrast, glcm_homogeneity],
-        hist,            # 16 values
+        hist,                   # 16 values
         [periodic_score],
-    ])  # length = 13 + 16 + 1 = 30 -- but we want 29; trim periodic_score at end
+    ])  # length = 13 + 16 + 1 = 30
 
-    # Actually: 13 base + 16 hist + 1 periodic = 30 -- we cap at UNIFIED_FEATURE_DIM-1 = 30
     padded = np.zeros(UNIFIED_FEATURE_DIM - 1, dtype=np.float64)
     padded[: min(len(raw), UNIFIED_FEATURE_DIM - 1)] = raw[: UNIFIED_FEATURE_DIM - 1]
     return np.append(padded, DOMAIN_IMAGE)
@@ -295,7 +309,7 @@ def extract_features_from_file(
     (feature_vector, domain_str)   domain_str = "audio" | "image"
     """
     import pathlib
-    p = pathlib.Path(path)
+    p   = pathlib.Path(path)
     ext = p.suffix.lower()
 
     audio_exts = {".wav", ".csv"}

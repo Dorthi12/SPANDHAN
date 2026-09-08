@@ -28,7 +28,7 @@ from intelligence.unified.dataset_builder import (
 )
 from intelligence.unified.trainer import train_unified_model
 from intelligence.unified.model_io import (
-    UnifiedModelBundle,
+    DomainRoutedBundle,
     save_model,
     load_model,
     model_exists,
@@ -114,12 +114,12 @@ class TestTrainerAndModelIO:
             verbose=False,
         )
 
-        assert isinstance(bundle, UnifiedModelBundle)
+        assert isinstance(bundle, DomainRoutedBundle)
         assert model_exists(model_path)
 
         # 3. Model IO
         loaded_bundle = load_model(model_path)
-        assert loaded_bundle.class_names == bundle.class_names
+        assert loaded_bundle.audio_class_names == bundle.audio_class_names
 
         # 4. Inference / Predictor
         predictor = UnifiedPredictor(loaded_bundle)
@@ -130,4 +130,4 @@ class TestTrainerAndModelIO:
         assert res.success
         assert res.confidence > 0.0
         assert res.domain == "audio"
-        assert res.noise_type in bundle.class_names
+        assert res.noise_type in bundle.audio_class_names

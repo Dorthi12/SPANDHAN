@@ -246,7 +246,7 @@ class _ProbCanvas(FigureCanvas):
         self._ax.set_facecolor(_CARD)
         self.draw()
 
-    def update(self, probs: dict[str, float], predicted: str) -> None:
+    def update_chart(self, probs: dict[str, float], predicted: str) -> None:
         ax = self._ax
         ax.cla()
         ax.set_facecolor(_CARD)
@@ -276,7 +276,7 @@ class _CmCanvas(FigureCanvas):
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.draw()
 
-    def update(self, cm: np.ndarray, class_names: list[str]) -> None:
+    def update_chart(self, cm: np.ndarray, class_names: list[str]) -> None:
         ax = self._ax
         ax.cla()
         ax.set_facecolor(_CARD)
@@ -307,7 +307,7 @@ class _FiCanvas(FigureCanvas):
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.draw()
 
-    def update(self, importances: np.ndarray, names: list[str], top: int = 12) -> None:
+    def update_chart(self, importances: np.ndarray, names: list[str], top: int = 12) -> None:
         ax = self._ax
         ax.cla()
         ax.set_facecolor(_CARD)
@@ -464,7 +464,7 @@ class _InferenceTab(QWidget):
         self._badge.setText(f"Result: {clean_type} ({result.confidence:.1%})")
         self._badge.setStyleSheet(f"background:{_GREEN};color:#fff;border-radius:8px;font-weight:bold;")
 
-        self._prob_canvas.update(result.all_probabilities, result.noise_type)
+        self._prob_canvas.update_chart(result.all_probabilities, result.noise_type)
 
         # Generate accurate transcript
         transcript_text = result.generate_transcript(self._active_path)
@@ -556,9 +556,9 @@ class _AnalyticsTab(QWidget):
             from intelligence.unified.feature_extractor import UNIFIED_FEATURE_NAMES
             bundle = load_model()
             if bundle.confusion_matrix is not None:
-                self._cm_canvas.update(bundle.confusion_matrix, bundle.class_names)
+                self._cm_canvas.update_chart(bundle.confusion_matrix, bundle.class_names)
             if bundle.feature_importances is not None:
-                self._fi_canvas.update(bundle.feature_importances, UNIFIED_FEATURE_NAMES)
+                self._fi_canvas.update_chart(bundle.feature_importances, UNIFIED_FEATURE_NAMES)
 
             report = (
                 f"Validation Accuracy : {bundle.val_accuracy:.4f}\n"

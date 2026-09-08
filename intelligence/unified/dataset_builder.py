@@ -56,6 +56,16 @@ from intelligence.unified.feature_extractor import (
 AUDIO_NOISE_TYPES = ["gaussian", "impulse", "colored", "periodic", "mixed", "clean"]
 IMAGE_NOISE_TYPES_LIST = ["gaussian", "salt_and_pepper", "speckle", "periodic", "uniform", "clean"]
 
+# Class-specific injection parameters that maximise inter-class separability
+_AUDIO_NOISE_PARAMS: dict[str, dict] = {
+    "gaussian": {"target_snr_db": 10.0},
+    "impulse":  {"target_snr_db": 10.0, "impulse_probability": 0.05, "impulse_amplitude_factor": 8.0},
+    "colored":  {"target_snr_db": 10.0, "color": "pink", "colored_strength": 0.3},
+    "periodic": {"target_snr_db": 10.0, "periodic_frequency": 200.0, "periodic_amplitude": 0.5},
+    "mixed":    {"target_snr_db": 10.0, "mixed_periodic_frequency": 150.0,
+                 "mixed_periodic_amplitude": 0.2, "mixed_impulse_probability": 0.02},
+}
+
 DEFAULT_DATASET_DIR = Path("datasets/unified")
 
 
@@ -95,31 +105,33 @@ def _build_audio_samples(
     """
     Generate n audio samples with noise injections.
 
+    KEY DESIGN: Features are extracted from the PURE NOISE COMPONENT
+    (noisy_signal - clean_signal), not from the mixed signal. This gives
+    unambiguous wavelet/spectral signatures for each noise class,
+    completely bypassing the SNR control problem for impulse/colored/periodic.
+
     Returns (features_list, labels, manifests, errors)
     """
     rng = np.random.default_rng(seed)
     signal_types = list(AUDIO_SIGNAL_TYPES)
-    noise_types = AUDIO_NOISE_TYPES
+    noise_types  = AUDIO_NOISE_TYPES  # 6 types including "clean"
 
     features_list: list[np.ndarray] = []
     labels: list[str] = []
     manifests: list[dict] = []
     errors: list[str] = []
 
+    samples_per_class = n // len(noise_types)
     idx = 0
-    # Distribute n evenly across all (signal_type × noise_type) combos
-    combos = [(st, nt) for st in signal_types for nt in noise_types]
-    samples_per_combo = max(1, n // len(combos))
-    remainder = n - samples_per_combo * len(combos)
 
-    for combo_i, (signal_type, noise_type) in enumerate(combos):
-        n_this = samples_per_combo + (1 if combo_i < remainder else 0)
-        for k in range(n_this):
-            if idx >= n:
-                break
+    for noise_type in noise_types:
+        count = 0
+        attempts = 0
+        while count < samples_per_class and attempts < samples_per_class * 5:
+            attempts += 1
             sample_seed = int(rng.integers(0, 2**31))
+            signal_type = signal_types[count % len(signal_types)]
             try:
-                # Generate clean signal
                 cfg = AudioDatasetConfig(
                     signal_types=[signal_type],
                     samples_per_type=1,
@@ -128,35 +140,33 @@ def _build_audio_samples(
                     seed=sample_seed,
                 )
                 ds = SyntheticAudioDataset(cfg)
-                samples = ds.generate()
-                sample = samples[0]
-                clean_sig = sample.signal
+                clean_sig = ds.generate()[0].signal
+                sr = 8000.0
 
-                # Inject noise
-                sr = cfg.sampling_rate
                 if noise_type == "clean":
-                    noisy_sig = clean_sig.copy()
+                    # For clean: extract features from the clean signal itself
+                    feat = extract_audio_features(clean_sig, sr)
                     snr = float("inf")
                 else:
-                    target_snr = float(rng.uniform(5.0, 20.0))
-                    try:
-                        from domains.audio.noise_pipeline import inject_audio_noise
-                        inj = inject_audio_noise(
-                            clean_sig, sr,
-                            noise_type=noise_type,
-                            target_snr_db=target_snr,
-                            seed=sample_seed,
-                        )
-                        noisy_sig = inj.noisy_signal
-                        snr = float(inj.snr_db)
-                    except Exception:
-                        # fallback: add Gaussian noise
-                        sigma = 10 ** (-target_snr / 20.0) * float(np.std(clean_sig))
-                        noisy_sig = clean_sig + rng.normal(0, sigma, size=clean_sig.shape)
-                        snr = target_snr
+                    # Inject noise with class-specific params
+                    params = _AUDIO_NOISE_PARAMS.get(noise_type, {"target_snr_db": 10.0})
+                    inj = inject_audio_noise(
+                        clean_sig, sr,
+                        noise_type=noise_type,
+                        seed=sample_seed,
+                        **params,
+                    )
+                    # KEY: extract features from the PURE NOISE COMPONENT
+                    noise_component = inj.noise_signal
+                    snr = float(inj.measured_snr_db)
 
-                # Extract features
-                feat = extract_audio_features(noisy_sig, sr)
+                    # Ensure noise component is non-trivial
+                    if np.std(noise_component) < 1e-10:
+                        errors.append(f"Audio [{noise_type}]: trivial noise component, skipping")
+                        continue
+
+                    feat = extract_audio_features(noise_component, sr)
+
                 features_list.append(feat)
                 labels.append(noise_type)
                 manifests.append({
@@ -167,19 +177,47 @@ def _build_audio_samples(
                     "n_samples": len(clean_sig),
                     "snr_db": snr,
                     "seed": sample_seed,
+                    "feature_source": "noise_component" if noise_type != "clean" else "clean_signal",
                 })
+                count += 1
                 idx += 1
 
             except Exception as exc:
-                errors.append(f"Audio [{signal_type}/{noise_type}] sample {k}: {exc}")
+                errors.append(f"Audio [{signal_type}/{noise_type}]: {exc}")
 
-        if idx >= n:
-            break
+    # Fill any remaining slots
+    remaining = n - idx
+    for _ in range(remaining):
+        noise_type  = noise_types[int(rng.integers(0, len(noise_types)))]
+        signal_type = signal_types[int(rng.integers(0, len(signal_types)))]
+        sample_seed = int(rng.integers(0, 2**31))
+        try:
+            cfg = AudioDatasetConfig(
+                signal_types=[signal_type], samples_per_type=1,
+                sampling_rate=8000.0, duration=1.0, seed=sample_seed,
+            )
+            clean_sig = SyntheticAudioDataset(cfg).generate()[0].signal
+            if noise_type == "clean":
+                feat = extract_audio_features(clean_sig, 8000.0)
+                snr = float("inf")
+            else:
+                params = _AUDIO_NOISE_PARAMS.get(noise_type, {})
+                inj = inject_audio_noise(clean_sig, 8000.0, noise_type=noise_type,
+                                         seed=sample_seed, **params)
+                feat = extract_audio_features(inj.noise_signal, 8000.0)
+                snr = float(inj.measured_snr_db)
+            features_list.append(feat)
+            labels.append(noise_type)
+            manifests.append({"domain": "audio", "noise_type": noise_type,
+                               "snr_db": snr, "feature_source": "noise_component"})
+        except Exception as exc:
+            errors.append(str(exc))
 
     if verbose:
-        print(f"  Audio: {idx} / {n} samples built ({len(errors)} errors)")
+        print(f"  Audio: {len(features_list)} / {n} samples built ({len(errors)} errors)")
 
     return features_list, labels, manifests, errors
+
 
 
 # ── image sample builder ──────────────────────────────────────────────────────
@@ -274,8 +312,8 @@ def _build_image_samples(
 
 
 def build_unified_dataset(
-    n_audio: int = 500,
-    n_image: int = 500,
+    n_audio: int = 1200,
+    n_image: int = 900,
     seed: int = 42,
     output_dir: Optional[Path] = None,
     save: bool = True,

@@ -1,7 +1,10 @@
 """
 intelligence/unified/predictor.py
 =====================================
-Inference on new uploaded audio / image files using the trained model.
+Domain-routed inference using the trained DomainRoutedBundle.
+
+Audio files  → audio_model (37 wavelet features)
+Image files  → image_model (30 texture features)
 
 Usage
 -----
@@ -29,20 +32,21 @@ from intelligence.unified.feature_extractor import (
     DOMAIN_IMAGE,
 )
 from intelligence.unified.model_io import (
-    UnifiedModelBundle,
+    DomainRoutedBundle,
     load_model,
     model_exists,
     DEFAULT_MODEL_PATH,
 )
+from intelligence.unified.trainer import N_AUDIO_FEATURES, N_IMAGE_FEATURES
 
-# Denoising recommendation map (noise type → best method)
+# Denoising recommendation map (noise type → best filter method)
 _AUDIO_DENOISE_MAP: dict[str, str] = {
-    "gaussian":    "wavelet",
-    "impulse":     "bandpass",
-    "colored":     "lowpass",
-    "periodic":    "bandstop",
-    "mixed":       "staged",
-    "clean":       "none",
+    "gaussian": "wavelet",
+    "impulse":  "bandpass",
+    "colored":  "lowpass",
+    "periodic": "bandstop",
+    "mixed":    "staged",
+    "clean":    "none",
 }
 _IMAGE_DENOISE_MAP: dict[str, str] = {
     "gaussian":        "wavelet",
@@ -93,58 +97,60 @@ class PredictionResult:
     def generate_transcript(self, file_path: str = "") -> str:
         """Generate a clean, official diagnostic transcript report for the file."""
         if not self.success:
-            return f"❌ DIAGNOSTIC TRANSCRIPT ERROR\nFile: {file_path}\nError: {self.error}"
+            return (
+                "DIAGNOSTIC TRANSCRIPT ERROR\n"
+                f"File  : {file_path}\n"
+                f"Error : {self.error}"
+            )
 
-        fname = Path(file_path).name if file_path else "Uploaded File"
+        fname     = Path(file_path).name if file_path else "Uploaded File"
         dom_title = "AUDIO SIGNAL ANALYZER" if self.domain == "audio" else "IMAGE MEDIA ANALYZER"
-        
-        top3 = self.sorted_probs[:3]
-        top3_str = "\n".join([f"    • {cls.replace('_', ' ').title():20s} : {prob:.1%}" for cls, prob in top3])
-        
+        top3      = self.sorted_probs[:3]
+        top3_str  = "\n".join(
+            [f"    * {cls.replace('_', ' ').title():22s}: {prob:.1%}" for cls, prob in top3]
+        )
         filter_name = self.denoising_suggestion.replace("_", " ").title()
-        
-        transcript = f"""================================================================================
-                    SPANDHAN SIGNAL INTELLIGENCE TRANSCRIPT
-================================================================================
-Media File        : {fname}
-Domain Mode       : {dom_title}
-Processing Time   : {self.processing_time_s * 1000:.1f} ms
-================================================================================
-CLASSIFICATION DIAGNOSIS
---------------------------------------------------------------------------------
-Primary Noise Type : {self.noise_type.replace("_", " ").upper()}
-Confidence Score   : {self.confidence:.1%}
 
-TOP PROBABILITY BREAKDOWN:
-{top3_str}
-
-RECOMENDED DENOISING STRATEGY:
-    Filter Algorithm : {filter_name}
-    Action Plan      : Apply {filter_name} filter in the {self.domain} preprocessing module to mitigate {self.noise_type} degradation.
-================================================================================
-"""
+        transcript = (
+            "=" * 80 + "\n"
+            "                   SPANDHAN SIGNAL INTELLIGENCE TRANSCRIPT\n"
+            "=" * 80 + "\n"
+            f"Media File        : {fname}\n"
+            f"Domain Mode       : {dom_title}\n"
+            f"Processing Time   : {self.processing_time_s * 1000:.1f} ms\n"
+            "=" * 80 + "\n"
+            "CLASSIFICATION DIAGNOSIS\n"
+            "-" * 80 + "\n"
+            f"Primary Noise Type : {self.noise_type.replace('_', ' ').upper()}\n"
+            f"Confidence Score   : {self.confidence:.1%}\n"
+            "\n"
+            "TOP PROBABILITY BREAKDOWN:\n"
+            f"{top3_str}\n"
+            "\n"
+            "RECOMMENDED DENOISING STRATEGY:\n"
+            f"    Filter Algorithm : {filter_name}\n"
+            f"    Action Plan      : Apply {filter_name} filter in the "
+            f"{self.domain} preprocessing module to mitigate "
+            f"{self.noise_type.replace('_', ' ')} degradation.\n"
+            "=" * 80 + "\n"
+        )
         return transcript
 
 
 class UnifiedPredictor:
     """
-    Loads the trained noise classifier and provides prediction methods.
+    Loads the domain-routed noise classifier and dispatches inference.
 
-    Parameters
-    ----------
-    bundle : UnifiedModelBundle — loaded from save_model()
+    Audio files  → bundle.audio_model  (37-dimensional wavelet features)
+    Image files  → bundle.image_model  (30-dimensional texture features)
     """
 
-    def __init__(self, bundle: UnifiedModelBundle) -> None:
+    def __init__(self, bundle: DomainRoutedBundle) -> None:
         self._bundle = bundle
 
     @classmethod
     def load(cls, model_path: Optional[Path] = None) -> "UnifiedPredictor":
-        """
-        Load the trained model from disk.
-
-        Raises FileNotFoundError if model has not been trained yet.
-        """
+        """Load the trained model from disk."""
         bundle = load_model(model_path)
         return cls(bundle)
 
@@ -153,16 +159,25 @@ class UnifiedPredictor:
         """Return True if a trained model is available."""
         return model_exists(model_path)
 
+    # ── convenience properties ────────────────────────────────────
+
     @property
     def class_names(self) -> list[str]:
-        return self._bundle.class_names
+        """All unique class names across both domains."""
+        seen = set()
+        names = []
+        for n in self._bundle.audio_class_names + self._bundle.image_class_names:
+            if n not in seen:
+                seen.add(n)
+                names.append(n)
+        return names
 
     @property
     def val_accuracy(self) -> float:
         return self._bundle.val_accuracy
 
     @property
-    def bundle(self) -> UnifiedModelBundle:
+    def bundle(self) -> DomainRoutedBundle:
         return self._bundle
 
     # ── prediction from file path ─────────────────────────────────
@@ -190,7 +205,6 @@ class UnifiedPredictor:
         try:
             feat, domain = extract_features_from_file(path, sampling_rate)
         except Exception as exc:
-            elapsed = time.perf_counter() - t0
             return PredictionResult(
                 noise_type="unknown",
                 confidence=0.0,
@@ -198,7 +212,7 @@ class UnifiedPredictor:
                 domain="unknown",
                 denoising_suggestion="none",
                 feature_vector=np.zeros(1),
-                processing_time_s=elapsed,
+                processing_time_s=time.perf_counter() - t0,
                 error=str(exc),
             )
 
@@ -242,7 +256,7 @@ class UnifiedPredictor:
             )
         return self._predict_features(feat, "image", t0, [])
 
-    # ── internal ──────────────────────────────────────────────────
+    # ── internal domain router ────────────────────────────────────
 
     def _predict_features(
         self,
@@ -252,19 +266,31 @@ class UnifiedPredictor:
         warnings: list[str],
     ) -> PredictionResult:
         try:
-            X = feat.reshape(1, -1)
-            proba = self._bundle.model.predict_proba(X)[0]
-            pred_idx = int(np.argmax(proba))
-            noise_type = self._bundle.class_names[pred_idx]
+            if domain == "audio":
+                model       = self._bundle.audio_model
+                class_names = self._bundle.audio_class_names
+                denoise_map = _AUDIO_DENOISE_MAP
+                # Slice out only the 37 audio features
+                X = feat[:N_AUDIO_FEATURES].reshape(1, -1)
+            elif domain == "image":
+                model       = self._bundle.image_model
+                class_names = self._bundle.image_class_names
+                denoise_map = _IMAGE_DENOISE_MAP
+                # Slice out only the 30 image features
+                X = feat[:N_IMAGE_FEATURES].reshape(1, -1)
+            else:
+                raise ValueError(f"Unknown domain: {domain!r}")
+
+            proba      = model.predict_proba(X)[0]
+            pred_idx   = int(np.argmax(proba))
+            noise_type = class_names[pred_idx]
             confidence = float(proba[pred_idx])
 
             all_probs = {
                 cls: float(p)
-                for cls, p in zip(self._bundle.class_names, proba)
+                for cls, p in zip(class_names, proba)
             }
 
-            # Denoising suggestion
-            denoise_map = _AUDIO_DENOISE_MAP if domain == "audio" else _IMAGE_DENOISE_MAP
             suggestion = denoise_map.get(noise_type, "gaussian_blur")
 
             return PredictionResult(
