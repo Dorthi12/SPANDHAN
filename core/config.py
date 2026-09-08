@@ -1,8 +1,11 @@
 """
-Config module.
+Config module for Spandhan DSP Application.
 """
+
 APP_NAME = "Spandhan"
+APP_SUBTITLE = "Multi-Domain Digital Signal Analysis & Diagnostics Platform"
 VERSION = "1.0.0"
+DEFAULT_MODEL_PATH = "models/noise_model.pkl"
 
 SUPPORTED_DOMAINS = [
     "general",

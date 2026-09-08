@@ -1,19 +1,26 @@
-"""Main entry point for Spandhan application."""
+"""
+Main entry point for Spandhan Desktop PySide6 Application.
+"""
 
-from core.session import SignalSession
+import sys
+from PySide6.QtWidgets import QApplication
+from app.main_window import MainWindow
 from core.config import APP_NAME, VERSION
 
 
 def main():
     print("=" * 60)
-    print(f"{APP_NAME} v{VERSION}")
-    print("Multi-Domain Digital Signal Analysis Platform")
+    print(f"Starting {APP_NAME} v{VERSION} Desktop GUI...")
+    print("Multi-Domain Digital Signal Analysis & Diagnostics Platform")
     print("=" * 60)
 
-    session = SignalSession()
+    app = QApplication(sys.argv)
+    app.setApplicationName(APP_NAME)
 
-    print("Session initialized successfully.")
-    print("Spandhan V1 foundation is ready.")
+    window = MainWindow()
+    window.show()
+
+    sys.exit(app.exec())
 
 
 if __name__ == "__main__":
