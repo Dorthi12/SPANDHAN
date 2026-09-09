@@ -152,7 +152,8 @@ class InputPage(QWidget):
 
     def load_file_path(self, filepath: str):
         try:
-            signal_data = load_signal(filepath)
+            current_fs = self.fs_spin.value()
+            signal_data = load_signal(filepath, sampling_rate=current_fs)
             session_manager.load_signal(
                 signal_data.signal,
                 signal_data.sampling_rate,
@@ -161,13 +162,19 @@ class InputPage(QWidget):
                 source=signal_data.source or "file"
             )
             
+            # Synchronize sampling rate spinbox with the loaded file
+            if signal_data.sampling_rate > 0:
+                self.fs_spin.setValue(signal_data.sampling_rate)
+
             filename = os.path.basename(filepath)
             self.file_info_lbl.setText(
                 f"File: {filename}\nType: {os.path.splitext(filename)[1].upper()}\nSize: {os.path.getsize(filepath)/1024:.1f} KB\n"
-                f"Sampling Rate: {signal_data.sampling_rate:.0f} Hz | Duration: {signal_data.duration:.2f} s | Samples: {signal_data.num_samples}"
+                f"Sampling Rate: {signal_data.sampling_rate:.0f} Hz | Duration: {signal_data.duration:.2f} s | Samples: {signal_data.num_samples:,}"
             )
+            self.file_info_lbl.setStyleSheet("font-size: 11px; color: #4ADE80; background-color: #0F172A; padding: 10px; border-radius: 6px;")
         except Exception as e:
             self.file_info_lbl.setText(f"Error loading file: {str(e)}")
+            self.file_info_lbl.setStyleSheet("font-size: 11px; color: #F87171; background-color: #0F172A; padding: 10px; border-radius: 6px;")
 
     def generate_signal(self):
         try:

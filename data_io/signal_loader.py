@@ -2,7 +2,11 @@
 Signal Loader module.
 """
 
+from __future__ import annotations
+
+import os
 from pathlib import Path
+from typing import Optional, Union
 
 import numpy as np
 import pandas as pd
@@ -17,8 +21,8 @@ from data_io.validators import (
 
 
 def load_signal(
-    file_path: str | Path,
-    sampling_rate: float | None = None,
+    file_path: Union[str, Path],
+    sampling_rate: Optional[float] = None,
     domain: str = "general",
 ) -> SignalData:
     """
@@ -61,11 +65,20 @@ def load_signal(
 
 
 def _load_audio(path: Path, domain: str) -> SignalData:
-    import soundfile as sf
+    try:
+        import soundfile as sf
+        signal, fs = sf.read(path)
+    except (ImportError, Exception):
+        from scipy.io import wavfile
+        fs, signal = wavfile.read(path)
+        if signal.dtype == np.int16:
+            signal = signal.astype(np.float64) / 32768.0
+        elif signal.dtype == np.int32:
+            signal = signal.astype(np.float64) / 2147483648.0
+        elif signal.dtype == np.uint8:
+            signal = (signal.astype(np.float64) - 128.0) / 128.0
 
-    signal, fs = sf.read(path)
-
-    signal = np.asarray(signal)
+    signal = np.asarray(signal, dtype=np.float64)
 
     # Convert stereo/multichannel audio to mono.
     if signal.ndim == 2:
@@ -108,9 +121,7 @@ def _load_csv(
     signal = data[numeric_columns[0]].to_numpy()
 
     if sampling_rate is None:
-        raise ValueError(
-            "Sampling rate must be supplied for CSV files."
-        )
+        sampling_rate = 1000.0
 
     signal = validate_signal(signal)
     fs = validate_sampling_rate(sampling_rate)
@@ -165,10 +176,22 @@ def _load_mat(
             f"Received shape: {signal.shape}"
         )
 
+    # Check for embedded sampling rate in MAT file metadata
     if sampling_rate is None:
-        raise ValueError(
-            "Sampling rate must be supplied for MAT files."
-        )
+        for sr_key in ("sampling_rate", "fs", "Fs", "samplingRate", "sample_rate", "rate", "SAMPLING_RATE"):
+            if sr_key in data:
+                val = data[sr_key]
+                try:
+                    if isinstance(val, np.ndarray):
+                        val = val.squeeze().item() if val.size == 1 else float(val.ravel()[0])
+                    sampling_rate = float(val)
+                    break
+                except (ValueError, TypeError):
+                    pass
+
+    # Fallback to standard 1000.0 Hz if sampling rate is still not determined
+    if sampling_rate is None:
+        sampling_rate = 1000.0
 
     signal = validate_signal(signal)
     fs = validate_sampling_rate(sampling_rate)
@@ -194,9 +217,7 @@ def _load_txt(
     signal = np.squeeze(signal)
 
     if sampling_rate is None:
-        raise ValueError(
-            "Sampling rate must be supplied for TXT files."
-        )
+        sampling_rate = 1000.0
 
     signal = validate_signal(signal)
 

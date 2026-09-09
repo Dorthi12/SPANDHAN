@@ -164,7 +164,7 @@
     0.05046611131164143
   ],
   "training_metadata": {
-    "train_time_s": 8.53,
+    "train_time_s": 4.33,
     "dataset_n_audio": 24,
     "dataset_n_image": 24,
     "class_counts": {
