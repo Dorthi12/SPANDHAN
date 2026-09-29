@@ -48,6 +48,8 @@ from ui.services.image_analysis_service import (
     load_and_inspect_image,
     compute_image_signal_features,
 )
+from ui.dsp.dsp_state import get_dsp_state
+from ui.dsp.matlab_runner import IMAGE_PREPROCESSING_STEPS
 
 
 class DropUploadArea(QFrame):
@@ -704,6 +706,22 @@ class ImageMLPage(QWidget):
         self.browse_btn.setEnabled(True)
         self.change_btn.setEnabled(True)
         self.sample_combo.setEnabled(True)
+
+        # Push preprocessed image into DSP state for the DSP Analysis page
+        try:
+            dsp_state = get_dsp_state()
+            image_data = results.get("arr_2d")
+            metadata   = results.get("metadata", {})
+            dsp_state.set_pending_image_signal(
+                image            = image_data,
+                file_path        = self._current_file or "",
+                predicted_class  = str(prediction.get("class", "Unknown")),
+                confidence       = confidence,
+                preprocessing_steps = IMAGE_PREPROCESSING_STEPS,
+                metadata         = metadata,
+            )
+        except Exception:
+            pass  # DSP push is non-critical
 
     def _on_analysis_failed(self, error_message: str):
         self.stage_status_lbl.setText(f"✕ Analysis failed: {error_message}")

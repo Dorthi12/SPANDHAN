@@ -29,10 +29,12 @@ class DSPStateManager(QObject):
     Preserves active results and alerts UI views when new analyses arrive.
     """
 
-    audio_result_changed = Signal(object)      # Emits AudioDSPResult or None
-    image_result_changed = Signal(object)      # Emits ImageDSPResult or None
-    modality_changed = Signal(str)             # "audio" or "image"
-    notification_posted = Signal(str, str)     # (message, "info" | "success" | "warning" | "error")
+    audio_result_changed = Signal(object)         # Emits AudioDSPResult or None
+    image_result_changed = Signal(object)         # Emits ImageDSPResult or None
+    modality_changed = Signal(str)                # "audio" or "image"
+    notification_posted = Signal(str, str)        # (message, level)
+    pending_audio_signal_ready = Signal(object)   # dict: signal/sr/class/preprocessing
+    pending_image_signal_ready = Signal(object)   # dict: image/class/preprocessing
 
     _instance: Optional[DSPStateManager] = None
 
@@ -51,6 +53,10 @@ class DSPStateManager(QObject):
         self._audio_result: Optional[AudioDSPResult] = None
         self._image_result: Optional[ImageDSPResult] = None
         self._active_modality: str = "audio"
+
+        # Preprocessed signals pending MATLAB DSP execution
+        self._pending_audio: Optional[dict] = None
+        self._pending_image: Optional[dict] = None
 
     # -----------------------------------------------------------------------
     # State Accessors
@@ -79,6 +85,82 @@ class DSPStateManager(QObject):
 
     def has_image_result(self) -> bool:
         return self._image_result is not None
+
+    def has_pending_audio(self) -> bool:
+        return self._pending_audio is not None
+
+    def has_pending_image(self) -> bool:
+        return self._pending_image is not None
+
+    @property
+    def pending_audio(self) -> Optional[dict]:
+        return self._pending_audio
+
+    @property
+    def pending_image(self) -> Optional[dict]:
+        return self._pending_image
+
+    # -----------------------------------------------------------------------
+    # Pending Signal Setters (called from ML pages after classification)
+    # -----------------------------------------------------------------------
+
+    def set_pending_audio_signal(
+        self,
+        signal,
+        sample_rate: int,
+        file_path: str,
+        predicted_class: str,
+        confidence: float,
+        preprocessing_steps: list,
+        metadata: dict,
+    ):
+        """
+        Called by AudioMLPage after classification.
+        Stores preprocessed signal so DSPPage can launch runAudioPipeline.
+        preprocessing_steps: list of (step_name, description) tuples reflecting
+        MATLAB preprocessAudioFile steps.
+        """
+        self._pending_audio = {
+            "signal":              signal,
+            "sample_rate":         sample_rate,
+            "file_path":           file_path,
+            "predicted_class":     predicted_class,
+            "confidence":          confidence,
+            "preprocessing_steps": preprocessing_steps,
+            "metadata":            metadata,
+        }
+        self.pending_audio_signal_ready.emit(self._pending_audio)
+        self.notification_posted.emit(
+            f"Audio signal ready for DSP: {predicted_class} ({confidence*100:.1f}%)",
+            "info",
+        )
+
+    def set_pending_image_signal(
+        self,
+        image,
+        file_path: str,
+        predicted_class: str,
+        confidence: float,
+        preprocessing_steps: list,
+        metadata: dict,
+    ):
+        """
+        Called by ImageMLPage after classification.
+        Stores preprocessed image so DSPPage can launch runImagePipeline.
+        """
+        self._pending_image = {
+            "image":               image,
+            "file_path":           file_path,
+            "predicted_class":     predicted_class,
+            "confidence":          confidence,
+            "preprocessing_steps": preprocessing_steps,
+            "metadata":            metadata,
+        }
+        self.pending_image_signal_ready.emit(self._pending_image)
+        self.notification_posted.emit(
+            f"Image signal ready for DSP: {predicted_class} ({confidence*100:.1f}%)",
+            "info",
+        )
 
     # -----------------------------------------------------------------------
     # Result Setters
@@ -132,8 +214,6 @@ class DSPStateManager(QObject):
 
         try:
             mat_dict = sio.loadmat(str(p), squeeze_me=True, struct_as_record=False)
-
-            # Look for "result" struct or root fields
             raw = mat_dict.get("result", mat_dict)
             parsed = detect_modality_and_parse(raw)
 

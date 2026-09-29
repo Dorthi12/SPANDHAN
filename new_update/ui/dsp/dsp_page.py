@@ -17,7 +17,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Optional, List, Tuple, Any
 
-from PySide6.QtCore import Qt, Signal
+from PySide6.QtCore import Qt, Signal, QThread
 from PySide6.QtGui import QColor, QFont, QLinearGradient, QPainter, QCursor
 from PySide6.QtWidgets import (
     QWidget,
@@ -31,6 +31,8 @@ from PySide6.QtWidgets import (
     QComboBox,
     QFileDialog,
     QSizePolicy,
+    QProgressBar,
+    QMessageBox,
 )
 
 from ui.styles.theme import COLORS
@@ -41,6 +43,7 @@ from ui.dsp.dsp_result_adapter import AudioDSPResult, ImageDSPResult
 from ui.dsp.dsp_cards import DiagnosticSection
 from ui.dsp.audio_dsp_view import AudioDSPView
 from ui.dsp.image_dsp_view import ImageDSPView
+from ui.dsp.matlab_runner import MATLABDSPRunner
 
 
 # ---------------------------------------------------------------------------
@@ -182,9 +185,413 @@ class AnalysisSummaryStrip(QFrame):
         self.extent_val.setText(f"{res.image_size[0] * res.image_size[1]:,} pixels")
 
 
+
+# ---------------------------------------------------------------------------
+# Preprocessing Steps Panel
+# ---------------------------------------------------------------------------
+
+class PreprocessingStepsPanel(QFrame):
+    """
+    Collapsible card showing the MATLAB preprocessing steps that were applied
+    to the signal before it reached the DSP analysis stage.
+    Reflects the exact contract of preprocessAudioFile.m / preprocessImage.m.
+    """
+
+    def __init__(self, parent: Optional[QWidget] = None):
+        super().__init__(parent)
+        self.setObjectName("PreprocessingStepsPanel")
+        self._collapsed = True
+        self._steps: List[Tuple[str, str]] = []
+
+        self.setStyleSheet(f"""
+            QFrame#PreprocessingStepsPanel {{
+                background-color: {DSP_THEME.BG_CARD};
+                border: 1px solid {DSP_THEME.BORDER_SUBTLE};
+                border-radius: 8px;
+            }}
+        """)
+
+        self._root_layout = QVBoxLayout(self)
+        self._root_layout.setContentsMargins(14, 10, 14, 10)
+        self._root_layout.setSpacing(8)
+
+        # Header row (always visible)
+        header_row = QHBoxLayout()
+        header_row.setContentsMargins(0, 0, 0, 0)
+
+        icon_lbl = QLabel("⚙")
+        icon_lbl.setStyleSheet(f"color: {DSP_THEME.BLUE_LIGHT}; font-size: 13px;")
+        header_row.addWidget(icon_lbl)
+
+        title_lbl = QLabel("MATLAB PREPROCESSING STEPS")
+        title_lbl.setStyleSheet(
+            f"color: {DSP_THEME.TEXT_SECONDARY}; font-size: 10px; font-weight: 700; "
+            f"letter-spacing: 0.8px;"
+        )
+        header_row.addWidget(title_lbl)
+
+        self.source_chip = QLabel("—")
+        self.source_chip.setStyleSheet(
+            f"color: {DSP_THEME.TEXT_MUTED}; font-size: 9px; font-family: 'Consolas', monospace;"
+        )
+        header_row.addWidget(self.source_chip)
+        header_row.addStretch()
+
+        self.toggle_btn = QPushButton("▸ Show Steps")
+        self.toggle_btn.setFlat(True)
+        self.toggle_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.toggle_btn.setStyleSheet(
+            f"color: {DSP_THEME.CYAN}; font-size: 10px; font-weight: 600; "
+            f"background: transparent; border: none; padding: 0px;"
+        )
+        self.toggle_btn.clicked.connect(self._toggle)
+        header_row.addWidget(self.toggle_btn)
+
+        self._root_layout.addLayout(header_row)
+
+        # Steps container (collapsible)
+        self._steps_frame = QFrame()
+        self._steps_frame.setVisible(False)
+        self._steps_layout = QVBoxLayout(self._steps_frame)
+        self._steps_layout.setContentsMargins(0, 6, 0, 0)
+        self._steps_layout.setSpacing(5)
+        self._root_layout.addWidget(self._steps_frame)
+
+    def set_steps(self, steps: List[Tuple[str, str]], source: str = ""):
+        """
+        Update the displayed preprocessing steps.
+        steps: list of (step_name, description) tuples
+        source: short label (e.g. "Audio: signal.wav")
+        """
+        self._steps = steps
+
+        if source:
+            self.source_chip.setText(f"• {source}")
+
+        # Clear and rebuild the steps grid
+        while self._steps_layout.count():
+            item = self._steps_layout.takeAt(0)
+            if item.widget():
+                item.widget().deleteLater()
+
+        for i, (step_name, description) in enumerate(steps):
+            row = QFrame()
+            row.setStyleSheet(
+                f"background-color: {DSP_THEME.BG_INPUT}; border-radius: 4px; "
+                f"border: 1px solid {DSP_THEME.BORDER_SUBTLE};"
+            )
+            row_layout = QHBoxLayout(row)
+            row_layout.setContentsMargins(10, 5, 10, 5)
+            row_layout.setSpacing(10)
+
+            num = QLabel(f"{i+1:02d}")
+            num.setFixedWidth(22)
+            num.setStyleSheet(
+                f"color: {DSP_THEME.INDIGO_LIGHT}; font-size: 9px; font-weight: 700; "
+                f"font-family: 'Consolas', monospace;"
+            )
+
+            step_lbl = QLabel(step_name)
+            step_lbl.setFixedWidth(200)
+            step_lbl.setStyleSheet(
+                f"color: {DSP_THEME.CYAN}; font-size: 10px; font-weight: 600; "
+                f"font-family: 'Consolas', monospace;"
+            )
+
+            desc_lbl = QLabel(description)
+            desc_lbl.setStyleSheet(f"color: {DSP_THEME.TEXT_SECONDARY}; font-size: 10px;")
+
+            check = QLabel("✓")
+            check.setFixedWidth(16)
+            check.setStyleSheet(f"color: {DSP_THEME.PERSIAN_GREEN}; font-size: 11px; font-weight: bold;")
+            check.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
+
+            row_layout.addWidget(num)
+            row_layout.addWidget(step_lbl)
+            row_layout.addWidget(desc_lbl, stretch=1)
+            row_layout.addWidget(check)
+
+            self._steps_layout.addWidget(row)
+
+    def clear_steps(self):
+        self._steps = []
+        self.source_chip.setText("—")
+        while self._steps_layout.count():
+            item = self._steps_layout.takeAt(0)
+            if item.widget():
+                item.widget().deleteLater()
+
+    def _toggle(self):
+        self._collapsed = not self._collapsed
+        self._steps_frame.setVisible(not self._collapsed)
+        self.toggle_btn.setText("▾ Hide Steps" if not self._collapsed else "▸ Show Steps")
+
+
+# ---------------------------------------------------------------------------
+# MATLAB Input Controls Panel
+# ---------------------------------------------------------------------------
+
+class MATLABInputPanel(QFrame):
+    """
+    Primary input panel for the DSP page.
+    Provides three input pathways:
+      1. Use processed signal from Audio/Image ML page (auto-populated after classification)
+      2. Browse for a raw audio/image file and run the full MATLAB pipeline
+      3. Import an existing MATLAB .mat result file
+    Includes a MATLAB availability indicator and progress bar during execution.
+    """
+
+    run_pipeline_requested  = Signal(str, str)    # (modality, file_path)
+    import_mat_requested    = Signal()
+    use_ml_signal_requested = Signal()            # Trigger DSP on pending ML signal
+
+    def __init__(self, modality: str = "audio", parent: Optional[QWidget] = None):
+        super().__init__(parent)
+        self.modality = modality.lower()
+        self.setObjectName("MATLABInputPanel")
+
+        self.setStyleSheet(f"""
+            QFrame#MATLABInputPanel {{
+                background-color: {DSP_THEME.BG_CARD};
+                border: 1px solid {DSP_THEME.BORDER_SOLID};
+                border-radius: 10px;
+            }}
+        """)
+
+        root = QVBoxLayout(self)
+        root.setContentsMargins(16, 12, 16, 12)
+        root.setSpacing(10)
+
+        # ---- Row 1: Section title ----
+        title_row = QHBoxLayout()
+        icon = QLabel("⟿" if modality == "audio" else "▤")
+        icon.setStyleSheet(f"color: {DSP_THEME.BLUE_LIGHT}; font-size: 14px;")
+        title_row.addWidget(icon)
+
+        tl = QLabel(f"DSP INPUT  —  {modality.upper()}")
+        tl.setStyleSheet(
+            f"color: {DSP_THEME.TEXT_SECONDARY}; font-size: 10px; font-weight: 700; letter-spacing: 1px;"
+        )
+        title_row.addWidget(tl)
+        title_row.addStretch()
+
+        # MATLAB availability indicator
+        self._matlab_status_lbl = QLabel("Checking MATLAB…")
+        self._matlab_status_lbl.setStyleSheet(
+            f"color: {DSP_THEME.AMBER}; font-size: 9px; font-family: 'Consolas', monospace;"
+        )
+        title_row.addWidget(self._matlab_status_lbl)
+        root.addLayout(title_row)
+
+        # ---- Row 2: ML Signal Banner (only shown when pending signal available) ----
+        self._ml_banner = QFrame()
+        self._ml_banner.setStyleSheet(
+            f"background-color: {DSP_THEME.BG_INPUT}; border: 1px solid rgba(16,185,129,0.35); "
+            f"border-radius: 6px;"
+        )
+        ml_row = QHBoxLayout(self._ml_banner)
+        ml_row.setContentsMargins(12, 7, 12, 7)
+        ml_row.setSpacing(10)
+
+        self._ml_banner_lbl = QLabel("✦  Preprocessed signal ready from ML workstation")
+        self._ml_banner_lbl.setStyleSheet(
+            f"color: {DSP_THEME.PERSIAN_GREEN}; font-size: 11px; font-weight: 600;"
+        )
+        ml_row.addWidget(self._ml_banner_lbl, stretch=1)
+
+        self._use_ml_btn = QPushButton("▶  Run DSP on This Signal")
+        self._use_ml_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self._use_ml_btn.setStyleSheet(f"""
+            QPushButton {{
+                background-color: {DSP_THEME.PERSIAN_GREEN};
+                color: #000000;
+                border: none;
+                border-radius: 5px;
+                padding: 5px 14px;
+                font-size: 11px;
+                font-weight: 700;
+            }}
+            QPushButton:hover {{ background-color: #34D399; }}
+        """)
+        self._use_ml_btn.clicked.connect(self.use_ml_signal_requested.emit)
+        ml_row.addWidget(self._use_ml_btn)
+
+        self._ml_banner.setVisible(False)
+        root.addWidget(self._ml_banner)
+
+        # ---- Row 3: Action buttons ----
+        btn_row = QHBoxLayout()
+        btn_row.setSpacing(8)
+
+        # Browse for file
+        self._browse_btn = QPushButton("📂  Browse File…")
+        self._browse_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self._browse_btn.setStyleSheet(self._btn_style(DSP_THEME.INDIGO, DSP_THEME.BLUE_LIGHT))
+        self._browse_btn.clicked.connect(self._browse_file)
+        btn_row.addWidget(self._browse_btn)
+
+        # Run MATLAB pipeline
+        self._run_btn = QPushButton("⚡  Run MATLAB Pipeline")
+        self._run_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self._run_btn.setEnabled(False)
+        self._run_btn.setStyleSheet(self._btn_style(DSP_THEME.BG_SURFACE_ALT, DSP_THEME.BORDER_SOLID, text=DSP_THEME.TEXT_SECONDARY))
+        self._run_btn.clicked.connect(self._run_pipeline)
+        btn_row.addWidget(self._run_btn)
+
+        btn_row.addStretch()
+
+        # Import .mat
+        self._import_btn = QPushButton("Import .mat Result…")
+        self._import_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self._import_btn.setStyleSheet(self._btn_style(DSP_THEME.BG_SURFACE_ALT, DSP_THEME.BORDER_SOLID, text=DSP_THEME.TEXT_MUTED))
+        self._import_btn.clicked.connect(self.import_mat_requested.emit)
+        btn_row.addWidget(self._import_btn)
+
+        root.addLayout(btn_row)
+
+        # ---- Row 4: Selected file label ----
+        self._file_lbl = QLabel("No file selected")
+        self._file_lbl.setStyleSheet(
+            f"color: {DSP_THEME.TEXT_MUTED}; font-size: 10px; font-family: 'Consolas', monospace;"
+        )
+        root.addWidget(self._file_lbl)
+
+        # ---- Row 5: Progress bar (hidden when idle) ----
+        self._progress_bar = QProgressBar()
+        self._progress_bar.setRange(0, 0)  # indeterminate
+        self._progress_bar.setFixedHeight(4)
+        self._progress_bar.setTextVisible(False)
+        self._progress_bar.setVisible(False)
+        self._progress_bar.setStyleSheet(f"""
+            QProgressBar {{
+                background-color: {DSP_THEME.BG_INPUT};
+                border: none;
+                border-radius: 2px;
+            }}
+            QProgressBar::chunk {{
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 {DSP_THEME.INDIGO}, stop:1 {DSP_THEME.PERSIAN_GREEN});
+                border-radius: 2px;
+            }}
+        """)
+        root.addWidget(self._progress_bar)
+
+        self._stage_lbl = QLabel("")
+        self._stage_lbl.setStyleSheet(
+            f"color: {DSP_THEME.AMBER}; font-size: 10px; font-family: 'Consolas', monospace;"
+        )
+        self._stage_lbl.setVisible(False)
+        root.addWidget(self._stage_lbl)
+
+        # ---- Internal state ----
+        self._selected_file: str = ""
+        self._update_matlab_status()
+
+    def _btn_style(self, bg: str, border: str, text: str = "#FFFFFF") -> str:
+        return f"""
+            QPushButton {{
+                background-color: {bg};
+                color: {text};
+                border: 1px solid {border};
+                border-radius: 6px;
+                padding: 5px 14px;
+                font-size: 11px;
+                font-weight: 600;
+            }}
+            QPushButton:hover {{
+                background-color: {DSP_THEME.BG_CARD_HOVER};
+                border: 1px solid {DSP_THEME.BORDER_HOVER};
+                color: {DSP_THEME.TEXT_PRIMARY};
+            }}
+            QPushButton:disabled {{
+                opacity: 0.4;
+            }}
+        """
+
+    def _update_matlab_status(self):
+        runner = MATLABDSPRunner()
+        if runner.matlab_available:
+            self._matlab_status_lbl.setText(f"● MATLAB: {Path(runner.matlab_path).name}")
+            self._matlab_status_lbl.setStyleSheet(
+                f"color: {DSP_THEME.PERSIAN_GREEN}; font-size: 9px; font-family: 'Consolas', monospace;"
+            )
+        else:
+            self._matlab_status_lbl.setText("○ MATLAB: Not detected — use .mat import")
+            self._matlab_status_lbl.setStyleSheet(
+                f"color: {DSP_THEME.AMBER}; font-size: 9px; font-family: 'Consolas', monospace;"
+            )
+
+    def set_ml_signal_available(self, info: Optional[dict]):
+        """Called when DSP state has a pending ML signal available."""
+        if info:
+            cls  = info.get("predicted_class", "Unknown")
+            conf = info.get("confidence", 0.0)
+            src  = Path(info.get("file_path", "")).name or "signal"
+            self._ml_banner_lbl.setText(
+                f"✦  ML classified '{src}' as  {cls}  ({conf*100:.1f}%)  —  ready for MATLAB DSP"
+            )
+            self._ml_banner.setVisible(True)
+        else:
+            self._ml_banner.setVisible(False)
+
+    def _browse_file(self):
+        if self.modality == "audio":
+            filt = "Audio Files (*.wav *.flac *.mp3 *.ogg);;All Files (*.*)"
+            title = "Select Audio Signal"
+        else:
+            filt = "Image Files (*.png *.jpg *.jpeg *.bmp *.tif *.tiff);;All Files (*.*)"
+            title = "Select Image Signal"
+
+        path, _ = QFileDialog.getOpenFileName(None, title, "", filt)
+        if path:
+            self._selected_file = path
+            self._file_lbl.setText(f"▸  {Path(path).name}")
+            self._file_lbl.setStyleSheet(
+                f"color: {DSP_THEME.CYAN}; font-size: 10px; font-family: 'Consolas', monospace;"
+            )
+            runner = MATLABDSPRunner()
+            self._run_btn.setEnabled(runner.matlab_available)
+            self._run_btn.setStyleSheet(
+                self._btn_style(DSP_THEME.INDIGO, DSP_THEME.BLUE_LIGHT)
+                if runner.matlab_available
+                else self._btn_style(DSP_THEME.BG_SURFACE_ALT, DSP_THEME.BORDER_SOLID, DSP_THEME.TEXT_SECONDARY)
+            )
+
+    def _run_pipeline(self):
+        if self._selected_file:
+            self.run_pipeline_requested.emit(self.modality, self._selected_file)
+
+    def set_running(self, stage: str = ""):
+        self._progress_bar.setVisible(True)
+        self._stage_lbl.setVisible(True)
+        self._stage_lbl.setText(f"⟳  {stage}")
+        self._browse_btn.setEnabled(False)
+        self._run_btn.setEnabled(False)
+        self._use_ml_btn.setEnabled(False)
+
+    def set_idle(self):
+        self._progress_bar.setVisible(False)
+        self._stage_lbl.setVisible(False)
+        self._stage_lbl.setText("")
+        self._browse_btn.setEnabled(True)
+        runner = MATLABDSPRunner()
+        self._run_btn.setEnabled(bool(self._selected_file and runner.matlab_available))
+        self._use_ml_btn.setEnabled(True)
+
+    def set_error(self, message: str):
+        self._progress_bar.setVisible(False)
+        self._stage_lbl.setVisible(True)
+        self._stage_lbl.setText(f"✕  {message[:120]}")
+        self._stage_lbl.setStyleSheet(
+            f"color: #F87171; font-size: 10px; font-family: 'Consolas', monospace;"
+        )
+        self.set_idle()
+
+
 # ---------------------------------------------------------------------------
 # Empty State Widget
 # ---------------------------------------------------------------------------
+
 
 class DSPEmptyStateWidget(QFrame):
     """
@@ -298,19 +705,26 @@ class DSPPage(QWidget):
         self.locked_modality = locked_modality.lower() if locked_modality else None
         self.state = get_dsp_state()
         self.controller = DSPController(self.state)
+        self._matlab_runner: Optional[MATLABDSPRunner] = None
 
         self._init_ui()
         self._connect_signals()
 
-        # Load initial demo if available or restore from state
-        if self.modality == "audio":
-            if not self.state.has_audio_result():
-                self.controller.load_canonical_audio_sample("chirp")
+        # If a result is already in state (from previous session), render it
+        if self.modality == "audio" and self.state.has_audio_result():
             self._on_audio_result_changed(self.state.audio_result)
-        else:
-            if not self.state.has_image_result():
-                self.controller.load_canonical_image_sample("sinusoidal")
+        elif self.modality == "image" and self.state.has_image_result():
             self._on_image_result_changed(self.state.image_result)
+        else:
+            # Show empty state — user must provide input
+            self._show_empty_or_input()
+
+        # Reflect any already-available ML signal
+        if self.modality == "audio" and self.state.has_pending_audio():
+            self.input_panel.set_ml_signal_available(self.state.pending_audio)
+        elif self.modality == "image" and self.state.has_pending_image():
+            self.input_panel.set_ml_signal_available(self.state.pending_image)
+
 
     def _init_ui(self):
         root_layout = QVBoxLayout(self)
@@ -340,6 +754,18 @@ class DSPPage(QWidget):
         self.scroll_layout = QVBoxLayout(self.scroll_content)
         self.scroll_layout.setContentsMargins(0, 4, 8, 16)
         self.scroll_layout.setSpacing(14)
+
+        # MATLAB Input Panel (always visible at top of scroll area)
+        self.input_panel = MATLABInputPanel(self.modality, self.scroll_content)
+        self.input_panel.run_pipeline_requested.connect(self._run_matlab_pipeline)
+        self.input_panel.import_mat_requested.connect(self._import_mat_file)
+        self.input_panel.use_ml_signal_requested.connect(self._use_ml_signal_for_dsp)
+        self.scroll_layout.addWidget(self.input_panel)
+
+        # Preprocessing Steps Panel (shown after ML classification or after MATLAB run)
+        self.preprocessing_panel = PreprocessingStepsPanel(self.scroll_content)
+        self.preprocessing_panel.setVisible(False)
+        self.scroll_layout.addWidget(self.preprocessing_panel)
 
         # Modality Views
         self.audio_view = AudioDSPView(self.scroll_content)
@@ -557,6 +983,8 @@ class DSPPage(QWidget):
     def _connect_signals(self):
         self.state.audio_result_changed.connect(self._on_audio_result_changed)
         self.state.image_result_changed.connect(self._on_image_result_changed)
+        self.state.pending_audio_signal_ready.connect(self._on_pending_audio_ready)
+        self.state.pending_image_signal_ready.connect(self._on_pending_image_ready)
         if not self.locked_modality:
             self.state.modality_changed.connect(self.set_modality)
 
@@ -684,7 +1112,131 @@ class DSPPage(QWidget):
             self, "Open MATLAB Pipeline Result", "", "MATLAB Files (*.mat);;All Files (*.*)"
         )
         if file_path:
-            self.state.load_mat_file(file_path)
+            ok, msg = self.state.load_mat_file(file_path)
+            if ok:
+                # Show preprocessing steps for imported .mat as generic note
+                steps = [("MATLAB Pipeline", "Result imported from existing .mat file")]
+                fname = Path(file_path).name
+                self.preprocessing_panel.set_steps(steps, source=fname)
+                self.preprocessing_panel.setVisible(True)
+            else:
+                QMessageBox.warning(self, "Import Failed", msg)
+
+    def _show_empty_or_input(self):
+        """Show empty state when no result is loaded."""
+        self.audio_view.setVisible(False)
+        self.image_view.setVisible(False)
+        self.empty_state.setVisible(True)
+
+    # -----------------------------------------------------------------------
+    # Pending ML Signal Handlers
+    # -----------------------------------------------------------------------
+
+    def _on_pending_audio_ready(self, info: dict):
+        """Called when AudioMLPage pushes a classified signal into DSP state."""
+        if self.modality == "audio":
+            self.input_panel.set_ml_signal_available(info)
+            # Auto-show preprocessing steps
+            steps = info.get("preprocessing_steps", [])
+            fname = Path(info.get("file_path", "")).name or "audio signal"
+            cls   = info.get("predicted_class", "")
+            conf  = info.get("confidence", 0.0)
+            self.preprocessing_panel.set_steps(
+                steps,
+                source=f"Audio: {fname} → {cls} ({conf*100:.1f}%)"
+            )
+            self.preprocessing_panel.setVisible(True)
+
+    def _on_pending_image_ready(self, info: dict):
+        """Called when ImageMLPage pushes a classified image into DSP state."""
+        if self.modality == "image":
+            self.input_panel.set_ml_signal_available(info)
+            steps = info.get("preprocessing_steps", [])
+            fname = Path(info.get("file_path", "")).name or "image"
+            cls   = info.get("predicted_class", "")
+            conf  = info.get("confidence", 0.0)
+            self.preprocessing_panel.set_steps(
+                steps,
+                source=f"Image: {fname} → {cls} ({conf*100:.1f}%)"
+            )
+            self.preprocessing_panel.setVisible(True)
+
+    # -----------------------------------------------------------------------
+    # MATLAB Pipeline Execution
+    # -----------------------------------------------------------------------
+
+    def _use_ml_signal_for_dsp(self):
+        """
+        Uses the already-classified signal from the ML page as input for the MATLAB
+        DSP pipeline. This is the primary integration pathway.
+        """
+        if self.modality == "audio":
+            info = self.state.pending_audio
+            if not info:
+                QMessageBox.information(
+                    self,
+                    "No Signal Available",
+                    "No preprocessed audio signal from the ML workstation.\n"
+                    "Please classify a signal on the Audio ML page first."
+                )
+                return
+            self._run_matlab_pipeline("audio", info.get("file_path", ""))
+        else:
+            info = self.state.pending_image
+            if not info:
+                QMessageBox.information(
+                    self,
+                    "No Signal Available",
+                    "No preprocessed image signal from the ML workstation.\n"
+                    "Please classify an image on the Image ML page first."
+                )
+                return
+            self._run_matlab_pipeline("image", info.get("file_path", ""))
+
+    def _run_matlab_pipeline(self, modality: str, file_path: str):
+        """
+        Launches the MATLAB pipeline in a background thread.
+        MATLAB computes all DSP analyses; Python only renders the result.
+        """
+        if not file_path:
+            QMessageBox.warning(
+                self, "No File Selected",
+                "Please select an input file or classify a signal from the ML workstation first."
+            )
+            return
+
+        self._matlab_runner = MATLABDSPRunner(self)
+        self._matlab_runner.stage_changed.connect(self._on_matlab_stage)
+        self._matlab_runner.finished.connect(self._on_matlab_finished)
+        self._matlab_runner.failed.connect(self._on_matlab_failed)
+
+        self.input_panel.set_running("Connecting to MATLAB…")
+
+        if modality == "audio":
+            self._matlab_runner.run_audio_pipeline(file_path)
+        else:
+            self._matlab_runner.run_image_pipeline(file_path)
+
+    def _on_matlab_stage(self, stage: str):
+        self.input_panel.set_running(stage)
+
+    def _on_matlab_finished(self, mat_path: str):
+        """MATLAB wrote a .mat file — load it into state and render."""
+        self.input_panel.set_idle()
+        ok, msg = self.state.load_mat_file(mat_path)
+        if not ok:
+            self.input_panel.set_error(f"Result load failed: {msg}")
+
+    def _on_matlab_failed(self, error: str):
+        self.input_panel.set_idle()
+        self.input_panel.set_error(error)
+        QMessageBox.critical(
+            self, "MATLAB DSP Error",
+            f"The MATLAB DSP pipeline failed:\n\n{error}\n\n"
+            "Alternatives:\n"
+            "• Run MATLAB manually and use 'Import .mat Result'\n"
+            "• Load a canonical verification sample from the dropdown above"
+        )
 
 
 # ---------------------------------------------------------------------------

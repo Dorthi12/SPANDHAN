@@ -50,6 +50,8 @@ from ui.services.audio_analysis_service import (
     load_and_inspect_audio,
     compute_audio_characteristics,
 )
+from ui.dsp.dsp_state import get_dsp_state
+from ui.dsp.matlab_runner import AUDIO_PREPROCESSING_STEPS
 
 
 class AudioDropUploadArea(QFrame):
@@ -881,6 +883,25 @@ class AudioMLPage(QWidget):
         self.browse_btn.setEnabled(True)
         self.change_btn.setEnabled(True)
         self.sample_combo.setEnabled(True)
+
+        # Push preprocessed signal into DSP state for the DSP Analysis page
+        try:
+            dsp_state = get_dsp_state()
+            signal_data = results.get("signal")
+            sr          = results.get("sample_rate", 16000)
+            metadata    = results.get("metadata", {})
+            dsp_state.set_pending_audio_signal(
+                signal           = signal_data,
+                sample_rate      = sr,
+                file_path        = self._current_file or "",
+                predicted_class  = str(prediction.get("class", "Unknown")),
+                confidence       = confidence,
+                preprocessing_steps = AUDIO_PREPROCESSING_STEPS,
+                metadata         = metadata,
+            )
+        except Exception:
+            pass  # DSP push is non-critical; ML result is already shown
+
 
     def _on_analysis_failed(self, error_message: str):
         self.stage_status_lbl.setText("✕ ANALYSIS FAILED: Unable to classify the selected audio signal.")

@@ -21,6 +21,11 @@ from ui.dsp.dsp_result_adapter import (
 from ui.dsp.dsp_plot_widget import DSPScientificPlotWidget
 from ui.dsp.dsp_cards import ScientificVisualizationCard, DiagnosticSection, FullscreenPlotDialog
 from ui.dsp.dsp_theme import DSP_THEME, apply_scientific_plot_style
+from ui.dsp.matlab_runner import (
+    MATLABDSPRunner,
+    AUDIO_PREPROCESSING_STEPS,
+    IMAGE_PREPROCESSING_STEPS,
+)
 
 __all__ = [
     "DSPPage",
