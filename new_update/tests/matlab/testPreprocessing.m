@@ -168,11 +168,12 @@ end
 %  FFT RESULT SPOT-CHECK
 % =========================================================================
 
-function testFFTResultHasFrequencyAndAmplitude(testCase)
+function testFFTResultHasFrequencyAndMagnitude(testCase)
     [sig, Fs] = makeSignal();
     r = selectDSPAnalysis(sig, Fs, "sinusoidal");
-    testCase.verifyTrue(isfield(r.fft, 'frequency'), 'fft result missing frequency');
-    testCase.verifyTrue(isfield(r.fft, 'amplitude'), 'fft result missing amplitude');
+    testCase.verifyTrue(isfield(r.fft, 'frequency'),  'fft result missing frequency');
+    testCase.verifyTrue(isfield(r.fft, 'magnitude'),  'fft result missing magnitude');
+    testCase.verifyTrue(isfield(r.fft, 'peakFrequency'), 'fft result missing peakFrequency');
     testCase.verifyGreaterThan(numel(r.fft.frequency), 0);
 end
 

@@ -163,28 +163,27 @@ function results = selectDSPAnalysis(signal, Fs, signalClass, varargin)
                 %------------------------------------------------------
                 case "fft"
                 %------------------------------------------------------
-                    [f, Y] = runFFT(signal, Fs);
-                    fftResult.frequency = f;
-                    fftResult.amplitude = Y;
-                    results.fft = fftResult;
+                    % nfft = [] → automatic (next power of 2)
+                    results.fft = runFFT(signal, Fs, []);
 
                 %------------------------------------------------------
                 case "stft"
                 %------------------------------------------------------
-                    [S, F, T] = runSTFT(signal, Fs);
-                    stftResult.spectrogram = S;
-                    stftResult.frequency   = F;
-                    stftResult.time        = T;
-                    results.stft = stftResult;
+                    % Defaults: 64 ms window, 50 % overlap, nfft = next pow2
+                    stftWindowLength = min(1024, floor(length(signal) / 4));
+                    stftWindowLength = max(stftWindowLength, 32);    % floor at 32
+                    stftOverlap      = floor(stftWindowLength / 2);
+                    stftNfft         = 2^nextpow2(stftWindowLength * 2);
+
+                    results.stft = runSTFT( ...
+                        signal, Fs, ...
+                        stftWindowLength, stftOverlap, stftNfft);
 
                 %------------------------------------------------------
                 case "wavelet"
                 %------------------------------------------------------
-                    [c, l] = runWavelet(signal, opts.waveletName);
-                    waveletResult.coefficients = c;
-                    waveletResult.lengths      = l;
-                    waveletResult.waveletName  = opts.waveletName;
-                    results.wavelet = waveletResult;
+                    results.wavelet = runWavelet( ...
+                        signal, Fs, opts.waveletName, 5);
 
                 %------------------------------------------------------
                 case "fir"
