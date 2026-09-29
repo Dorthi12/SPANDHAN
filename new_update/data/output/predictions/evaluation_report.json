@@ -1,0 +1,87 @@
+{
+  "accuracy": 0.992,
+  "roc_auc_macro": 0.9999288888888888,
+  "inference_ms_per_sample": 0.1758,
+  "classification_report": {
+    "impulse": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 150.0
+    },
+    "sinusoidal": {
+      "precision": 0.98,
+      "recall": 0.98,
+      "f1-score": 0.98,
+      "support": 150.0
+    },
+    "white_noise": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 150.0
+    },
+    "step": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 150.0
+    },
+    "chirp": {
+      "precision": 0.98,
+      "recall": 0.98,
+      "f1-score": 0.98,
+      "support": 150.0
+    },
+    "accuracy": 0.992,
+    "macro avg": {
+      "precision": 0.992,
+      "recall": 0.992,
+      "f1-score": 0.992,
+      "support": 750.0
+    },
+    "weighted avg": {
+      "precision": 0.992,
+      "recall": 0.992,
+      "f1-score": 0.992,
+      "support": 750.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      150,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      147,
+      0,
+      0,
+      3
+    ],
+    [
+      0,
+      0,
+      150,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      150,
+      0
+    ],
+    [
+      0,
+      3,
+      0,
+      0,
+      147
+    ]
+  ]
+}

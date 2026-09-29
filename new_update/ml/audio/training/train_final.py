@@ -89,6 +89,15 @@ def _load_wav(path: Path):
 
 
 def load_dataset() -> tuple[np.ndarray, np.ndarray]:
+    x_cache = REPORTS_DIR / "X.npy"
+    y_cache = REPORTS_DIR / "y.npy"
+    if x_cache.exists() and y_cache.exists():
+        print(f"\n[1/7] Loading existing features from {REPORTS_DIR} ...")
+        X = np.load(str(x_cache))
+        y = np.load(str(y_cache))
+        print(f"  Loaded X={X.shape}, y={y.shape} ({len(y)} audio samples)")
+        return X, y
+
     print("\n[1/7] Extracting features from audio WAVs ...")
     X_rows, y_rows = [], []
     total_ok = total_err = 0
@@ -175,14 +184,28 @@ PARAM_GRIDS = {
         "classifier__min_samples_split": [2, 5],
     },
     "GradientBoosting": {
-        "classifier__n_estimators":  [100, 200],
-        "classifier__learning_rate": [0.05, 0.1, 0.2],
-        "classifier__max_depth":     [3, 5, 7],
+        "classifier__n_estimators":  [100],
+        "classifier__learning_rate": [0.1, 0.2],
+        "classifier__max_depth":     [5, 7],
     },
 }
 
 
 def compare_models(X_train, y_train) -> tuple[dict, str]:
+    report_file = REPORTS_DIR / "model_comparison.json"
+    if report_file.exists():
+        with open(report_file) as f:
+            data = json.load(f)
+        results = data.get("results", {})
+        best = data.get("best_model", "GradientBoosting")
+        print("\n[3/7] Using 5-fold CV comparison results ...")
+        for name, r in results.items():
+            print(f"  {name:22s}  acc={r['accuracy_mean']:.4f}+-{r['accuracy_std']:.4f}"
+                  f"  f1={r['f1_macro_mean']:.4f}+-{r['f1_macro_std']:.4f}"
+                  f"  ({r.get('fit_time_s', 0):.1f}s)")
+        print(f"\n  Best candidate: {best}")
+        return results, best
+
     print("\n[3/7] 5-fold CV comparison of 4 candidates ...")
     cv  = StratifiedKFold(n_splits=CV_FOLDS, shuffle=True, random_state=RANDOM_STATE)
     results = {}
@@ -238,16 +261,21 @@ def tune_model(best_name: str, X_train, y_train) -> Pipeline:
 def retrain_and_calibrate(
     tuned_pipe: Pipeline,
     X_train, X_val, y_train, y_val
-) -> CalibratedClassifierCV:
+):
     print("\n[5/7] Re-training on train+val combined ...")
     X_tv = np.vstack([X_train, X_val])
     y_tv = np.concatenate([y_train, y_val])
     tuned_pipe.fit(X_tv, y_tv)
 
-    print("[6/7] Probability calibration (isotonic, prefit) ...")
-    calibrated = CalibratedClassifierCV(tuned_pipe, method="isotonic", cv="prefit")
-    calibrated.fit(X_val, y_val)
-    return calibrated
+    print("[6/7] Probability calibration (sigmoid, 3-fold CV) ...")
+    try:
+        calibrated = CalibratedClassifierCV(tuned_pipe, method="sigmoid", cv=3)
+        calibrated.fit(X_tv, y_tv)
+        print("  Calibrated model ready.")
+        return calibrated
+    except Exception as e:
+        print(f"  Note on calibration: {e}. Using native softmax probabilities.")
+        return tuned_pipe
 
 
 # ---------------------------------------------------------------------------

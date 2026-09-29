@@ -14,9 +14,9 @@ _THIS_FILE = Path(__file__).resolve()
 REPO_ROOT: Path = _THIS_FILE.parents[2]          # …/new_update/
 
 # ---------------------------------------------------------------------------
-# Dataset paths  (MATLAB-processed WAV → Python input)
+# Dataset paths  (MATLAB-processed WAV -> Python input)
 # ---------------------------------------------------------------------------
-DATASET_ROOT: Path = REPO_ROOT / "datasets" / "audio"
+DATASET_ROOT: Path = REPO_ROOT / "datasets" / "audio_processed"
 
 CLASS_DIRS: dict[str, Path] = {
     "impulse":    DATASET_ROOT / "impulse",
@@ -92,7 +92,7 @@ GB_PARAM_GRID: dict = {
 # ---------------------------------------------------------------------------
 # Image ML Pipeline Settings
 # ---------------------------------------------------------------------------
-IMAGE_DATASET_ROOT: Path = REPO_ROOT / "datasets" / "image"
+IMAGE_DATASET_ROOT: Path = REPO_ROOT / "datasets" / "image_processed"
 IMAGE_MODELS_DIR: Path   = REPO_ROOT / "models" / "image"
 IMAGE_PIPELINE_PATH: Path = IMAGE_MODELS_DIR / "image_signal_classifier.pkl"
 IMAGE_KERAS_PATH: Path   = IMAGE_MODELS_DIR / "image_signal_classifier.keras"

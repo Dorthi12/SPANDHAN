@@ -50,6 +50,19 @@ from ml.image.inference.preprocess_input import preprocess_image
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+_IMAGE_PREDICTOR_INSTANCE: ImagePredictor | None = None
+
+
+def get_image_predictor(model_path: Union[str, Path, None] = None) -> ImagePredictor:
+    """
+    Return the singleton ImagePredictor instance.
+    Loads the trained model once into memory and reuses it across MATLAB calls.
+    """
+    global _IMAGE_PREDICTOR_INSTANCE
+    if _IMAGE_PREDICTOR_INSTANCE is None or model_path is not None:
+        _IMAGE_PREDICTOR_INSTANCE = ImagePredictor(model_path=model_path)
+    return _IMAGE_PREDICTOR_INSTANCE
+
 
 class ImagePredictor:
     """Load-once, predict-many inference engine for the SPANDHAN Image Classifier."""
@@ -100,6 +113,61 @@ class ImagePredictor:
         dict with keys: 'class', 'class_id', 'confidence', 'probabilities'
         """
         tensor = preprocess_image(image_input, as_tensor=True).to(DEVICE)
+        with torch.no_grad():
+            probs = self.model.predict_proba(tensor).cpu().numpy()[0]
+
+        pred_id = int(probs.argmax())
+        confidence = float(probs[pred_id])
+        pred_class = self.class_names[pred_id]
+
+        return {
+            "class": pred_class,
+            "class_id": pred_id,
+            "confidence": round(confidence, 6),
+            "probabilities": {
+                name: round(float(p), 6)
+                for name, p in zip(self.class_names, probs)
+            },
+        }
+
+    def predict_processed_image(
+        self,
+        image_array: Union[np.ndarray, torch.Tensor],
+    ) -> dict:
+        """
+        Classify a 128x128 grayscale signal image directly preprocessed by MATLAB.
+        Bypasses disk I/O and PIL decoding for maximum throughput and zero re-scaling.
+
+        Parameters
+        ----------
+        image_array : np.ndarray or torch.Tensor
+            2D (128x128) or 3D/4D float32 array in [0, 1].
+
+        Returns
+        -------
+        dict with standardized structure:
+            class, class_id, confidence, probabilities
+        """
+        if isinstance(image_array, torch.Tensor):
+            arr = image_array.cpu().numpy().astype(np.float32)
+        else:
+            arr = np.asarray(image_array, dtype=np.float32)
+
+        # Handle any dimension quirks from MATLAB py.numpy.array
+        if arr.ndim == 2:
+            arr = arr[np.newaxis, np.newaxis, :, :]
+        elif arr.ndim == 3:
+            if arr.shape[0] == 1:
+                arr = arr[np.newaxis, :, :, :]
+            elif arr.shape[2] == 1:
+                arr = arr.transpose(2, 0, 1)[np.newaxis, :, :, :]
+            else:
+                arr = arr[np.newaxis, np.newaxis, :, :]
+        elif arr.ndim == 4:
+            if arr.shape[1] != 1 and arr.shape[3] == 1:
+                arr = arr.transpose(0, 3, 1, 2)
+
+        tensor = torch.from_numpy(arr).float().to(DEVICE)
         with torch.no_grad():
             probs = self.model.predict_proba(tensor).cpu().numpy()[0]
 

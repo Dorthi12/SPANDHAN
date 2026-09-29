@@ -1,0 +1,114 @@
+{
+  "accuracy": 0.956,
+  "roc_auc_macro": 0.9965999999999999,
+  "macro_f1": 0.9557667617639153,
+  "weighted_f1": 0.9557667617639154,
+  "confusion_matrix": [
+    [
+      150,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      135,
+      0,
+      0,
+      15
+    ],
+    [
+      0,
+      0,
+      150,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      149,
+      0
+    ],
+    [
+      0,
+      13,
+      0,
+      4,
+      133
+    ]
+  ],
+  "classification_report": {
+    "impulse": {
+      "precision": 0.9933774834437086,
+      "recall": 1.0,
+      "f1-score": 0.9966777408637874,
+      "support": 150.0
+    },
+    "sinusoidal": {
+      "precision": 0.9121621621621622,
+      "recall": 0.9,
+      "f1-score": 0.9060402684563759,
+      "support": 150.0
+    },
+    "white_noise": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 150.0
+    },
+    "step": {
+      "precision": 0.9738562091503268,
+      "recall": 0.9933333333333333,
+      "f1-score": 0.9834983498349835,
+      "support": 150.0
+    },
+    "chirp": {
+      "precision": 0.8986486486486487,
+      "recall": 0.8866666666666667,
+      "f1-score": 0.8926174496644296,
+      "support": 150.0
+    },
+    "accuracy": 0.956,
+    "macro avg": {
+      "precision": 0.9556089006809693,
+      "recall": 0.9559999999999998,
+      "f1-score": 0.9557667617639153,
+      "support": 750.0
+    },
+    "weighted avg": {
+      "precision": 0.9556089006809692,
+      "recall": 0.956,
+      "f1-score": 0.9557667617639154,
+      "support": 750.0
+    }
+  },
+  "top_confusions": [
+    {
+      "true_class": "sinusoidal",
+      "predicted_class": "chirp",
+      "count": 15,
+      "rate": 0.1
+    },
+    {
+      "true_class": "chirp",
+      "predicted_class": "sinusoidal",
+      "count": 13,
+      "rate": 0.08666666666666667
+    },
+    {
+      "true_class": "chirp",
+      "predicted_class": "step",
+      "count": 4,
+      "rate": 0.02666666666666667
+    },
+    {
+      "true_class": "step",
+      "predicted_class": "impulse",
+      "count": 1,
+      "rate": 0.006666666666666667
+    }
+  ]
+}

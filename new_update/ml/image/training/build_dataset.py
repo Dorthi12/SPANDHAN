@@ -31,17 +31,17 @@ _ROOT = Path(__file__).resolve().parents[3]
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
+from ml.common.config import IMAGE_DATASET_ROOT, IMAGE_REPORTS_DIR, IMAGE_X_PATH, IMAGE_Y_PATH, IMAGE_FILENAMES_PATH
 from ml.common.labels import CLASS_NAMES, label_to_id
 
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-IMAGE_DATASET_DIR: Path = _ROOT / "datasets" / "image"
-IMAGE_REPORTS_DIR: Path = _ROOT / "data" / "output" / "image_predictions"
+IMAGE_DATASET_DIR: Path = IMAGE_DATASET_ROOT
 
-X_PATH:         Path = IMAGE_REPORTS_DIR / "X.npy"
-Y_PATH:         Path = IMAGE_REPORTS_DIR / "y.npy"
-FILENAMES_PATH: Path = IMAGE_REPORTS_DIR / "filenames.npy"
+X_PATH:         Path = IMAGE_X_PATH
+Y_PATH:         Path = IMAGE_Y_PATH
+FILENAMES_PATH: Path = IMAGE_FILENAMES_PATH
 
 # Expected spatial dimensions (contract from MATLAB preprocessing)
 IMG_HEIGHT: int = 128

@@ -36,10 +36,11 @@ _ROOT = Path(__file__).resolve().parents[3]
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
+from ml.common.config import IMAGE_DATASET_ROOT, IMAGE_REPORTS_DIR
 from ml.common.labels import CLASS_NAMES
 
-IMAGE_DATASET_DIR: Path = _ROOT / "datasets" / "image"
-REPORTS_DIR:       Path = _ROOT / "data" / "output" / "image_predictions"
+IMAGE_DATASET_DIR: Path = IMAGE_DATASET_ROOT
+REPORTS_DIR:       Path = IMAGE_REPORTS_DIR
 
 # Generator-family patterns per class (regex against filename)
 GENERATOR_FAMILIES: dict[str, list[str]] = {

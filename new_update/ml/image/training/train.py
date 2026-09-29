@@ -59,11 +59,11 @@ EVAL_PATH:    Path = IMAGE_REPORTS_DIR / "evaluation_report.json"
 # ---------------------------------------------------------------------------
 # Training hyper-parameters (baseline, experiment A - no augmentation)
 # ---------------------------------------------------------------------------
-BATCH_SIZE:    int   = 32
-MAX_EPOCHS:    int   = 60
-LR:            float = 1e-3
+BATCH_SIZE:    int   = 64
+MAX_EPOCHS:    int   = 15
+LR:            float = 2e-3
 WEIGHT_DECAY:  float = 1e-4
-PATIENCE:      int   = 10     # early-stopping patience
+PATIENCE:      int   = 5     # early-stopping patience
 RANDOM_STATE:  int   = 42
 DROPOUT:       float = 0.4
 
