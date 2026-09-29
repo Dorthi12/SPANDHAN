@@ -1,175 +1,140 @@
-function result = runImagePipeline(filepath, varargin)
-% RUNIMAGEPIPELINE
-% End-to-end SPANDHAN 2-D image analysis pipeline:
-% Load -> Preprocess -> ML Classification -> Class-Aware Image DSP -> Feature Extraction -> Visualization
+function result = runImagePipeline(filepath)
+% runImagePipeline
 %
-% USAGE:
-%   result = runImagePipeline(filepath)
-%   result = runImagePipeline(filepath, "Visualize", true)
-%   result = runImagePipeline(filepath, "Visualize", false, "FilterType", "gaussian")
+% Complete SPANDHAN image processing pipeline.
 %
-% INPUTS:
-%   filepath - Absolute or relative path to the input image (.png, .jpg, .bmp, etc.)
+% Pipeline:
+%   1. Load image
+%   2. Preprocess image in MATLAB
+%   3. Classify preprocessed image using Python ML
+%   4. Run class-aware image DSP analysis in MATLAB
+%   5. Return a unified result structure
 %
-% OPTIONAL PARAMETERS (Name-Value pairs):
-%   "Visualize"             - true/false: whether to generate DSP result figures (default: true)
-%   "FigureVisible"         - "on"/"off": whether figures are displayed on screen (default: "on")
-%   "FFTAnalysis"           - true/false: run 2D FFT if selected by class (default: true)
-%   "WaveletName"           - 2-D Wavelet family name (default: "db4")
-%   "WaveletLevel"          - 2-D Wavelet decomposition level (default: 3)
-%   "FilterType"            - Filter type ("gaussian", "average", "laplacian", "sobel", "prewitt", "custom")
-%   "FilterKernelSize"      - Spatial filter kernel size (default: 5)
-%   "FilterSigma"           - Gaussian filter sigma (default: 1)
-%   "ConvolutionKernel"     - 2-D spatial convolution kernel matrix
-%   "PSF"                   - Point Spread Function for image deconvolution
-%   "DeconvolutionMethod"   - Method: "wiener", "regularized", "lucy", "blind" (default: "wiener")
-%   "NSR"                   - Noise-to-Signal ratio for Wiener filter (default: 0.01)
+% Input:
+%   filepath - Path to input image file
 %
-% OUTPUT:
-%   result - Unified struct containing:
-%       .modality        - "image"
-%       .input           - Struct with .file, .rawImage, .rawSize
-%       .preprocessing   - Struct with .image (128x128 double [0,1]) and metadata
-%       .ml              - Struct with .class, .class_id, .confidence, .probabilities
-%       .dsp             - Unified image DSP result structure from analyzeImage()
-%       .features        - Quantitative features extracted by calculateFeatures()
-%       .figures         - Figure handles returned by plotDSPResults()
+% Output:
+%   result - Structure containing:
+%       result.input
+%       result.preprocessing
+%       result.ml
+%       result.dsp
+%
+% Example:
+%   result = runImagePipeline("sample.png");
 
-    %% ===============================================================
-    % 1. INPUT VALIDATION & PARAMETER PARSING
-    % ===============================================================
+    fprintf("\n");
+    fprintf("============================================\n");
+    fprintf("        SPANDHAN IMAGE PIPELINE\n");
+    fprintf("============================================\n");
+
+    %% ---------------------------------------------------------
+    % 1. Validate input
+    % ----------------------------------------------------------
 
     if nargin < 1 || isempty(filepath)
-        error("runImagePipeline requires an image file path.");
+        error("runImagePipeline:MissingInput", ...
+            "An image file path must be provided.");
     end
 
     filepath = char(filepath);
-    if ~exist(filepath, "file")
-        error("Image file does not exist: %s", filepath);
+
+    if ~isfile(filepath)
+        error("runImagePipeline:FileNotFound", ...
+            "Image file not found: %s", filepath);
     end
 
-    visualize  = true;
-    figVisible = "on";
-    dspArgs    = {};
+    fprintf("\n[1/4] Loading image...\n");
+    fprintf("      File: %s\n", filepath);
 
-    if mod(length(varargin), 2) ~= 0
-        error("Optional arguments must be supplied as name-value pairs.");
-    end
+    %% ---------------------------------------------------------
+    % 2. Load image
+    % ----------------------------------------------------------
 
-    for k = 1:2:length(varargin)
-        param = lower(string(varargin{k}));
-        val   = varargin{k+1};
-
-        switch param
-            case "visualize"
-                visualize = logical(val);
-            case "figurevisible"
-                figVisible = string(val);
-            otherwise
-                % Forward all other parameters to analyzeImage
-                dspArgs = [dspArgs, {varargin{k}, val}]; %#ok<AGROW>
-        end
-    end
-
-    fprintf("\n------------------------------------------------------------\n");
-    fprintf(" SPANDHAN IMAGE PIPELINE: %s\n", filepath);
-    fprintf("------------------------------------------------------------\n");
-
-    %% ===============================================================
-    % 2. STEP 1: LOAD IMAGE
-    % ===============================================================
-
-    fprintf("[1/5] Loading raw image...\n");
     rawImage = loadImage(filepath);
-    rawSize  = size(rawImage);
-    fprintf("      Loaded image of size: %s (%s)\n", ...
-        mat2str(rawSize), class(rawImage));
 
-    %% ===============================================================
-    % 3. STEP 2: PREPROCESS IMAGE
-    % ===============================================================
+    fprintf("      Original image size: ");
 
-    fprintf("[2/5] Standardizing image (grayscale, 128x128, normalized [0, 1])...\n");
-    [processedImage, prepInfo] = preprocessImage(rawImage);
-    fprintf("      Conditioned: %dx%d %s (Range: [%.3f, %.3f])\n", ...
-        size(processedImage, 1), size(processedImage, 2), ...
-        class(processedImage), min(processedImage(:)), max(processedImage(:)));
+    originalSize = size(rawImage);
 
-    %% ===============================================================
-    % 4. STEP 3: ML CLASSIFICATION
-    % ===============================================================
+    fprintf("%d x %d", ...
+        originalSize(1), ...
+        originalSize(2));
 
-    fprintf("[3/5] Classifying image via Python ML classifier...\n");
+    if ndims(rawImage) == 3
+        fprintf(" x %d", originalSize(3));
+    end
+
+    fprintf("\n");
+
+    %% ---------------------------------------------------------
+    % 3. MATLAB preprocessing
+    % ----------------------------------------------------------
+
+    fprintf("\n[2/4] Preprocessing image in MATLAB...\n");
+
+    processedImage = preprocessImage(rawImage);
+
+    processedSize = size(processedImage);
+
+    fprintf("      Processed image size: %d x %d\n", ...
+        processedSize(1), ...
+        processedSize(2));
+
+    fprintf("      Data type: %s\n", ...
+        class(processedImage));
+
+    %% ---------------------------------------------------------
+    % 4. Python ML classification
+    % ----------------------------------------------------------
+
+    fprintf("\n[3/4] Classifying image using Python ML...\n");
+
     prediction = classifyImage(processedImage);
-    fprintf("      Predicted Class: %s (ID: %d)\n", ...
-        upper(prediction.class), prediction.class_id);
-    fprintf("      Confidence     : %.2f%%\n", prediction.confidence * 100);
 
-    %% ===============================================================
-    % 5. STEP 4: CLASS-AWARE IMAGE DSP ANALYSIS
-    % ===============================================================
+    fprintf("      Predicted class: %s\n", ...
+        char(prediction.class));
 
-    fprintf("[4/5] Running class-aware DSP pipeline for class '%s'...\n", prediction.class);
-    dspResult = analyzeImage(processedImage, prediction.class, dspArgs{:});
-    fprintf("      Completed DSP Modules: %s\n", ...
-        strjoin(dspResult.completedAnalyses, ", "));
-    if ~isempty(dspResult.failedAnalyses)
-        fprintf("      Failed DSP Modules   : %s\n", ...
-            strjoin(dspResult.failedAnalyses, ", "));
-    end
-    fprintf("      DSP Status           : %s\n", dspResult.status);
+    fprintf("      Confidence: %.2f%%\n", ...
+        prediction.confidence * 100);
 
-    %% ===============================================================
-    % 6. STEP 5: FEATURE EXTRACTION
-    % ===============================================================
+    %% ---------------------------------------------------------
+    % 5. MATLAB image DSP analysis
+    % ----------------------------------------------------------
 
-    features = struct();
-    try
-        features = calculateFeatures(dspResult, "image");
-    catch ME
-        warning("Feature extraction skipped: %s", ME.message);
-    end
+    fprintf("\n[4/4] Running class-aware image DSP analysis...\n");
 
-    %% ===============================================================
-    % 7. STEP 6: VISUALIZATION
-    % ===============================================================
+    dspResult = analyzeImage( ...
+        processedImage, ...
+        prediction.class);
 
-    figures = struct();
-    if visualize
-        fprintf("[5/5] Generating Image DSP visualizations...\n");
-        try
-            figures = plotDSPResults(dspResult, "image", "Visible", figVisible);
-        catch ME
-            warning("Visualization error: %s", ME.message);
-        end
-    else
-        fprintf("[5/5] Visualization skipped (Visualize=false).\n");
-    end
-
-    %% ===============================================================
-    % 8. STEP 7: PACKAGE UNIFIED RESULT
-    % ===============================================================
+    %% ---------------------------------------------------------
+    % 6. Build unified result structure
+    % ----------------------------------------------------------
 
     result = struct();
-    result.modality               = "image";
-    result.input                  = struct();
-    result.input.file             = filepath;
-    result.input.rawImage         = rawImage;
-    result.input.rawSize          = rawSize;
-    result.input.originalSize     = rawSize;
 
-    result.preprocessing          = prepInfo;
-    result.preprocessing.image    = processedImage;
-    result.preprocessing.processedSize = size(processedImage);
+    % Input information
+    result.input = struct();
+    result.input.file = filepath;
+    result.input.originalSize = originalSize;
+
+    % Preprocessing information
+    result.preprocessing = struct();
+    result.preprocessing.processedSize = processedSize;
     result.preprocessing.dataType = class(processedImage);
 
-    result.ml                     = prediction;
-    result.dsp                    = dspResult;
-    result.features               = features;
-    result.figures                = figures;
+    % ML result
+    result.ml = prediction;
 
-    fprintf("------------------------------------------------------------\n");
-    fprintf(" SPANDHAN Image Pipeline Complete.\n");
-    fprintf("------------------------------------------------------------\n\n");
+    % DSP result
+    result.dsp = dspResult;
+
+    % Store processed image for visualization
+    result.image = processedImage;
+
+    fprintf("\n============================================\n");
+    fprintf("       IMAGE PIPELINE COMPLETED\n");
+    fprintf("============================================\n");
 
 end
