@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.venv/
+env/
+venv/
+
+# MATLAB
+*.asv
+*.m~
+slprj/
+*.slxc
+
+# Models & Large Data
+*.bin
+*.h5
+*.onnx
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
