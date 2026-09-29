@@ -1,0 +1,33 @@
+{
+  "best_model": "GradientBoosting",
+  "results": {
+    "LogisticRegression": {
+      "accuracy_mean": 0.9694285714285714,
+      "accuracy_std": 0.004571428571428557,
+      "f1_macro_mean": 0.9694674051584988,
+      "f1_macro_std": 0.00454833150387239,
+      "fit_time_s": 5.55
+    },
+    "SVM": {
+      "accuracy_mean": 0.9785714285714286,
+      "accuracy_std": 0.005111012519999506,
+      "f1_macro_mean": 0.9785734753756594,
+      "f1_macro_std": 0.005105598035935539,
+      "fit_time_s": 6.62
+    },
+    "RandomForest": {
+      "accuracy_mean": 0.9865714285714284,
+      "accuracy_std": 0.0027994168488950535,
+      "f1_macro_mean": 0.9865594303298572,
+      "f1_macro_std": 0.002812077312631975,
+      "fit_time_s": 7.84
+    },
+    "GradientBoosting": {
+      "accuracy_mean": 0.9905714285714285,
+      "accuracy_std": 0.0039999999999999845,
+      "f1_macro_mean": 0.9905720386556117,
+      "f1_macro_std": 0.003999145712290804,
+      "fit_time_s": 71.87
+    }
+  }
+}

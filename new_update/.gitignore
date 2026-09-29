@@ -23,3 +23,10 @@ slprj/
 Thumbs.db
 .vscode/
 .idea/
+
+# ==============================
+# SPANDHAN Datasets
+# ==============================
+
+datasets/
+dataset_generation/
