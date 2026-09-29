@@ -36,7 +36,7 @@ for i = 1:numel(classes)
     end
     
     try
-        res = runAudioPipeline(audioFile);
+        res = runAudioPipeline(audioFile, "Visualize", false);
         results.audio.(c) = res;
         
         fprintf("Result Summary:\n");
@@ -69,7 +69,7 @@ for i = 1:numel(classes)
     end
     
     try
-        res = runImagePipeline(imgFile);
+        res = runImagePipeline(imgFile, "Visualize", false);
         results.image.(c) = res;
         
         fprintf("Result Summary:\n");
