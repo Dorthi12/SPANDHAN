@@ -213,7 +213,7 @@ function result = analyzeAudio(x, Fs, signalClass, varargin)
     % 5. SELECT DSP ANALYSIS
     % ---------------------------------------------------------------
 
-    analysisSelection = selectDSPAnalysis(signalClass);
+    analysisSelection = selectAudioDSPAnalysis(signalClass);
 
     %% ---------------------------------------------------------------
     % 6. INITIALIZE RESULT STRUCTURE

@@ -1,292 +1,132 @@
-function analysis = selectDSPAnalysis(signalClass)
+function varargout = selectDSPAnalysis(varargin)
 % SELECTDSPANALYSIS
-% Selects the most relevant DSP analyses for a classified signal.
+% Selects relevant DSP analyses for a classified signal (Audio or Image),
+% or executes DSP analysis if called with legacy (sig, Fs, signalClass, options) signature.
 %
-% INPUT:
-%   signalClass - Predicted signal class from the ML model.
+% USAGE:
+%   1. Canonical Selection Mode:
+%       analysis = selectDSPAnalysis(signalClass)            % Audio routing (default)
+%       analysis = selectDSPAnalysis(signalClass, "image")   % Image routing
+%       analysis = selectDSPAnalysis(signalClass, "audio")   % Audio routing
 %
-% Supported classes:
-%   "Impulse"
-%   "Sinusoidal"
-%   "White Noise"
-%   "Step"
-%   "Chirp"
-%
-% OUTPUT:
-%   analysis - Structure containing:
-%       .signalClass
-%       .canonicalClass
-%       .primary
-%       .secondary
-%       .all
-%       .description
-%       .reason
-%
-% IMPORTANT:
-%   This function only selects analyses.
-%   It does NOT execute any DSP algorithm.
+%   2. Legacy Execution Mode (backward compatibility):
+%       res = selectDSPAnalysis(sig, Fs, signalClass)
+%       res = selectDSPAnalysis(sig, Fs, signalClass, options)
 
-    %% ---------------------------------------------------------------
-    % 1. INPUT VALIDATION
-    % ---------------------------------------------------------------
-
-    if nargin < 1 || isempty(signalClass)
-        error("Signal class is required.");
+    if nargin == 0
+        error("selectDSPAnalysis requires at least 1 input.");
     end
 
-    if isstring(signalClass)
+    %% CANONICAL MODE: SELECTION ONLY
+    if nargin == 1 || (nargin == 2 && (isstring(varargin{2}) || ischar(varargin{2})) && ...
+            any(lower(string(varargin{2})) == ["audio", "image"]))
 
-        if numel(signalClass) ~= 1
-            error("signalClass must be a scalar string.");
+        signalClass = varargin{1};
+        if nargin == 2
+            modality = lower(string(varargin{2}));
+        else
+            modality = "audio";
         end
 
-    elseif ischar(signalClass)
-
-        signalClass = string(signalClass);
-
-    elseif isnumeric(signalClass)
-
-        if ~isscalar(signalClass)
-            error("Numeric signal class must be a scalar.");
+        if modality == "image"
+            analysis = selectImageDSPAnalysis(signalClass);
+        else
+            analysis = selectAudioDSPAnalysis(signalClass);
         end
 
-        % Expected ML labels:
-        % 0 = Impulse
-        % 1 = Sinusoidal
-        % 2 = White Noise
-        % 3 = Step
-        % 4 = Chirp
+        varargout{1} = analysis;
+        return;
+    end
 
-        classLabels = [ ...
-            "Impulse", ...
-            "Sinusoidal", ...
-            "White Noise", ...
-            "Step", ...
-            "Chirp" ...
-        ];
-
-        classIndex = double(signalClass) + 1;
-
-        if classIndex < 1 || classIndex > numel(classLabels)
-            error("Unknown numeric signal class: %g", signalClass);
-        end
-
-        signalClass = classLabels(classIndex);
-
+    %% LEGACY COMPATIBILITY MODE: (sig, Fs, signalClass, [options])
+    sig = varargin{1};
+    Fs  = varargin{2};
+    if nargin >= 3
+        signalClass = varargin{3};
     else
-
-        error("signalClass must be text or a numeric class label.");
-
+        signalClass = "sinusoidal";
     end
 
-    %% ---------------------------------------------------------------
-    % 2. NORMALIZE CLASS NAME
-    % ---------------------------------------------------------------
-
-    normalizedClass = lower(strtrim(signalClass));
-
-    normalizedClass = replace(normalizedClass, "_", " ");
-
-    normalizedClass = replace(normalizedClass, "-", " ");
-
-    %% ---------------------------------------------------------------
-    % 3. CLASSIFY INTO CANONICAL CLASS
-    % ---------------------------------------------------------------
-
-    switch normalizedClass
-
-        case {"impulse", "dirac delta", "delta", "dirac"}
-
-            canonicalClass = "Impulse";
-
-        case {"sinusoidal", "sinusoid", "sine", "sine wave"}
-
-            canonicalClass = "Sinusoidal";
-
-        case {"white noise", "whitenoise", "noise"}
-
-            canonicalClass = "White Noise";
-
-        case {"step", "step signal", "unit step"}
-
-            canonicalClass = "Step";
-
-        case {"chirp", "swept sine", "swept sine signal", ...
-              "swept-sine"}
-
-            canonicalClass = "Chirp";
-
-        otherwise
-
-            error("Unsupported signal class: %s", signalClass);
-
+    options = struct();
+    if nargin >= 4 && isstruct(varargin{4})
+        options = varargin{4};
     end
 
-    %% ---------------------------------------------------------------
-    % 4. SELECT DSP PATH
-    % ---------------------------------------------------------------
-
-    switch canonicalClass
-
-        % -----------------------------------------------------------
-        % IMPULSE
-        % -----------------------------------------------------------
-
-        case "Impulse"
-
-            primary = [ ...
-                "FFT"
-                "Wavelet"
-            ];
-
-            secondary = [ ...
-                "FIR"
-                "Convolution"
-                "Deconvolution"
-            ];
-
-            description = ...
-                "Transient and broadband signal with highly localized energy.";
-
-            reason = ...
-                "FFT reveals broadband spectral content, while wavelets " + ...
-                "localize the impulse across scales. Filtering and system " + ...
-                "response analysis are useful secondary operations.";
-
-        % -----------------------------------------------------------
-        % SINUSOIDAL
-        % -----------------------------------------------------------
-
-        case "Sinusoidal"
-
-            primary = [ ...
-                "FFT"
-            ];
-
-            secondary = [ ...
-                "FIR"
-                "IIR"
-            ];
-
-            description = ...
-                "Periodic signal dominated by one or more discrete frequencies.";
-
-            reason = ...
-                "FFT directly identifies the dominant frequency and spectral " + ...
-                "components. FIR and IIR filtering can demonstrate frequency " + ...
-                "selectivity.";
-
-        % -----------------------------------------------------------
-        % WHITE NOISE
-        % -----------------------------------------------------------
-
-        case "White Noise"
-
-            primary = [ ...
-                "FFT"
-            ];
-
-            secondary = [ ...
-                "FIR"
-                "IIR"
-            ];
-
-            description = ...
-                "Broadband stochastic signal with approximately flat power spectrum.";
-
-            reason = ...
-                "FFT reveals broadband spectral distribution. FIR and IIR " + ...
-                "filters demonstrate how frequency-selective systems shape noise.";
-
-        % -----------------------------------------------------------
-        % STEP
-        % -----------------------------------------------------------
-
-        case "Step"
-
-            primary = [ ...
-                "FFT"
-                "Wavelet"
-            ];
-
-            secondary = [ ...
-                "FIR"
-                "IIR"
-                "Convolution"
-            ];
-
-            description = ...
-                "Piecewise-constant signal containing a sharp transition.";
-
-            reason = ...
-                "Wavelets are useful for localizing the transition, while FFT " + ...
-                "shows its frequency content. Filtering and convolution reveal " + ...
-                "system response to a step-like input.";
-
-        % -----------------------------------------------------------
-        % CHIRP
-        % -----------------------------------------------------------
-
-        case "Chirp"
-
-            primary = [ ...
-                "FFT"
-                "STFT"
-                "Wavelet"
-            ];
-
-            secondary = [ ...
-                "Deconvolution"
-            ];
-
-            description = ...
-                "Signal whose instantaneous frequency changes over time.";
-
-            reason = ...
-                "FFT shows the overall frequency range, while STFT tracks the " + ...
-                "frequency evolution. Wavelets provide multi-resolution analysis.";
-
+    % Convert options struct to name-value pairs for analyzeAudio
+    nvPairs = {};
+    if isfield(options, 'firOrder')
+        nvPairs = [nvPairs, {'FIROrder', options.firOrder}];
+    end
+    if isfield(options, 'firCutoff')
+        nvPairs = [nvPairs, {'FIRCutoff', options.firCutoff}];
+    end
+    if isfield(options, 'firType')
+        nvPairs = [nvPairs, {'FIRType', options.firType}];
+    end
+    if isfield(options, 'fftSize')
+        nvPairs = [nvPairs, {'FFTSize', options.fftSize}];
+    end
+    if isfield(options, 'waveletName')
+        nvPairs = [nvPairs, {'Wavelet', options.waveletName}];
+    end
+    if isfield(options, 'waveletLevel')
+        nvPairs = [nvPairs, {'WaveletLevel', options.waveletLevel}];
+    end
+    if isfield(options, 'impulseResponse')
+        nvPairs = [nvPairs, {'ImpulseResponse', options.impulseResponse}];
     end
 
-    %% ---------------------------------------------------------------
-    % 5. COMBINE ANALYSIS LIST
-    % ---------------------------------------------------------------
+    % Run canonical analyzeAudio
+    dspRes = analyzeAudio(sig, Fs, signalClass, nvPairs{:});
 
-    allAnalyses = [
-        primary
-        secondary
-    ];
+    % Build pipeline list
+    selection = selectAudioDSPAnalysis(signalClass);
+    pipelineCell = cell(numel(selection.all), 1);
+    for k = 1:numel(selection.all)
+        pipelineCell{k} = lower(char(selection.all(k)));
+    end
 
-    %% ---------------------------------------------------------------
-    % 6. BUILD OUTPUT STRUCTURE
-    % ---------------------------------------------------------------
+    res = struct();
+    res.signalClass = lower(string(selection.canonicalClass));
+    if res.signalClass == "white noise"
+        res.signalClass = "white_noise";
+    end
+    res.pipeline    = pipelineCell;
+    res.selection   = selection;
+    res.status      = dspRes.status;
 
-    analysis = struct();
+    % Only expose fields that were selected/executed
+    if selection.useFFT && ~isempty(dspRes.fft)
+        res.fft = dspRes.fft;
+    end
+    if selection.useSTFT && ~isempty(dspRes.stft)
+        res.stft = dspRes.stft;
+    end
+    if selection.useWavelet && ~isempty(dspRes.wavelet)
+        res.wavelet = dspRes.wavelet;
+    end
+    if selection.useFIR && ~isempty(dspRes.fir)
+        res.fir = dspRes.fir;
+        if isfield(options, 'firOrder')
+            res.fir.order = options.firOrder;
+        end
+    end
+    if selection.useIIR && ~isempty(dspRes.iir)
+        res.iir = dspRes.iir;
+    end
+    if selection.useConvolution
+        res.convolution = dspRes.convolution;
+        if isempty(res.convolution)
+            res.convolution = struct('status', 'skipped_no_ir');
+        end
+    end
+    if selection.useDeconvolution
+        res.deconvolution = dspRes.deconvolution;
+        if isempty(res.deconvolution)
+            res.deconvolution = struct('status', 'skipped_no_ir');
+        end
+    end
 
-    analysis.signalClass    = signalClass;
-    analysis.canonicalClass = canonicalClass;
-    analysis.primary        = primary;
-    analysis.secondary      = secondary;
-    analysis.all            = allAnalyses;
-    analysis.description    = description;
-    analysis.reason         = reason;
-
-    %% ---------------------------------------------------------------
-    % 7. ANALYSIS FLAGS
-    % ---------------------------------------------------------------
-
-    analysis.useFFT = any(allAnalyses == "FFT");
-
-    analysis.useSTFT = any(allAnalyses == "STFT");
-
-    analysis.useWavelet = any(allAnalyses == "Wavelet");
-
-    analysis.useFIR = any(allAnalyses == "FIR");
-
-    analysis.useIIR = any(allAnalyses == "IIR");
-
-    analysis.useConvolution = any(allAnalyses == "Convolution");
-
-    analysis.useDeconvolution = any(allAnalyses == "Deconvolution");
+    varargout{1} = res;
 
 end

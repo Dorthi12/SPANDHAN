@@ -25,8 +25,14 @@ function [processed, info] = preprocessAudio(signal, fs, className)
         className = "sinusoidal";   % safe default: centre crop/pad
     end
 
-    TARGET_FS      = 16000;
-    TARGET_SAMPLES = 32000;
+    try
+        cfg = config();
+        TARGET_FS      = cfg.targetFs;
+        TARGET_SAMPLES = cfg.targetSamples;
+    catch
+        TARGET_FS      = 16000;
+        TARGET_SAMPLES = 32000;
+    end
 
     [processed, info] = preprocessAudioFile( ...
         signal, fs, TARGET_FS, TARGET_SAMPLES, className);

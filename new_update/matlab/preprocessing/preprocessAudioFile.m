@@ -36,6 +36,9 @@ function [x, info] = preprocessAudioFile(x, originalFs, targetFs, targetSamples,
 %  STEP 0: RECORD ORIGINAL METADATA
 % ------------------------------------------------------------
 
+info.originalFs       = originalFs;
+info.processedFs      = targetFs;
+info.originalSamples  = size(x, 1);
 info.originalLength   = size(x, 1);
 info.originalChannels = size(x, 2);
 info.originalDuration = size(x, 1) / originalFs;
@@ -145,6 +148,9 @@ end
 %  FINAL METADATA
 % ------------------------------------------------------------
 
+info.targetFs          = targetFs;
+info.processedFs       = targetFs;
+info.processedSamples  = numel(x);
 info.processedLength   = numel(x);
 info.processedDuration = numel(x) / targetFs;
 info.processedPeak     = max(abs(x));

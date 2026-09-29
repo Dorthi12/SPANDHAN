@@ -199,11 +199,10 @@ function result = analyzeImage(imageInput, signalClass, varargin)
     % 5. SELECT DSP PATH
     % ===============================================================
     %
-    % selectDSPAnalysis() defines the generic signal-class routing.
-    % analyzeImage() maps that selection to image-specific operations.
+    % selectImageDSPAnalysis() defines the 2-D image signal-class routing.
     % STFT, FIR, and IIR are audio-only — they are not applied to images.
 
-    selection      = selectDSPAnalysis(signalClass);
+    selection      = selectImageDSPAnalysis(signalClass);
     canonicalClass = selection.canonicalClass;
 
     %% ===============================================================
@@ -231,7 +230,7 @@ function result = analyzeImage(imageInput, signalClass, varargin)
     % 7. 2-D FFT
     % ===============================================================
 
-    if fftAnalysis
+    if fftAnalysis && selection.useFFT2
 
         try
 
@@ -254,20 +253,24 @@ function result = analyzeImage(imageInput, signalClass, varargin)
     % 8. 2-D WAVELET
     % ===============================================================
 
-    try
+    if selection.useWavelet2D
 
-        result.wavelet2D = runWavelet2D( ...
-            imageDouble, waveletName, waveletLevel);
+        try
 
-        result.executionLog(end+1) = ...
-            "2-D wavelet analysis completed.";
+            result.wavelet2D = runWavelet2D( ...
+                imageDouble, waveletName, waveletLevel);
 
-    catch ME
+            result.executionLog(end+1) = ...
+                "2-D wavelet analysis completed.";
 
-        result.failedAnalyses(end+1) = "2-D Wavelet";
+        catch ME
 
-        result.executionLog(end+1) = ...
-            "2-D Wavelet failed: " + string(ME.message);
+            result.failedAnalyses(end+1) = "2-D Wavelet";
+
+            result.executionLog(end+1) = ...
+                "2-D Wavelet failed: " + string(ME.message);
+
+        end
 
     end
 
@@ -275,43 +278,47 @@ function result = analyzeImage(imageInput, signalClass, varargin)
     % 9. IMAGE FILTERING
     % ===============================================================
 
-    try
+    if selection.useFilter
 
-        if filterType == "custom"
+        try
 
-            result.filter = runImageFilter( ...
-                imageDouble, filterType, ...
-                "Kernel",    filterKernel, ...
-                "Boundary",  filterBoundary, ...
-                "Operation", filterOperation);
+            if filterType == "custom"
 
-        elseif filterType == "gaussian"
+                result.filter = runImageFilter( ...
+                    imageDouble, filterType, ...
+                    "Kernel",    filterKernel, ...
+                    "Boundary",  filterBoundary, ...
+                    "Operation", filterOperation);
 
-            result.filter = runImageFilter( ...
-                imageDouble, filterType, ...
-                "KernelSize", filterKernelSize, ...
-                "Sigma",      filterSigma, ...
-                "Boundary",   filterBoundary, ...
-                "Operation",  filterOperation);
+            elseif filterType == "gaussian"
 
-        else
+                result.filter = runImageFilter( ...
+                    imageDouble, filterType, ...
+                    "KernelSize", filterKernelSize, ...
+                    "Sigma",      filterSigma, ...
+                    "Boundary",   filterBoundary, ...
+                    "Operation",  filterOperation);
 
-            result.filter = runImageFilter( ...
-                imageDouble, filterType, ...
-                "KernelSize", filterKernelSize, ...
-                "Boundary",   filterBoundary, ...
-                "Operation",  filterOperation);
+            else
+
+                result.filter = runImageFilter( ...
+                    imageDouble, filterType, ...
+                    "KernelSize", filterKernelSize, ...
+                    "Boundary",   filterBoundary, ...
+                    "Operation",  filterOperation);
+
+            end
+
+            result.executionLog(end+1) = "Image filtering completed.";
+
+        catch ME
+
+            result.failedAnalyses(end+1) = "Image Filter";
+
+            result.executionLog(end+1) = ...
+                "Image filtering failed: " + string(ME.message);
 
         end
-
-        result.executionLog(end+1) = "Image filtering completed.";
-
-    catch ME
-
-        result.failedAnalyses(end+1) = "Image Filter";
-
-        result.executionLog(end+1) = ...
-            "Image filtering failed: " + string(ME.message);
 
     end
 
@@ -319,30 +326,34 @@ function result = analyzeImage(imageInput, signalClass, varargin)
     % 10. 2-D CONVOLUTION
     % ===============================================================
 
-    if ~isempty(convolutionKernel)
+    if selection.useConvolution
 
-        try
+        if ~isempty(convolutionKernel)
 
-            result.convolution = runImageConvolution( ...
-                imageDouble, ...
-                convolutionKernel, ...
-                convolutionOutputMode);
+            try
 
-            result.executionLog(end+1) = "2-D convolution completed.";
+                result.convolution = runImageConvolution( ...
+                    imageDouble, ...
+                    convolutionKernel, ...
+                    convolutionOutputMode);
 
-        catch ME
+                result.executionLog(end+1) = "2-D convolution completed.";
 
-            result.failedAnalyses(end+1) = "2-D Convolution";
+            catch ME
+
+                result.failedAnalyses(end+1) = "2-D Convolution";
+
+                result.executionLog(end+1) = ...
+                    "2-D convolution failed: " + string(ME.message);
+
+            end
+
+        else
 
             result.executionLog(end+1) = ...
-                "2-D convolution failed: " + string(ME.message);
+                "2-D convolution skipped: no kernel supplied.";
 
         end
-
-    else
-
-        result.executionLog(end+1) = ...
-            "2-D convolution skipped: no kernel supplied.";
 
     end
 
@@ -350,48 +361,52 @@ function result = analyzeImage(imageInput, signalClass, varargin)
     % 11. IMAGE DECONVOLUTION
     % ===============================================================
 
-    if ~isempty(psf)
+    if selection.useDeconvolution
 
-        try
+        if ~isempty(psf)
 
-            if deconvolutionMethod == "wiener"
+            try
 
-                result.deconvolution = runImageDeconvolution( ...
-                    imageDouble, psf, deconvolutionMethod, ...
-                    "NSR",       nsr, ...
-                    "EdgeTaper", edgeTaper);
+                if deconvolutionMethod == "wiener"
 
-            elseif deconvolutionMethod == "regularized"
+                    result.deconvolution = runImageDeconvolution( ...
+                        imageDouble, psf, deconvolutionMethod, ...
+                        "NSR",       nsr, ...
+                        "EdgeTaper", edgeTaper);
 
-                result.deconvolution = runImageDeconvolution( ...
-                    imageDouble, psf, deconvolutionMethod, ...
-                    "NoisePower", noisePower, ...
-                    "EdgeTaper",  edgeTaper);
+                elseif deconvolutionMethod == "regularized"
 
-            else
+                    result.deconvolution = runImageDeconvolution( ...
+                        imageDouble, psf, deconvolutionMethod, ...
+                        "NoisePower", noisePower, ...
+                        "EdgeTaper",  edgeTaper);
 
-                result.deconvolution = runImageDeconvolution( ...
-                    imageDouble, psf, deconvolutionMethod, ...
-                    "EdgeTaper", edgeTaper);
+                else
+
+                    result.deconvolution = runImageDeconvolution( ...
+                        imageDouble, psf, deconvolutionMethod, ...
+                        "EdgeTaper", edgeTaper);
+
+                end
+
+                result.executionLog(end+1) = ...
+                    "Image deconvolution completed.";
+
+            catch ME
+
+                result.failedAnalyses(end+1) = "Image Deconvolution";
+
+                result.executionLog(end+1) = ...
+                    "Image deconvolution failed: " + string(ME.message);
 
             end
 
-            result.executionLog(end+1) = ...
-                "Image deconvolution completed.";
-
-        catch ME
-
-            result.failedAnalyses(end+1) = "Image Deconvolution";
+        else
 
             result.executionLog(end+1) = ...
-                "Image deconvolution failed: " + string(ME.message);
+                "Image deconvolution skipped: no PSF supplied.";
 
         end
-
-    else
-
-        result.executionLog(end+1) = ...
-            "Image deconvolution skipped: no PSF supplied.";
 
     end
 
